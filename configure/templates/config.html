@@ -10,7 +10,6 @@
 </head>
 <body>
   <script>
-
   function removeActive() {
     $("#tab1").removeClass("active");
     $("#tab2").removeClass("active");
@@ -19,12 +18,12 @@
     $("#tab5").removeClass("active");
   }
 
-    $(document).ready(function() {
-      $("a").click(function() {
-        removeActive();
-        $(this).parent().addClass("active")
-      })
+  $(document).ready(function() {
+    $("a").click(function() {
+      removeActive();
+      $(this).parent().addClass("active")
     })
+  })
   </script>
   <div class="wrapper">
     <aside class="main_sidebar">
