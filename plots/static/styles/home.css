@@ -33,7 +33,7 @@ body {
     padding:40px;
 }
 .main_sidebar ul li a {
-    color:black;
+    color:#fff;
     display:block;
     font-size: 20px;
 }
@@ -55,7 +55,7 @@ body {
     color:#fff;
 }
 .main_sidebar ul li.active {
-    background:#E5E4E2;
+    background:#0f4698;
 }
 .main_sidebar ul li.active i {
     color:#fff;

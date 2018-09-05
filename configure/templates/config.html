@@ -7,6 +7,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/styles/home.css">
+  <script src="../static/js/blockUI.js"></script>
 </head>
 <body>
   <script>
@@ -22,6 +23,10 @@
     $("a").click(function() {
       removeActive();
       $(this).parent().addClass("active")
+    });
+
+    $("#submit").click(function() {
+      $.blockUI({ message: '<img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" />' });
     })
   })
   </script>
@@ -29,7 +34,7 @@
     <aside class="main_sidebar">
       <ul>
         <li id="tab1" class="active"><i class="fa fa-arrows"></i><a href="#">Config</a></li>
-        <li id="tab2"><i class="fa fa-battery-2"></i><a href="#">Tab2</a></li>
+        <li id="tab2"><i class="fa fa-battery-2"></i><a href="{% url 'plots' %}">Plots</a></li>
         <li id="tab3"><i class="fa fa-bell"></i><a href="#">Tab3</a></li>
         <li id="tab4"><i class="fa fa-bicycle"></i><a href="#">Tab4</a></li>
         <li id="tab5"><i class="fa fa-circle"></i><a href="#">Tab5</a></li>
@@ -46,7 +51,7 @@
         {{ field }}
       </div>
       {% endfor %}
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" id="submit" class="btn btn-default">Submit</button>
     </form>
   </div>
 </body>
