@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .forms import ConfigForm
+import _thread
 import subprocess
 import shlex
 
@@ -17,11 +18,18 @@ def enterConfig(request) :
 
 			if dataset == 'higgs' :
 				print("Executing Higgs")
-				subprocess.call(shlex.split("ssh arung@ms1144.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.higgs.sh " + str(n) + str(k) + str(l) + str(r) + "'"))
+				_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 			elif dataset == 'syn' :
-				subprocess.call(shlex.split("ssh arung@ms1144.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.syn.sh " + str(n) + str(k) + str(l) + str(r) + "'"))
+				_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.syn.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 			elif dataset == 'twtr' :
-				subprocess.call(shlex.split("ssh arung@ms1144.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.twtr.sh " + str(n) + str(k) + str(l) + str(r) + "'"))
+				_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.twtr.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
+
+			print("Redirecting")
+			return HttpResponseRedirect('/disc/data')
 
 	form = ConfigForm()
 	return render(request, '../templates/config.html', {'form':form})
+
+def executeShell(command) :
+	print("Excecuting shell")
+	subprocess.call(shlex.split(command))

@@ -5,4 +5,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('disc/', include('configure.urls')),
     path('disc/', include('plots.urls')),
+    path('disc/', include('data.urls')),
 ]
