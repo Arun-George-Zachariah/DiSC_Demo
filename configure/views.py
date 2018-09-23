@@ -18,7 +18,7 @@ def enterConfig(request) :
 
 			if dataset == 'higgs' :
 				print("Executing Higgs")
-				_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
+				_thread.start_new_thread(executeShell , ("ssh arung@hp130.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 			elif dataset == 'syn' :
 				_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.syn.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 			elif dataset == 'twtr' :

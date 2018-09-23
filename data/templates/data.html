@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/styles/home.css">
 </head>
@@ -19,19 +20,56 @@
   }
 
   $(document).ready(function() {
+    var dps = []; // dataPoints
+    var chart = new CanvasJS.Chart("chartContainer", {
+      title :{
+        text: "Relative Error"
+      },
+      axisX: {
+        includeZero: false,
+        title: 'Time (Seconds)',
+      },
+      axisY: {
+        includeZero: true,
+        title: "Avg. Relative Error",
+        suffix: "%"
+      },
+      data: [{
+        type: "line",
+        dataPoints: dps
+      }]
+    });
 
-    var ws = new WebSocket("ws://128.110.153.193:8080/StreamContent/discStream");
+    var xVal = 0;
+    var yVal = 100;
+    var updateInterval = 1000;
+    var dataLength = 20000000; // number of dataPoints visible at any point
+
+    var updateChart = function (xVal, yVal) {
+      dps.push({
+        x: xVal,
+        y: yVal
+      });
+      console.log(dps)
+      if (dps.length > dataLength) {
+        dps.shift();
+      }
+
+      chart.render();
+    };
+
+    var ws = new WebSocket("ws://128.110.154.203:8080/StreamData/discStream");
 
     ws.onmessage = function(event) {
-      var mySpan = document.getElementById("streamData");
-      mySpan.innerHTML +="<p>" + event.data + "</p><br>";
+      var str = event.data;
+      var res = str.split(",");
+
+      updateChart(Number(res[0]), Number(res[1]));
     };
 
     ws.onerror = function(event){
       console.log("Error ", event)
     }
-
-
     $("a").click(function() {
       removeActive();
       $(this).parent().addClass("active")
@@ -51,7 +89,7 @@
   </div>
   <div class="container formContainer">
     <h2>Data</h2>
-    <div id = "streamData"></div>
+    <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
   </div>
 </body>
 </html>
