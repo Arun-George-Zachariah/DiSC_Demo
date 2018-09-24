@@ -15,10 +15,13 @@ def enterConfig(request) :
 			k = form.cleaned_data['k']
 			r = form.cleaned_data['r']
 			dataset = form.cleaned_data['dataset']
+			#Hardcoded family. Needs to be in a dropdown
+			family = "jet_4_eta,jet_2_b-tag,jet_2_phi"
 
 			if dataset == 'higgs' :
-				print("Executing Higgs")
-				_thread.start_new_thread(executeShell , ("ssh arung@hp130.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
+				logFile = "/users/arung/higgs.r" + str(r) + ".k" + str(k) + ".txt"
+				subprocess.call(shlex.split("ssh arung@hp130.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts.txt'"))
+				_thread.start_new_thread(executeShell , ("ssh arung@hp130.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
 			elif dataset == 'syn' :
 				_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.syn.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 			elif dataset == 'twtr' :
