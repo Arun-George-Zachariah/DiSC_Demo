@@ -12,16 +12,23 @@ import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
 import org.apache.commons.io.input.TailerListenerAdapter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import edu.umkc.Constants.DiSCConstants;
 import edu.umkc.Util.PropertyReader;
 
 @ServerEndpoint("/discStream")
 public class StreamingProducer extends TailerListenerAdapter {
+	
+	static {
+		System.setProperty("log4j.configurationFile", "log4j2.properties");
+	}
 
 	private static Set<Session> allSessions;
 	private static boolean isInitialized = false;
 	private static BlockingQueue<String> queue;
+	private static final Logger logger = LogManager.getLogger(StreamingProducer.class.getName());
 	
 	private void init() {
 		if(!isInitialized) {
@@ -34,15 +41,16 @@ public class StreamingProducer extends TailerListenerAdapter {
 
 	@OnOpen
 	public void streamData(Session session) {
-		System.out.println("StreamingProvider :: streamData ::  Start");
+		logger.debug("StreamingProvider :: streamData ::  Start2 ");
 		allSessions = session.getOpenSessions();
 		init();
 		if (allSessions != null && allSessions.size() != 0) {
 			try(BufferedReader br = new BufferedReader(new FileReader(new File(PropertyReader.getInstance().getProperty(DiSCConstants.LOG_FILE))))) {
 				while(true) {
+					//Making the thread sleep in order to effectively accept the huge line.
+					Thread.sleep(1000);
 					String line = null;
 					while((line = br.readLine()) != null) {
-						System.out.println(line);
 						queue.put(line);
 					}
 				}
