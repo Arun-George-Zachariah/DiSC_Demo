@@ -7,6 +7,10 @@ import shlex
 
 # Create your views here.
 def enterConfig(request) :
+
+	#Check for any existing gossip process running.
+	#To-Do : If so the user needs to be alterted that a gossip process is running.
+
 	if request.method == 'POST' :
 		form = ConfigForm(request.POST)
 		if form.is_valid() :
@@ -20,8 +24,12 @@ def enterConfig(request) :
 
 			if dataset == 'HIGGS_Dataset' :
 				logFile = "/users/arung/higgs.r" + str(r) + ".k" + str(k) + ".txt"
-				subprocess.call(shlex.split("ssh arung@hp130.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts.txt'"))
-				_thread.start_new_thread(executeShell , ("ssh arung@hp130.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
+				#Stopping an existing gossip process
+				subprocess.call(shlex.split("ssh arung@ms1020.utah.cloudlab.us 'bash stopHiggsGossip.sh " + str(n-1) + "'"))
+				#Initializing the Streaming process.
+				subprocess.call(shlex.split("ssh arung@ms1020.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts.txt'"))
+				#Starting the gossip process
+				_thread.start_new_thread(executeShell , ("ssh arung@ms1020.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
 			elif dataset == 'Synthetic_Dataset' :
 				_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.syn.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 			elif dataset == 'Twitter_Dataset' :

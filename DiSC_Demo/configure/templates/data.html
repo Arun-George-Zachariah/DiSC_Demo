@@ -5,29 +5,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/styles/home.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
-  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
 <body>
   <script>
-  $( function() {
+  $(function() {
     $( "#accordion" ).accordion();
   } );
-
+  </script>
+  <script>
   $(document).ready(function() {
-    var dps = []; // dataPoints
-    var chart = new CanvasJS.Chart("chartContainer", {
+    var dps1 = []; // dataPoints
+
+    var updateInterval = 1000;
+    var dataLength = 20000000; // number of dataPoints visible at any point
+
+    //Creating Charts - Start
+    //Chart 1 - Start
+    var chart1 = new CanvasJS.Chart("chartContainer1", {
       title :{
         text: "Relative Error"
       },
       axisX: {
-        includeZero: false,
+        includeZero: true,
         title: 'Time (Seconds)',
       },
       axisY: {
@@ -37,46 +42,217 @@
       },
       data: [{
         type: "line",
-        dataPoints: dps
+        dataPoints: dps1
       }]
     });
 
-    var xVal = 0;
-    var yVal = 100;
-    var updateInterval = 1000;
-    var dataLength = 20000000; // number of dataPoints visible at any point
-
-    var updateChart = function (xVal, yVal) {
-      dps.push({
+    var updateChart1 = function (xVal, yVal) {
+      dps1.push({
         x: xVal,
         y: yVal
       });
-      console.log(dps)
-      if (dps.length > dataLength) {
-        dps.shift();
+
+      if (dps1.length > dataLength) {
+        dps1.shift();
       }
 
-      chart.render();
+      chart1.render();
     };
+    //Creating Charts - End
 
-    var ws = new WebSocket("ws://128.110.153.174:8080/StreamData/discStream");
+    //Creating Web Socket - Start
+    var ws1 = new WebSocket("ws://128.110.153.173:8080/StreamData/discStream");
 
-    ws.onmessage = function(event) {
+    ws1.onmessage = function(event) {
+      console.log("Sending the data");
       var str = event.data;
       var res = str.split(",");
 
-      updateChart(Number(res[0]), Number(res[1]));
+      updateChart1(Number(res[0]), Number(res[1]));
     };
 
-    ws.onerror = function(event){
-      console.log("Error ", event)
+    ws1.onerror = function(event){
+      console.log("Error on WebSocket 1", event)
     }
-    $("a").click(function() {
-      removeActive();
-      $(this).parent().addClass("active")
-    })
+    //Creating Web Socket - End
+  });
+</script>
+<script>
+$(document).ready(function() {
+  var dps2 = []; // dataPoints
+
+  var updateInterval = 1000;
+  var dataLength = 20000000; // number of dataPoints visible at any point
+
+  //Creating Charts - Start
+  //Chart 1 - Start
+  var chart2= new CanvasJS.Chart("chartContainer2", {
+    title :{
+      text: "Relative Error"
+    },
+    axisX: {
+      includeZero: true,
+      title: 'Time (Seconds)',
+    },
+    axisY: {
+      includeZero: true,
+      title: "Avg. Relative Error",
+      suffix: "%"
+    },
+    data: [{
+      type: "line",
+      dataPoints: dps2
+    }]
   });
 
+  var updateChart2 = function (xVal, yVal) {
+    dps2.push({
+      x: xVal,
+      y: yVal
+    });
+
+    if (dps2.length > dataLength) {
+      dps2.shift();
+    }
+
+    chart2.render();
+  };
+  //Creating Charts - End
+
+  //Creating Web Socket - Start
+  var ws2 = new WebSocket("ws://128.110.153.174:8080/StreamData/discStream");
+
+  ws2.onmessage = function(event) {
+    console.log("Sending the data");
+    var str = event.data;
+    var res = str.split(",");
+
+    updateChart2(Number(res[0]), Number(res[1]));
+  };
+
+  ws2.onerror = function(event){
+    console.log("Error on WebSocket 2", event)
+  }
+  //Creating Web Socket - End
+});
+</script>
+<script>
+$(document).ready(function() {
+  var dps3 = []; // dataPoints
+
+  var updateInterval = 1000;
+  var dataLength = 20000000; // number of dataPoints visible at any point
+
+  //Creating Charts - Start
+  //Chart 1 - Start
+  var chart3 = new CanvasJS.Chart("chartContainer3", {
+    title :{
+      text: "Relative Error"
+    },
+    axisX: {
+      includeZero: true,
+      title: 'Time (Seconds)',
+    },
+    axisY: {
+      includeZero: true,
+      title: "Avg. Relative Error",
+      suffix: "%"
+    },
+    data: [{
+      type: "line",
+      dataPoints: dps3
+    }]
+  });
+
+  var updateChart3 = function (xVal, yVal) {
+    dps3.push({
+      x: xVal,
+      y: yVal
+    });
+
+    if (dps3.length > dataLength) {
+      dps3.shift();
+    }
+
+    chart3.render();
+  };
+  //Creating Charts - End
+
+  //Creating Web Socket - Start
+  var ws3 = new WebSocket("ws://128.110.153.160:8080/StreamData/discStream");
+
+  ws3.onmessage = function(event) {
+    console.log("Sending the data");
+    var str = event.data;
+    var res = str.split(",");
+
+    updateChart3(Number(res[0]), Number(res[1]));
+  };
+
+  ws3.onerror = function(event){
+    console.log("Error on WebSocket 3", event)
+  }
+  //Creating Web Socket - End
+});
+</script>
+<script>
+$(document).ready(function() {
+  var dps4 = []; // dataPoints
+
+  var updateInterval = 1000;
+  var dataLength = 20000000; // number of dataPoints visible at any point
+
+  //Creating Charts - Start
+  //Chart 1 - Start
+  var chart4 = new CanvasJS.Chart("chartContainer4", {
+    title :{
+      text: "Relative Error"
+    },
+    axisX: {
+      includeZero: true,
+      title: 'Time (Seconds)',
+    },
+    axisY: {
+      includeZero: true,
+      title: "Avg. Relative Error",
+      suffix: "%"
+    },
+    data: [{
+      type: "line",
+      dataPoints: dps4
+    }]
+  });
+
+  var updateChart4 = function (xVal, yVal) {
+    dps4.push({
+      x: xVal,
+      y: yVal
+    });
+
+    if (dps4.length > dataLength) {
+      dps4.shift();
+    }
+
+    chart4.render();
+  };
+  //Creating Charts - End
+
+  //Creating Web Socket - Start
+  var ws4 = new WebSocket("ws://128.110.153.165:8080/StreamData/discStream");
+
+  ws4.onmessage = function(event) {
+    console.log("Sending the data");
+    var str = event.data;
+    var res = str.split(",");
+
+    updateChart4(Number(res[0]), Number(res[1]));
+  };
+
+  ws4.onerror = function(event){
+    console.log("Error on WebSocket 4", event)
+  }
+  //Creating Web Socket - End
+});
 </script>
 <div class="wrapper">
   <aside class="main_sidebar">
@@ -110,72 +286,75 @@
 </div>
 <div class="container">
   <div class="dataAccContainer">
-        <div id="accordion">
-          <h3>Node 1</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 2</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 3</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 4</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 5</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 6</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 7</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 8</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 9</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 10</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 11</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 12</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 13</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 14</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 15</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-          <h3>Node 16</h3>
-          <div>
-            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
-          </div>
-        </div></div>
+    <div id="accordion">
+      <h3>Node 1</h3>
+      <div>
+        <div id="chartContainer1" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 2</h3>
+      <div>
+        <div id="chartContainer2" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 3</h3>
+      <div>
+        <div id="chartContainer3" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 4</h3>
+      <div>
+        <div id="chartContainer4" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 5</h3>
+      <div>
+        <div id="chartContainer5" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 6</h3>
+      <div>
+        <div id="chartContainer6" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 7</h3>
+      <div>
+        <div id="chartContainer7" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 8</h3>
+      <div>
+        <div id="chartContainer8" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 9</h3>
+      <div>
+        <div id="chartContainer9" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 10</h3>
+      <div>
+        <div id="chartContainer10" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 11</h3>
+      <div>
+        <div id="chartContainer11" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 12</h3>
+      <div>
+        <div id="chartContainer12" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 13</h3>
+      <div>
+        <div id="chartContainer13" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 14</h3>
+      <div>
+        <div id="chartContainer14" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 15</h3>
+      <div>
+        <div id="chartContainer15" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+      <h3>Node 16</h3>
+      <div>
+        <div id="chartContainer16" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+      </div>
+    </div>
+    <p>*Note: Graphs would appear, once the data starts streaming.
+  </div>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </div>
 </body>
 </html>
