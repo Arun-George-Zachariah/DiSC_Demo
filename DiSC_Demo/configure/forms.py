@@ -1,9 +1,9 @@
 from django import forms
 
 EXP_CHOICES=[
-('higgs','HIGGS Dataset'),
-('syn', 'Synthetic Dataset'),
-('twtr', 'Twitter Dataset'),
+('HIGGS_Dataset','HIGGS_Dataset'),
+('Synthetic_Dataset', 'Synthetic_Dataset'),
+('Twitter_Dataset', 'Twitter_Dataset'),
 ]
 
 class ConfigForm(forms.Form):

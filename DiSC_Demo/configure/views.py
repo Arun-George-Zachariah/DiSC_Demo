@@ -18,17 +18,16 @@ def enterConfig(request) :
 			#Hardcoded family. Needs to be in a dropdown
 			family = "jet_4_eta,jet_2_b-tag,jet_2_phi"
 
-			if dataset == 'higgs' :
+			if dataset == 'HIGGS_Dataset' :
 				logFile = "/users/arung/higgs.r" + str(r) + ".k" + str(k) + ".txt"
 				subprocess.call(shlex.split("ssh arung@hp130.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts.txt'"))
 				_thread.start_new_thread(executeShell , ("ssh arung@hp130.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
-			elif dataset == 'syn' :
+			elif dataset == 'Synthetic_Dataset' :
 				_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.syn.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
-			elif dataset == 'twtr' :
+			elif dataset == 'Twitter_Dataset' :
 				_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.twtr.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 
-			print("Redirecting")
-			return HttpResponseRedirect('/disc/data')
+			return render(request, '../templates/data.html', {'N':n,'L':l,'K':k,'R':r,'Dataset':dataset})
 
 	form = ConfigForm()
 	return render(request, '../templates/config.html', {'form':form})

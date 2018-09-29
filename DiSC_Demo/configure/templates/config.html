@@ -2,57 +2,48 @@
 <html>
 <head>
   <title>DiSc</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/styles/home.css">
-  <script src="../static/js/blockUI.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
 <body>
-  <script>
-  function removeActive() {
-    $("#tab1").removeClass("active");
-    $("#tab2").removeClass("active");
-    $("#tab3").removeClass("active");
-    $("#tab4").removeClass("active");
-    $("#tab5").removeClass("active");
-  }
-
-  $(document).ready(function() {
-    $("a").click(function() {
-      removeActive();
-      $(this).parent().addClass("active")
-    });
-
-    $("#submit").click(function() {
-      $.blockUI({ message: '<img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" />' });
-    })
-  })
-  </script>
-  <div class="wrapper">
-    <aside class="main_sidebar">
-      <ul>
-        <li id="tab1" class="active"><i class="fa fa-arrows"></i><a href="#">Config</a></li>
-        <li id="tab2"><i class="fa fa-battery-2"></i><a href="{% url 'plots' %}">Plots</a></li>
-        <li id="tab3"><i class="fa fa-bell"></i><a href="{% url 'data' %}">Data</a></li>
-        <li id="tab4"><i class="fa fa-bicycle"></i><a href="#">Tab4</a></li>
-        <li id="tab5"><i class="fa fa-circle"></i><a href="#">Tab5</a></li>
-      </ul>
-    </aside>
-  </div>
-  <div class="container formContainer">
-    <h2>Config form</h2>
-    <form method="post" class="form">
-      {% csrf_token %}
-      {% for field in form  %}
-      <div class="form-group">
-        <label>{{ field.label_tag }}</label>
-        {{ field }}
-      </div>
-      {% endfor %}
-      <button type="submit" id="submit" class="btn btn-default">Submit</button>
-    </form>
-  </div>
+<div class="wrapper">
+  <aside class="main_sidebar">
+    <div class = "formContainer">
+      <h2>Config form</h2>
+      <form method="post" class="form">
+        {% csrf_token %}
+        {% for field in form  %}
+        <div class="form-group">
+          <label>{{ field.label_tag }}</label>
+          {{ field }}
+        </div>
+        {% endfor %}
+        <button type="submit" id="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </aside>
+</div>
+<div class="container">
+  <div class="dataContainer">
+  <h2>Fast Approximate Score Computation on Large-Scale Distributed Data for Learning Multinomial Bayesian Networks</h2><br>
+  <p style="text-align: justify">In this demo, we focus on the problem of learning a Bayesian network over distributed data stored in a commodity cluster. Specifically, we address the challenge of computing the scoring function over distributed
+data in an efficient and scalable manner, which is a fundamental task during learning. While exact score computation can be done using the MapReduce-style computation, our goal is to compute approximate scores
+much faster with probabilistic error bounds and in a scalable manner. We propose a novel approach which is designed to achieve: (a) decentralized score computation using the principle of gossiping; (b) lower resource
+consumption via a probabilistic approach for maintaining scores using the properties of a Markov chain; and (c) effective distribution of tasks during score computation (on large datasets) by synergistically combining
+well-known hashing techniques. We conduct theoretical analysis of our approach in terms of convergence speed, and memory and network bandwidth consumption. We also discuss how our approach is capable of
+efficiently recomputing scores when new data are available. We conducted a comprehensive evaluation of our approach and compared with the MapReduce-style computation using datasets of different characteristics
+on a 16-node cluster. When the MapReduce-style computation provided exact sufficient statistics of families, it was nearly 10 times slower than DiSC. Although it ran faster on randomly sampled datasets than on the
+entire datasets, it performed worse than DiSC in terms of accuracy. DiSC achieved high accuracy (below 6% average relative error) on all the tested datasets. Thus, DiSC provides a feasible tradeoff between computation
+time and accuracy for fast approximate score computation on large-scale distributed data.</p>
+</div>
 </body>
 </html>

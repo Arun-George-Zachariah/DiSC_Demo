@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DiSc</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/styles/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion();
+  } );
+
+  $(document).ready(function() {
+    var dps = []; // dataPoints
+    var chart = new CanvasJS.Chart("chartContainer", {
+      title :{
+        text: "Relative Error"
+      },
+      axisX: {
+        includeZero: false,
+        title: 'Time (Seconds)',
+      },
+      axisY: {
+        includeZero: true,
+        title: "Avg. Relative Error",
+        suffix: "%"
+      },
+      data: [{
+        type: "line",
+        dataPoints: dps
+      }]
+    });
+
+    var xVal = 0;
+    var yVal = 100;
+    var updateInterval = 1000;
+    var dataLength = 20000000; // number of dataPoints visible at any point
+
+    var updateChart = function (xVal, yVal) {
+      dps.push({
+        x: xVal,
+        y: yVal
+      });
+      console.log(dps)
+      if (dps.length > dataLength) {
+        dps.shift();
+      }
+
+      chart.render();
+    };
+
+    var ws = new WebSocket("ws://128.110.153.174:8080/StreamData/discStream");
+
+    ws.onmessage = function(event) {
+      var str = event.data;
+      var res = str.split(",");
+
+      updateChart(Number(res[0]), Number(res[1]));
+    };
+
+    ws.onerror = function(event){
+      console.log("Error ", event)
+    }
+    $("a").click(function() {
+      removeActive();
+      $(this).parent().addClass("active")
+    })
+  });
+
+</script>
+<div class="wrapper">
+  <aside class="main_sidebar">
+    <div class = "formContainer">
+      <h2>Relative Error Stream</h2>
+      <form method="post" class="form">
+        <div class="form-group">
+          <label>N:</label>
+          <input type="text" class="form-control" value={{N}} readonly>
+        </div>
+        <div class="form-group">
+          <label>L:</label>
+          <input type="text" class="form-control" value={{L}} readonly>
+        </div>
+        <div class="form-group">
+          <label>K:</label>
+          <input type="text" class="form-control" value={{K}} readonly>
+        </div>
+        <div class="form-group">
+          <label>R:</label>
+          <input type="text" class="form-control" value={{R}} readonly>
+        </div>
+        <div class="form-group">
+          <label>Dtaset :</label>
+          <input type="text" class="form-control" value={{Dataset}} readonly>
+        </div>
+        <button type="submit" id="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </aside>
+</div>
+<div class="container">
+  <div class="dataAccContainer">
+        <div id="accordion">
+          <h3>Node 1</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 2</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 3</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 4</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 5</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 6</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 7</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 8</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 9</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 10</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 11</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 12</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 13</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 14</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 15</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+          <h3>Node 16</h3>
+          <div>
+            <div id="chartContainer" style="height: 380px; max-width: 920px; margin: 0px auto;"></div>
+          </div>
+        </div></div>
+</div>
+</body>
+</html>
