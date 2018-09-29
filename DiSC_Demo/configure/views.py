@@ -9,7 +9,6 @@ import shlex
 def enterConfig(request) :
 
 	#Check for any existing gossip process running.
-	#To-Do : If so the user needs to be alterted that a gossip process is running.
 	try:
 		output = subprocess.check_output(shlex.split("ssh arung@ms1020.utah.cloudlab.us 'jps | grep jar'"))
 		if not (output is None):
