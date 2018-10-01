@@ -17,7 +17,7 @@ var ajax = function(url, type) {
 function timedCount() {
   ajax('http://localhost:8000/disc/plots','GET');
   self.postMessage(output);
-  setTimeout("timedCount()",5000);
+  setTimeout("timedCount()",50000);
 }
 
 timedCount();
