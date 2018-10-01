@@ -9,18 +9,18 @@
   <link rel="stylesheet" href="../static/styles/home.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../static/js/gossipWorker.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
   <script>
   $(document).ready(function() {
-
+    //Check if the gossip is in progress. If not redirect to display plots.
     $("#button").click( function() {
       $.ajax({
         url: 'http://localhost:8000/disc/plots',
         success: function (data) {
-          alert(data)
           if(typeof(data.inProgress) === 'undefined') {
             window.location.replace('http://localhost:8000/disc/plots');
           } else {
@@ -29,131 +29,158 @@
         }
       });
       return false;
-
     });
 
+    //To display accordions
     $(function() {
       $( "#accordion" ).accordion();
     });
   });
   </script>
+
   <script>
   $(document).ready(function() {
-    var dps1 = []; // dataPoints
+    //To check if the gossip is complete and to auto redirect to the plots page.
+    var w;
+    if(typeof(Worker) !== "undefined") {
+      if(typeof(w) == "undefined") {
+        w = new Worker("../static/js/gossipWorker.js");
+      }
+      w.onmessage = function(event) {
+        try {
+          if($.parseJSON(event.data).inProgress == 'true') {
+            console.log("The Gossip Process is in progress.");
+          }
+        }
+        catch(err) {
+          console.log("Gossip is Completed");
+          window.location.replace('http://localhost:8000/disc/plots');
+        }
+      };
+    } else {
+      alert("Sorry, your browser will not support the Demo");
+    }
+  });
+</script>
 
-    var updateInterval = 1000;
-    var dataLength = 20000000; // number of dataPoints visible at any point
+<!-- Scripts to display the Streaming Graphs -->
+<script>
+$(document).ready(function() {
+  var dps1 = []; // dataPoints
 
-    //Creating Charts - Start
-    //Chart 1 - Start
-    var chart1 = new CanvasJS.Chart("chartContainer1", {
-      title :{
-        text: "Relative Error"
-      },
-      axisX: {
-        includeZero: true,
-        title: 'Time (Seconds)',
-      },
-      axisY: {
-        includeZero: true,
-        title: "Avg. Relative Error",
-        suffix: "%"
-      },
-      data: [{
-        type: "line",
-        dataPoints: dps1
-      }]
+  var updateInterval = 1000;
+  var dataLength = 20000000; // number of dataPoints visible at any point
+
+  //Creating Charts - Start
+  //Chart 1 - Start
+  var chart1 = new CanvasJS.Chart("chartContainer1", {
+    title :{
+      text: "Relative Error"
+    },
+    axisX: {
+      includeZero: true,
+      title: 'Time (Seconds)',
+    },
+    axisY: {
+      includeZero: true,
+      title: "Avg. Relative Error",
+      suffix: "%"
+    },
+    data: [{
+      type: "line",
+      dataPoints: dps1
+    }]
+  });
+
+  var updateChart1 = function (xVal, yVal) {
+    dps1.push({
+      x: xVal,
+      y: yVal
     });
 
-    var updateChart1 = function (xVal, yVal) {
-      dps1.push({
-        x: xVal,
-        y: yVal
-      });
-
-      if (dps1.length > dataLength) {
-        dps1.shift();
-      }
-
-      chart1.render();
-    };
-    //Creating Charts - End
-
-    //Creating Web Socket - Start
-    var ws1 = new WebSocket("ws://128.110.153.173:8080/StreamData/discStream");
-
-    ws1.onmessage = function(event) {
-      console.log("Sending the data");
-      var str = event.data;
-      var res = str.split(",");
-
-      updateChart1(Number(res[0]), Number(res[1]));
-    };
-
-    ws1.onerror = function(event){
-      console.log("Error on WebSocket 1", event)
+    if (dps1.length > dataLength) {
+      dps1.shift();
     }
-    //Creating Web Socket - End
+
+    chart1.render();
+  };
+  //Creating Charts - End
+
+  //Creating Web Socket - Start
+  var ws1 = new WebSocket("ws://128.110.153.173:8080/StreamData/discStream");
+
+  ws1.onmessage = function(event) {
+    console.log("Sending the data");
+    var str = event.data;
+    var res = str.split(",");
+
+    updateChart1(Number(res[0]), Number(res[1]));
+  };
+
+  ws1.onerror = function(event){
+    console.log("Error on WebSocket 1", event)
+  }
+  //Creating Web Socket - End
+});
+</script>
+<script>
+$(document).ready(function() {
+  var dps2 = []; // dataPoints
+
+  var updateInterval = 1000;
+  var dataLength = 20000000; // number of dataPoints visible at any point
+
+  //Creating Charts - Start
+  //Chart 1 - Start
+  var chart2= new CanvasJS.Chart("chartContainer2", {
+    title :{
+      text: "Relative Error"
+    },
+    axisX: {
+      includeZero: true,
+      title: 'Time (Seconds)',
+    },
+    axisY: {
+      includeZero: true,
+      title: "Avg. Relative Error",
+      suffix: "%"
+    },
+    data: [{
+      type: "line",
+      dataPoints: dps2
+    }]
   });
-  </script>
-  <script>
-  $(document).ready(function() {
-    var dps2 = []; // dataPoints
 
-    var updateInterval = 1000;
-    var dataLength = 20000000; // number of dataPoints visible at any point
-
-    //Creating Charts - Start
-    //Chart 1 - Start
-    var chart2= new CanvasJS.Chart("chartContainer2", {
-      title :{
-        text: "Relative Error"
-      },
-      axisX: {
-        includeZero: true,
-        title: 'Time (Seconds)',
-      },
-      axisY: {
-        includeZero: true,
-        title: "Avg. Relative Error",
-        suffix: "%"
-      },
-      data: [{
-        type: "line",
-        dataPoints: dps2
-      }]
+  var updateChart2 = function (xVal, yVal) {
+    dps2.push({
+      x: xVal,
+      y: yVal
     });
 
-    var updateChart2 = function (xVal, yVal) {
-      dps2.push({
-        x: xVal,
-        y: yVal
-      });
-
-      if (dps2.length > dataLength) {
-        dps2.shift();
-      }
-
-      chart2.render();
-    };
-    //Creating Charts - End
-
-    //Creating Web Socket - Start
-    var ws2 = new WebSocket("ws://128.110.153.174:8080/StreamData/discStream");
-
-    ws2.onmessage = function(event) {
-      console.log("Sending the data");
-      var str = event.data;
-      var res = str.split(",");
-
-      updateChart2(Number(res[0]), Number(res[1]));
-    };
-
-    ws2.onerror = function(event){
-      console.log("Error on WebSocket 2", event)
+    if (dps2.length > dataLength) {
+      dps2.shift();
     }
-    //Creating Web Socket - End
-  });
+
+    chart2.render();
+  };
+  //Creating Charts - End
+
+  //Creating Web Socket - Start
+  var ws2 = new WebSocket("ws://128.110.153.174:8080/StreamData/discStream");
+
+  ws2.onmessage = function(event) {
+    console.log("Sending the data");
+    var str = event.data;
+    var res = str.split(",");
+
+    updateChart2(Number(res[0]), Number(res[1]));
+  };
+
+  ws2.onerror = function(event){
+    console.log("Error on WebSocket 2", event)
+  }
+  //Creating Web Socket - End
+});
 </script>
 <script>
 $(document).ready(function() {
