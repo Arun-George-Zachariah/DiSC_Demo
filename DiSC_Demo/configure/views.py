@@ -7,7 +7,6 @@ import shlex
 
 # Create your views here.
 def enterConfig(request) :
-
 	#Check for any existing gossip process running.
 	try:
 		output = subprocess.check_output(shlex.split("ssh arung@ms1020.utah.cloudlab.us 'jps | grep jar'"))

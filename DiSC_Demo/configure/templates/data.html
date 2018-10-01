@@ -15,12 +15,23 @@
 <body>
   <script>
   $(document).ready(function() {
+
     $("#button").click( function() {
-      //To-Do : Check if the gossip process is still running
-      //alert("Please wait while the process loads");
-      window.location = "plots";
+      $.ajax({
+        url: 'http://localhost:8000/disc/plots',
+        success: function (data) {
+          alert(data)
+          if(typeof(data.inProgress) === 'undefined') {
+            window.location.replace('http://localhost:8000/disc/plots');
+          } else {
+            alert("Please Wait! The Gossip Process is in progress.");
+          }
+        }
+      });
       return false;
+
     });
+
     $(function() {
       $( "#accordion" ).accordion();
     });
@@ -84,65 +95,65 @@
     }
     //Creating Web Socket - End
   });
-</script>
-<script>
-$(document).ready(function() {
-  var dps2 = []; // dataPoints
+  </script>
+  <script>
+  $(document).ready(function() {
+    var dps2 = []; // dataPoints
 
-  var updateInterval = 1000;
-  var dataLength = 20000000; // number of dataPoints visible at any point
+    var updateInterval = 1000;
+    var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Creating Charts - Start
-  //Chart 1 - Start
-  var chart2= new CanvasJS.Chart("chartContainer2", {
-    title :{
-      text: "Relative Error"
-    },
-    axisX: {
-      includeZero: true,
-      title: 'Time (Seconds)',
-    },
-    axisY: {
-      includeZero: true,
-      title: "Avg. Relative Error",
-      suffix: "%"
-    },
-    data: [{
-      type: "line",
-      dataPoints: dps2
-    }]
-  });
-
-  var updateChart2 = function (xVal, yVal) {
-    dps2.push({
-      x: xVal,
-      y: yVal
+    //Creating Charts - Start
+    //Chart 1 - Start
+    var chart2= new CanvasJS.Chart("chartContainer2", {
+      title :{
+        text: "Relative Error"
+      },
+      axisX: {
+        includeZero: true,
+        title: 'Time (Seconds)',
+      },
+      axisY: {
+        includeZero: true,
+        title: "Avg. Relative Error",
+        suffix: "%"
+      },
+      data: [{
+        type: "line",
+        dataPoints: dps2
+      }]
     });
 
-    if (dps2.length > dataLength) {
-      dps2.shift();
+    var updateChart2 = function (xVal, yVal) {
+      dps2.push({
+        x: xVal,
+        y: yVal
+      });
+
+      if (dps2.length > dataLength) {
+        dps2.shift();
+      }
+
+      chart2.render();
+    };
+    //Creating Charts - End
+
+    //Creating Web Socket - Start
+    var ws2 = new WebSocket("ws://128.110.153.174:8080/StreamData/discStream");
+
+    ws2.onmessage = function(event) {
+      console.log("Sending the data");
+      var str = event.data;
+      var res = str.split(",");
+
+      updateChart2(Number(res[0]), Number(res[1]));
+    };
+
+    ws2.onerror = function(event){
+      console.log("Error on WebSocket 2", event)
     }
-
-    chart2.render();
-  };
-  //Creating Charts - End
-
-  //Creating Web Socket - Start
-  var ws2 = new WebSocket("ws://128.110.153.174:8080/StreamData/discStream");
-
-  ws2.onmessage = function(event) {
-    console.log("Sending the data");
-    var str = event.data;
-    var res = str.split(",");
-
-    updateChart2(Number(res[0]), Number(res[1]));
-  };
-
-  ws2.onerror = function(event){
-    console.log("Error on WebSocket 2", event)
-  }
-  //Creating Web Socket - End
-});
+    //Creating Web Socket - End
+  });
 </script>
 <script>
 $(document).ready(function() {
