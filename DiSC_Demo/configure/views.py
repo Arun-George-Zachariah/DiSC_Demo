@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import ConfigForm
+from django.http import JsonResponse
 import _thread
 import subprocess
 import shlex
+import sys
+import json
 
 # Create your views here.
 def enterConfig(request) :
@@ -39,6 +42,8 @@ def enterConfig(request) :
 				elif dataset == 'Twitter_Dataset' :
 					_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.twtr.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 
+				f = open("form.json", "w")
+				f.write("{\"N\":"+str(n)+",\"L\":"+str(l)+",\"K\":"+str(k)+",\"R\":"+str(r)+",\"Dataset\":\""+dataset+"\"}")
 				return render(request, '../templates/data.html', {'N':n,'L':l,'K':k,'R':r,'Dataset':dataset})
 
 		form = ConfigForm()
@@ -47,3 +52,20 @@ def enterConfig(request) :
 def executeShell(command) :
 	print("Excecuting shell")
 	subprocess.call(shlex.split(command))
+
+# Create your views here.
+def viewPlots(request) :
+	print("Entering the request to print plots.")
+	try:
+		output = subprocess.check_output(shlex.split("ssh arung@ms1020.utah.cloudlab.us 'jps | grep jar'"))
+		print(output)
+		if not (output is None):
+			print("Gossip is in progress")
+			data = {'inProgress': 'true'}
+			return JsonResponse(data)
+	except:
+		print("No Existing Gossip Process Found", sys.exc_info()[0])
+		f = open("form.json", "r")
+		data = json.load(f)
+		print(data["N"])
+		return render(request, '../templates/plots.html', {'N':data["N"],'L':data["L"],'K':data["K"],'R':data["R"],'Dataset':data["Dataset"]})
