@@ -126,12 +126,11 @@
 				padding:	0,
 				margin:		0,
 				width:		'30%',
-				top:		'40%',
+				top:		'30%',
 				left:		'35%',
 				textAlign:	'center',
 				color:		'#000',
-				border:		'3px solid #aaa',
-				backgroundColor:'#fff',
+				backgroundColor:'#E5E4E2',
 				cursor:		'wait'
 			},
 
