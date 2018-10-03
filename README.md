@@ -1,4 +1,9 @@
-# DiSC_Demo
+# DiSC Demo
+
+## DiSC
+
+Distributed Score Computation (DiSC) is a scalable approach for fast, approximate score computation to learn multinomial Bayesian networks over distributed data
+
 ## Steps to set up the experiment.
 1) Create an experiment on Cloudlab
 
