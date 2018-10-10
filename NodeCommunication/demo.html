@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Anime Test</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.6/svg.min.js"></script>
+  <script>
+  $(document).ready(function(){
+
+    function makeSVG(tag, attrs) {
+      var el= document.createElementNS('http://www.w3.org/2000/svg', tag);
+      for (var k in attrs)
+      el.setAttribute(k, attrs[k]);
+      return el;
+    }
+
+    var map = new Object();
+    var radius = 200;
+    var fields = $('.field'), container = $('#container'), width = container.width(), height = container.height();
+    var angle = 0, step = (2*Math.PI) / fields.length;
+    var i=1;
+    fields.each(function() {
+      var x = Math.round(width/2 + radius * Math.cos(angle) - $(this).width()/2);
+      var y = Math.round(height/2 + radius * Math.sin(angle) - $(this).height()/2);
+      var cordMap = {"x":x,"y":y};
+      map[i] = cordMap;
+      $(this).css({
+        left: x + 'px',
+        top: y + 'px'
+      });
+      angle += step;
+      i += 1;
+    });
+
+    for (var key1 in map) {
+      for(var key2 in map) {
+        if(key1 != key2) {
+          var srcMap = map[key1];
+          var destMap = map[key2];
+          var xa = srcMap["x"];
+          var ya = srcMap["y"];
+          var xb = destMap["x"];
+          var yb = destMap["y"];
+          console.log("x1 :: " + xa + " :: y1 :: " + ya);
+          console.log("x2 :: " + xb + " :: y2 :: " + yb);
+          var line= makeSVG('line', {x1: xa+20, y1: ya+20, x2: xb+20, y2:yb+20, stroke: 'black', 'stroke-width': 2});
+          document.getElementById("svg").appendChild(line);
+        }
+      }
+    }
+  });
+  </script>
+  <style>
+  body { padding: 2em; }
+  #container { width: 600px; height: 600px; position: relative; }
+  .field { width: 40px; height: 40px; position: absolute; background: #f00;}
+  </style>
+</head>
+<body>
+  <div id="container">
+    <!-- To Do:
+    1) Dynamically load the no of nodes.
+    2) Allign the text to center.
+    3) If Possible change the squares to circles -->
+    <div class="field">1</div>
+    <div class="field">2</div>
+    <div class="field">3</div>
+    <div class="field">4</div>
+    <div class="field">5</div>
+    <div class="field">6</div>
+    <div class="field">7</div>
+    <div class="field">8</div>
+    <div class="field">9</div>
+    <div class="field">10</div>
+    <div class="field">11</div>
+    <div class="field">12</div>
+    <div class="field">13</div>
+    <div class="field">14</div>
+    <div class="field">15</div>
+    <div class="field">16</div>
+    <svg height="600" width="600" id = "svg">
+    </svg>
+  </div>
+</body>
+</html>
+
