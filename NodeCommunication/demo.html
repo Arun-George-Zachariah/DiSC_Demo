@@ -3,10 +3,26 @@
 <head>
   <title>Anime Test</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.6/svg.min.js"></script>
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   <script>
   $(document).ready(function(){
 
+    var parameters = location.search.substring(1).split("&");
+
+    var temp = parameters[0].split("=");
+    var nodes = unescape(temp[1]);
+    console.log("nodes :: " + nodes);
+
+    var j;
+    for (j = 1;j <= nodes; j++) {
+      var iDiv = document.createElement('div');
+      iDiv.id = 'field'+j;
+      iDiv.className = 'field';
+      document.getElementById("container").appendChild(iDiv);
+      var textnode = document.createTextNode(j);
+      document.getElementById('field'+j).appendChild(textnode);
+    }
+    
     function makeSVG(tag, attrs) {
       var el= document.createElementNS('http://www.w3.org/2000/svg', tag);
       for (var k in attrs)
@@ -41,8 +57,8 @@
           var ya = srcMap["y"];
           var xb = destMap["x"];
           var yb = destMap["y"];
-          console.log("x1 :: " + xa + " :: y1 :: " + ya);
-          console.log("x2 :: " + xb + " :: y2 :: " + yb);
+          //console.log("x1 :: " + xa + " :: y1 :: " + ya);
+          //console.log("x2 :: " + xb + " :: y2 :: " + yb);
           var line= makeSVG('line', {x1: xa+20, y1: ya+20, x2: xb+20, y2:yb+20, stroke: 'black', 'stroke-width': 2});
           document.getElementById("svg").appendChild(line);
         }
@@ -59,28 +75,10 @@
 <body>
   <div id="container">
     <!-- To Do:
-    1) Dynamically load the no of nodes.
-    2) Allign the text to center.
-    3) If Possible change the squares to circles -->
-    <div class="field">1</div>
-    <div class="field">2</div>
-    <div class="field">3</div>
-    <div class="field">4</div>
-    <div class="field">5</div>
-    <div class="field">6</div>
-    <div class="field">7</div>
-    <div class="field">8</div>
-    <div class="field">9</div>
-    <div class="field">10</div>
-    <div class="field">11</div>
-    <div class="field">12</div>
-    <div class="field">13</div>
-    <div class="field">14</div>
-    <div class="field">15</div>
-    <div class="field">16</div>
+    1) Allign the text to center.
+    2) If Possible change the squares to circles -->
     <svg height="600" width="600" id = "svg">
     </svg>
   </div>
 </body>
 </html>
-
