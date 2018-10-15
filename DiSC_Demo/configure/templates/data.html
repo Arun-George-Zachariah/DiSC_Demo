@@ -12,6 +12,15 @@
   <script src="../static/js/gossipWorker.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+  <style>
+  .charts {
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    width:98%;
+    transform: translate(0%, -50%);
+   }
+  </style>
 </head>
 <body>
   <script>
@@ -329,78 +338,20 @@ $(document).ready(function() {
       </form>
     </div>
   </aside>
-</div>
-<div class="container">
-  <div class="dataAccContainer">
-    <div id="accordion">
-      <h3>Node 1</h3>
-      <div>
-        <div id="chartContainer1" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
+  <div class="charts">
+    <div class="dataAccContainer">
+      <div id="accordion">
+        {% load my_filters %}
+        {% for i in N|times %}
+        <h3>Node {{forloop.counter}}</h3>
+        <div>
+          <div id="chartContainer{{forloop.counter}}" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
+        </div>
+        {% endfor %}
       </div>
-      <h3>Node 2</h3>
-      <div>
-        <div id="chartContainer2" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
+      <p>*Note: Graphs would appear, once the data starts streaming.
       </div>
-      <h3>Node 3</h3>
-      <div>
-        <div id="chartContainer3" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-      <h3>Node 4</h3>
-      <div>
-        <div id="chartContainer4" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-      <h3>Node 5</h3>
-      <div>
-        <div id="chartContainer5" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-      <h3>Node 6</h3>
-      <div>
-        <div id="chartContainer6" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-      <h3>Node 7</h3>
-      <div>
-        <div id="chartContainer7" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-      <h3>Node 8</h3>
-      <div>
-        <div id="chartContainer8" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-      <h3>Node 9</h3>
-      <div>
-        <div id="chartContainer9" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-      <h3>Node 10</h3>
-      <div>
-        <div id="chartContainer10" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-      <h3>Node 11</h3>
-      <div>
-        <div id="chartContainer11" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-      <h3>Node 12</h3>
-      <div>
-        <div id="chartContainer12" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-      <h3>Node 13</h3>
-      <div>
-        <div id="chartContainer13" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-      <h3>Node 14</h3>
-      <div>
-        <div id="chartContainer14" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-      <h3>Node 15</h3>
-      <div>
-        <div id="chartContainer15" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-      <h3>Node 16</h3>
-      <div>
-        <div id="chartContainer16" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
-      </div>
-    </div>
-    <p>*Note: Graphs would appear, once the data starts streaming.
-    </div>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-  </div>
-</body>
-</html>
+      <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </div></div>
+  </body>
+  </html>
