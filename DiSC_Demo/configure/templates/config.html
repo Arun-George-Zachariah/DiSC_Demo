@@ -1,57 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>DiSc</title>
+  <title>DiSC</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="../static/images/favicon.ico"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/styles/home.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="../static/styles/util.css">
+  <link rel="stylesheet" type="text/css" href="../static/styles/main.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
   <script src="../static/js/blockUI.js"></script>
+  <script src="../static/js/ConfigureScripts.js"></script>
 </head>
 <body>
-  <script>
-  $(document).ready(function() {
-    $("#submit").click(function() {
-      $.blockUI({ message: '<img src="../static/images/spinner.gif"/><br><p>Please Wait. The gossip procsses is being initialized.</p>' });
-    })
-  })
-  </script>
-  <div class="wrapper">
-    <aside class="main_sidebar">
-      <div class = "formContainer">
-        <h2>Config form</h2>
-        <form method="post" class="form">
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100">
+        <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="post">
+          <span class="login100-form-title">
+            DiSC
+          </span>
           {% csrf_token %}
           {% for field in form  %}
-          <div class="form-group">
+          <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
             <label>{{ field.label_tag }}</label>
             {{ field }}
           </div>
           {% endfor %}
-          <button type="submit" id="submit" class="btn btn-default">Submit</button>
+          <div><br></div>
+          <div class="container-login100-form-btn">
+            <button type="submit" id="submit" class="login100-form-btn">
+              Execute
+            </button>
+          </div>
+          <div><br></div>
         </form>
       </div>
-    </aside>
-  </div>
-  <div class="container">
-    <div class="dataContainer">
-      <h2>Fast Approximate Score Computation on Large-Scale Distributed Data for Learning Multinomial Bayesian Networks</h2><br>
-      <p style="text-align: justify">In this demo, we focus on the problem of learning a Bayesian network over distributed data stored in a commodity cluster. Specifically, we address the challenge of computing the scoring function over distributed
-        data in an efficient and scalable manner, which is a fundamental task during learning. While exact score computation can be done using the MapReduce-style computation, our goal is to compute approximate scores
-        much faster with probabilistic error bounds and in a scalable manner. We propose a novel approach which is designed to achieve: (a) decentralized score computation using the principle of gossiping; (b) lower resource
-        consumption via a probabilistic approach for maintaining scores using the properties of a Markov chain; and (c) effective distribution of tasks during score computation (on large datasets) by synergistically combining
-        well-known hashing techniques. We conduct theoretical analysis of our approach in terms of convergence speed, and memory and network bandwidth consumption. We also discuss how our approach is capable of
-        efficiently recomputing scores when new data are available. We conducted a comprehensive evaluation of our approach and compared with the MapReduce-style computation using datasets of different characteristics
-        on a 16-node cluster. When the MapReduce-style computation provided exact sufficient statistics of families, it was nearly 10 times slower than DiSC. Although it ran faster on randomly sampled datasets than on the
-        entire datasets, it performed worse than DiSC in terms of accuracy. DiSC achieved high accuracy (below 6% average relative error) on all the tested datasets. Thus, DiSC provides a feasible tradeoff between computation
-        time and accuracy for fast approximate score computation on large-scale distributed data.</p>
-      </div>
     </div>
-  </body>
-  </html>
+  </div>
+</body>
+</html>
