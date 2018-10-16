@@ -1,6 +1,5 @@
 $(document).ready(function(){
-  //var nodes=document.getElementById('NodesCount').value;
-var nodes=16;
+  var nodes=document.getElementById('NodesCount').value;
   console.log("nodes :: " + nodes);
 
   var j;
