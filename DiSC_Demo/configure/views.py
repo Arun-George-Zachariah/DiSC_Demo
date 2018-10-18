@@ -12,7 +12,7 @@ import json
 def enterConfig(request) :
 	#Check for any existing gossip process running.
 	try:
-		output = subprocess.check_output(shlex.split("ssh arung@ms1020.utah.cloudlab.us 'jps | grep jar'"))
+		output = subprocess.check_output(shlex.split("ssh arung@hp167.utah.cloudlab.us 'jps | grep jar'"))
 		if not (output is None):
 			return render(request, '../templates/error.html')
 	except:
@@ -32,11 +32,11 @@ def enterConfig(request) :
 				if dataset == 'HIGGS_Dataset' :
 					logFile = "/users/arung/higgs.r" + str(r) + ".k" + str(k) + ".txt"
 					#Stopping an existing gossip process
-					subprocess.call(shlex.split("ssh arung@ms1020.utah.cloudlab.us 'bash stopHiggsGossip.sh " + str(n-1) + "'"))
+					subprocess.call(shlex.split("ssh arung@hp167.utah.cloudlab.us 'bash stopHiggsGossip.sh " + str(n-1) + "'"))
 					#Initializing the Streaming process.
-					subprocess.call(shlex.split("ssh arung@ms1020.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts.txt'"))
+					subprocess.call(shlex.split("ssh arung@hp167.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts.txt'"))
 					#Starting the gossip process
-					_thread.start_new_thread(executeShell , ("ssh arung@ms1020.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
+					_thread.start_new_thread(executeShell , ("ssh arung@hp167.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
 				elif dataset == 'Synthetic_Dataset' :
 					_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.syn.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 				elif dataset == 'Twitter_Dataset' :
@@ -57,7 +57,7 @@ def executeShell(command) :
 def viewPlots(request) :
 	print("Entering the request to print plots.")
 	try:
-		output = subprocess.check_output(shlex.split("ssh arung@ms1020.utah.cloudlab.us 'jps | grep jar'"))
+		output = subprocess.check_output(shlex.split("ssh arung@hp167.utah.cloudlab.us 'jps | grep jar'"))
 		print(output)
 		if not (output is None):
 			print("Gossip is in progress")

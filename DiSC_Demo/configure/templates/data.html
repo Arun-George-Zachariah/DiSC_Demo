@@ -92,7 +92,7 @@
               <div class="dataAccContainer">
                 <div id="accordion">
                   {% load my_filters %}
-                  {% for i in 4|times %}
+                  {% for i in N|times %}
                   <h3>Node {{forloop.counter}}</h3>
                   <div>
                     <div id="chartContainer{{forloop.counter}}" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
