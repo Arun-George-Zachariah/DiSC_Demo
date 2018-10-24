@@ -1,13 +1,12 @@
 package edu.umkc.Util;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -16,6 +15,7 @@ import edu.umkc.Constants.DiSCConstants;
 public class CommonUtil {
 
 	public static String trueCount = null;
+	private static final Logger logger = LogManager.getLogger(CommonUtil.class.getName());
 
 	public static Map<String, LinkedList<LinkedList<Double>>> convertJsonToMap(String jsonStr) {
 		Map<String, LinkedList<LinkedList<Double>>> retMap = new HashMap<String, LinkedList<LinkedList<Double>>>();

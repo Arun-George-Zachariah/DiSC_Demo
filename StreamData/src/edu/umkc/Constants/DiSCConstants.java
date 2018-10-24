@@ -6,4 +6,5 @@ public class DiSCConstants {
 	public static final String LOG_FILE = "LOG_FILE";
 	public static final String FAMILY = "FAMILY";
 	public static final String NODE_NUM = "NODE_NUM";
+	public static final String FAMILY_SIZE_SEARCH_STRING = "visible families";
 }

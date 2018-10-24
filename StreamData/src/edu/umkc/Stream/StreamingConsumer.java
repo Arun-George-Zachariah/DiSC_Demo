@@ -45,13 +45,15 @@ public class StreamingConsumer implements Runnable {
 								logger.debug("Returning result :: " + result);
 								session.getBasicRemote().sendText(result);
 							} else {
-								logger.error("StreamingProvider :: streamData ::  Start");
+								logger.error("StreamingConsumer :: streamData ::  Result was null");
 							}
 						}
 					}
 				}
 			} catch (Exception e) {
+				logger.error("StreamingConsumer :: streamData ::  Exception encountered :: " + e);
 				e.printStackTrace();
+
 			}
 		}
 	}
