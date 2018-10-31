@@ -20,7 +20,7 @@ public class NodeCommunicationStream {
 
 	@OnOpen
 	public void streamData(Session session) {
-		System.out.println("NodeCommunicationStream :: streamData ::  Star");
+		System.out.println("NodeCommunicationStream :: streamData ::  Start");
 		allSessions = session.getOpenSessions();
 		if (allSessions != null && allSessions.size() != 0) {
 			for (Session sess : allSessions) {

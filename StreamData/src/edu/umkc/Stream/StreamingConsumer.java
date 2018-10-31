@@ -40,29 +40,34 @@ public class StreamingConsumer implements Runnable {
 					if (line.contains(CommonUtil.getDelimter())) { //Streaming Estimated Counts
 						String[] arr = line.split("=");
 						if (arr != null) {
-							Map<String, LinkedList<LinkedList<Double>>> estimatedCounts = CommonUtil.convertJsonToMap(arr[1].trim());
-							Map<String, LinkedList<LinkedList<Double>>> trueCounts = CommonUtil.convertJsonToMap(CommonUtil.getTrueCount());
-							String result = ErrorCalculator.calculateError(trueCounts, estimatedCounts, PropertyReader.getInstance().getProperty(DiSCConstants.FAMILY), startTime);
-							if (result != null) {
-								logger.debug("StreamingConsumer :: run :: result :: " + result);
-								session.getBasicRemote().sendText(result);
-							} else {
-								logger.error("StreamingConsumer :: run ::  Result was null");
+							try {
+								Map<String, LinkedList<LinkedList<Double>>> estimatedCounts = CommonUtil.convertJsonToMap(arr[1].trim());
+								Map<String, LinkedList<LinkedList<Double>>> trueCounts = CommonUtil.convertJsonToMap(CommonUtil.getTrueCount());
+								String result = ErrorCalculator.calculateError(trueCounts, estimatedCounts, PropertyReader.getInstance().getProperty(DiSCConstants.FAMILY), startTime);
+								if (result != null) {
+									logger.debug("StreamingConsumer :: run :: estimated count result :: " + result);
+									session.getBasicRemote().sendText("EstC::"+result);
+								} else {
+									logger.error("StreamingConsumer :: run ::  Result was null");
+								}
+							} catch(Exception e) {
+								logger.error("StreamingConsumer :: run ::  Exception encountered while calculating error :: " + e);
+								e.printStackTrace();
 							}
 						}
 					} else if (line.contains(DiSCConstants.FAMILY_SIZE_SEARCH_STRING)) { //Streaming Family Size
-						logger.debug("Entering Arun");
 						String[] arr = line.trim().split(" ");
 						String node = arr[3].trim().replaceAll("\\(", "").replaceAll("\\)","");
 						String familySize = arr[5].trim().replaceAll("\\[", "").replaceAll("\\]","");
-						logger.debug("StreamingConsumer :: run :: Family size is :: " + familySize);
-						try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File("/users/arung/jetty-distribution-9.4.12.v20180830/webapps/families/familySize.txt"), true))) {
-							bw.write(CommonUtil.getNode(node) + "::" + familySize + "\n");
-							bw.flush();
-						} catch (Exception e) {
-							logger.error("StreamingConsumer :: run ::  Exception while writing family size");
-							e.printStackTrace();
-						}
+						String result = CommonUtil.getNode(node) + "::" + familySize;
+						logger.debug("StreamingConsumer :: run :: fmaiy size result  " + result);
+						session.getBasicRemote().sendText(result);
+					} else if(line.contains(DiSCConstants.NODE_SEARCH_STRING)) { //Streaming Node Communication
+						String[] arr = line.split("::");
+						String toNode = arr[6].trim();
+						String result = "Node::" + CommonUtil.getNodeNum(toNode);
+						logger.debug("StreamingConsumer :: run :: to node result :: " + result);
+						session.getBasicRemote().sendText(result);
 					}
 				}
 			} catch (Exception e) {
