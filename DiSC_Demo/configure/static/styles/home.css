@@ -2,12 +2,14 @@
   position: relative;
 }
 .field {
-  width: 40px;
-  height: 40px;
+  width: 6%;
+  font-size: 150%;
   position: absolute;
   background:  #3183df ;
-  border-radius: 25px;
+  border-radius: 50%;
+  text-align: center;
 }
+
 .key-anim1 {
   -webkit-animation: Drawpath 1s linear forwards;
   animation: Drawpath 1s linear forwards;

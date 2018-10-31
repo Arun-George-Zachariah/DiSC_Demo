@@ -1634,10 +1634,10 @@ function triggerNode12(eventData) {
   }
 
   if(eventData == '4') {
-    $("#2-4").removeAttr("display", "none");
+    $("#12-4").removeAttr("display", "none");
 
     setTimeout(function() {
-      $("#2-4").attr("display", "none");
+      $("#12-4").attr("display", "none");
     }, 1000);
 
   }
@@ -1664,7 +1664,7 @@ function triggerNode12(eventData) {
     $("#12-7").removeAttr("display", "none");
 
     setTimeout(function() {
-      $("#2-7").attr("display", "none");
+      $("#12-7").attr("display", "none");
     }, 1000);
 
   }
@@ -1966,10 +1966,10 @@ function triggerNode14(eventData) {
   }
 
   if(eventData == '10') {
-    $("#2-10").removeAttr("display", "none");
+    $("#14-10").removeAttr("display", "none");
 
     setTimeout(function() {
-      $("#2-10").attr("display", "none");
+      $("#14-10").attr("display", "none");
     }, 1000);
 
   }
