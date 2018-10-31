@@ -1,4 +1,23 @@
+//IP List
+var IP1 = "128.110.154.223";
+var IP2 = "128.110.154.206";
+var IP3 = "128.110.154.141";
+var IP4 = "128.110.154.233";
+var IP5 = "128.110.154.161";
+var IP6 = "128.110.154.238";
+var IP7 = "128.110.154.144";
+var IP8 = "128.110.154.231";
+var IP9 = "128.110.154.138";
+var IP10 = "128.110.154.214";
+var IP11 = "128.110.154.146";
+var IP12 = "128.110.154.150";
+var IP13 = "128.110.154.236";
+var IP14 = "128.110.154.152";
+var IP15 = "128.110.154.227";
+var IP16 = "128.110.154.155";
+
 $(document).ready(function(){
+
   var nodes=document.getElementById('NodesCount').value;
   console.log("nodes :: " + nodes);
 
@@ -55,2293 +74,2227 @@ $(document).ready(function(){
   }
 });
 
-$(document).ready(function(){
-  //ws1
-  var ws1 = new WebSocket("ws://128.110.154.248:8080/NodeStream/NodeStream");
+function triggerNode1(eventData) {
+  console.log("Received the WS 1 data :: " + eventData);
 
-  ws1.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+  if(eventData == '2') {
+    $("#1-2").removeAttr("display", "none");
 
-    if(event.data == '2') {
-      $("#1-2").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-2").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-2").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '3') {
+    $("#1-3").removeAttr("display", "none");
 
-    if(event.data == '3') {
-      $("#1-3").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-3").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-3").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '4') {
+    $("#1-4").removeAttr("display", "none");
 
-    if(event.data == '4') {
-      $("#1-4").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-4").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-4").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '5') {
+    $("#1-5").removeAttr("display", "none");
 
-    if(event.data == '5') {
-      $("#1-5").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-5").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-5").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '6') {
+    $("#1-6").removeAttr("display", "none");
 
-    if(event.data == '6') {
-      $("#1-6").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-6").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-6").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '7') {
+    $("#1-7").removeAttr("display", "none");
 
-    if(event.data == '7') {
-      $("#1-7").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-7").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-7").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '8') {
+    $("#1-8").removeAttr("display", "none");
 
-    if(event.data == '8') {
-      $("#1-8").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-8").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-8").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '9') {
+    $("#1-9").removeAttr("display", "none");
 
-    if(event.data == '9') {
-      $("#1-9").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-9").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-9").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '10') {
+    $("#1-10").removeAttr("display", "none");
 
-    if(event.data == '10') {
-      $("#1-10").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-10").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-10").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '11') {
+    $("#1-11").removeAttr("display", "none");
 
-    if(event.data == '11') {
-      $("#1-11").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-11").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-11").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '12') {
+    $("#1-12").removeAttr("display", "none");
 
-    if(event.data == '12') {
-      $("#1-12").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-12").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-12").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '13') {
+    $("#1-13").removeAttr("display", "none");
 
-    if(event.data == '13') {
-      $("#1-13").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-13").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-13").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '14') {
+    $("#1-14").removeAttr("display", "none");
 
-    if(event.data == '14') {
-      $("#1-14").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-14").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-14").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '15') {
+    $("#1-15").removeAttr("display", "none");
 
-    if(event.data == '15') {
-      $("#1-15").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-15").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-15").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '16') {
+    $("#1-16").removeAttr("display", "none");
 
-    if(event.data == '16') {
-      $("#1-16").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#1-16").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#1-16").attr("display", "none");
-      }, 1000);
+  }
+}
 
-    }
+function triggerNode2(eventData) {
+  console.log("Received the WS 2 data :: " + eventData);
 
-  };
+  if(eventData == '1') {
+    $("#2-1").removeAttr("display", "none");
 
-  //ws2
-  var ws2 = new WebSocket("ws://128.110.155.13:8080/NodeStream/NodeStream");
+    setTimeout(function() {
+      $("#2-1").attr("display", "none");
+    }, 1000);
 
-  ws2.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+  }
 
-    if(event.data == '1') {
-      $("#2-1").removeAttr("display", "none");
+  if(eventData == '3') {
+    $("#2-3").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-1").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-3").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '3') {
-      $("#2-3").removeAttr("display", "none");
+  if(eventData == '4') {
+    $("#2-4").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-3").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-4").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '4') {
-      $("#2-4").removeAttr("display", "none");
+  if(eventData == '5') {
+    $("#2-5").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-4").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-5").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '5') {
-      $("#2-5").removeAttr("display", "none");
+  if(eventData == '6') {
+    $("#2-6").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-5").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-6").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '6') {
-      $("#2-6").removeAttr("display", "none");
+  if(eventData == '7') {
+    $("#2-7").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-6").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-7").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '7') {
-      $("#2-7").removeAttr("display", "none");
+  if(eventData == '8') {
+    $("#2-8").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-7").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-8").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '8') {
-      $("#2-8").removeAttr("display", "none");
+  if(eventData == '9') {
+    $("#2-9").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-8").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-9").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '9') {
-      $("#2-9").removeAttr("display", "none");
+  if(eventData == '10') {
+    $("#2-10").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-9").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-10").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '10') {
-      $("#2-10").removeAttr("display", "none");
+  if(eventData == '11') {
+    $("#2-11").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-10").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-11").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '11') {
-      $("#2-11").removeAttr("display", "none");
+  if(eventData == '12') {
+    $("#2-12").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-11").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-12").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '12') {
-      $("#2-12").removeAttr("display", "none");
+  if(eventData == '13') {
+    $("#2-13").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-12").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-13").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '13') {
-      $("#2-13").removeAttr("display", "none");
+  if(eventData == '14') {
+    $("#2-14").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-13").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-14").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '14') {
-      $("#2-14").removeAttr("display", "none");
+  if(eventData == '15') {
+    $("#2-15").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-14").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-15").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '15') {
-      $("#2-15").removeAttr("display", "none");
+  if(eventData == '16') {
+    $("#2-16").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#2-15").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-16").attr("display", "none");
+    }, 1000);
 
-    }
+  }
+}
 
-    if(event.data == '16') {
-      $("#2-16").removeAttr("display", "none");
+function triggerNode3(eventData) {
+  console.log("Received the WS 3 data :: " + eventData);
 
-      setTimeout(function() {
-        $("#2-16").attr("display", "none");
-      }, 1000);
+  if(eventData == '1') {
+    $("#3-1").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-1").attr("display", "none");
+    }, 1000);
 
-  };
+  }
 
-  //ws3
-  var ws3 = new WebSocket("ws://128.110.154.160:8080/NodeStream/NodeStream");
+  if(eventData == '2') {
+    $("#3-2").removeAttr("display", "none");
 
-  ws3.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+    setTimeout(function() {
+      $("#3-2").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '1') {
-      $("#3-1").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#3-1").attr("display", "none");
-      }, 1000);
+  if(eventData == '4') {
+    $("#3-4").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-4").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '2') {
-      $("#3-2").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#3-2").attr("display", "none");
-      }, 1000);
+  if(eventData == '5') {
+    $("#3-5").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-5").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '4') {
-      $("#3-4").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#3-4").attr("display", "none");
-      }, 1000);
+  if(eventData == '6') {
+    $("#3-6").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-6").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '5') {
-      $("#3-5").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#3-5").attr("display", "none");
-      }, 1000);
+  if(eventData == '7') {
+    $("#3-7").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-7").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '6') {
-      $("#3-6").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#3-6").attr("display", "none");
-      }, 1000);
+  if(eventData == '8') {
+    $("#3-8").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-8").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '7') {
-      $("#3-7").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#3-7").attr("display", "none");
-      }, 1000);
+  if(eventData == '9') {
+    $("#3-9").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-9").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '8') {
-      $("#3-8").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#3-8").attr("display", "none");
-      }, 1000);
+  if(eventData == '10') {
+    $("#3-10").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-10").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '9') {
-      $("#3-9").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#3-9").attr("display", "none");
-      }, 1000);
+  if(eventData == '11') {
+    $("#3-11").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-11").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '10') {
-      $("#3-10").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#3-10").attr("display", "none");
-      }, 1000);
+  if(eventData == '12') {
+    $("#3-12").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-12").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '11') {
-      $("#3-11").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#3-11").attr("display", "none");
-      }, 1000);
+  if(eventData == '13') {
+    $("#3-13").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-13").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '12') {
-      $("#3-12").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#3-12").attr("display", "none");
-      }, 1000);
+  if(eventData == '14') {
+    $("#3-14").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-14").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '13') {
-      $("#3-13").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#3-13").attr("display", "none");
-      }, 1000);
+  if(eventData == '15') {
+    $("#3-15").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-15").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '14') {
-      $("#3-14").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#3-14").attr("display", "none");
-      }, 1000);
+  if(eventData == '16') {
+    $("#3-16").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#3-16").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '15') {
-      $("#3-15").removeAttr("display", "none");
+  }
+}
 
-      setTimeout(function() {
-        $("#3-15").attr("display", "none");
-      }, 1000);
+function triggerNode4(eventData) {
+  console.log("Received the WS 4 data :: " + eventData);
 
-    }
+  if(eventData == '1') {
+    $("#4-1").removeAttr("display", "none");
 
-    if(event.data == '16') {
-      $("#3-16").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-1").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#3-16").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '2') {
+    $("#4-2").removeAttr("display", "none");
 
-  };
+    setTimeout(function() {
+      $("#4-2").attr("display", "none");
+    }, 1000);
 
-  //ws4
-  var ws4 = new WebSocket("ws://128.110.154.137:8080/NodeStream/NodeStream");
+  }
 
-  ws4.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+  if(eventData == '3') {
+    $("#4-3").removeAttr("display", "none");
 
-    if(event.data == '1') {
-      $("#4-1").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-3").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#4-1").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '5') {
+    $("#4-5").removeAttr("display", "none");
 
-    if(event.data == '2') {
-      $("#4-2").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-5").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#4-2").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '6') {
+    $("#4-6").removeAttr("display", "none");
 
-    if(event.data == '3') {
-      $("#4-3").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-6").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#4-3").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '7') {
+    $("#4-7").removeAttr("display", "none");
 
-    if(event.data == '5') {
-      $("#4-5").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-7").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#4-5").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '8') {
+    $("#4-8").removeAttr("display", "none");
 
-    if(event.data == '6') {
-      $("#4-6").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-8").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#4-6").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '9') {
+    $("#4-9").removeAttr("display", "none");
 
-    if(event.data == '7') {
-      $("#4-7").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-9").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#4-7").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '10') {
+    $("#4-10").removeAttr("display", "none");
 
-    if(event.data == '8') {
-      $("#4-8").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-10").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#4-8").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '11') {
+    $("#4-11").removeAttr("display", "none");
 
-    if(event.data == '9') {
-      $("#4-9").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-11").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#4-9").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '12') {
+    $("#4-12").removeAttr("display", "none");
 
-    if(event.data == '10') {
-      $("#4-10").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-12").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#4-10").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '13') {
+    $("#4-13").removeAttr("display", "none");
 
-    if(event.data == '11') {
-      $("#4-11").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-13").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#4-11").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '14') {
+    $("#4-14").removeAttr("display", "none");
 
-    if(event.data == '12') {
-      $("#4-12").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-14").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#4-12").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '15') {
+    $("#4-15").removeAttr("display", "none");
 
-    if(event.data == '13') {
-      $("#4-13").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-15").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#4-13").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '16') {
+    $("#4-16").removeAttr("display", "none");
 
-    if(event.data == '14') {
-      $("#4-14").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#4-16").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#4-14").attr("display", "none");
-      }, 1000);
+  }
+}
 
-    }
+function triggerNode5(eventData) {
+  console.log("Received the WS 5 data :: " + eventData);
 
-    if(event.data == '15') {
-      $("#4-15").removeAttr("display", "none");
+  if(eventData == '1') {
+    $("#5-1").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#4-15").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-1").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '16') {
-      $("#4-16").removeAttr("display", "none");
+  if(eventData == '2') {
+    $("#5-2").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#4-16").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-2").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-  };
+  if(eventData == '3') {
+    $("#5-3").removeAttr("display", "none");
 
-  //ws5
-  var ws5 = new WebSocket("ws://128.110.154.149:8080/NodeStream/NodeStream");
+    setTimeout(function() {
+      $("#5-3").attr("display", "none");
+    }, 1000);
 
-  ws5.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+  }
 
-    if(event.data == '1') {
-      $("#5-1").removeAttr("display", "none");
+  if(eventData == '4') {
+    $("#5-4").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#5-1").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-4").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '2') {
-      $("#5-2").removeAttr("display", "none");
+  if(eventData == '6') {
+    $("#5-6").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#5-2").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-6").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '3') {
-      $("#5-3").removeAttr("display", "none");
+  if(eventData == '7') {
+    $("#5-7").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#5-3").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-7").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '4') {
-      $("#5-4").removeAttr("display", "none");
+  if(eventData == '8') {
+    $("#5-8").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#5-4").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-8").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '6') {
-      $("#5-6").removeAttr("display", "none");
+  if(eventData == '9') {
+    $("#5-9").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#5-6").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-9").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '7') {
-      $("#5-7").removeAttr("display", "none");
+  if(eventData == '10') {
+    $("#5-10").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#5-7").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-10").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '8') {
-      $("#5-8").removeAttr("display", "none");
+  if(eventData == '11') {
+    $("#5-11").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#5-8").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-11").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '9') {
-      $("#5-9").removeAttr("display", "none");
+  if(eventData == '12') {
+    $("#5-12").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#5-9").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-12").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '10') {
-      $("#5-10").removeAttr("display", "none");
+  if(eventData == '13') {
+    $("#5-13").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#5-10").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-13").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '11') {
-      $("#5-11").removeAttr("display", "none");
+  if(eventData == '14') {
+    $("#5-14").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#5-11").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-14").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '12') {
-      $("#5-12").removeAttr("display", "none");
+  if(eventData == '15') {
+    $("#5-15").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#5-12").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-15").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '13') {
-      $("#5-13").removeAttr("display", "none");
+  if(eventData == '16') {
+    $("#5-16").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#5-13").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#5-16").attr("display", "none");
+    }, 1000);
 
-    }
+  }
+}
 
-    if(event.data == '14') {
-      $("#5-14").removeAttr("display", "none");
+function triggerNode6(eventData) {
+  console.log("Received the WS 6 data :: " + eventData);
 
-      setTimeout(function() {
-        $("#5-14").attr("display", "none");
-      }, 1000);
+  if(eventData == '1') {
+    $("#6-1").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-1").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '15') {
-      $("#5-15").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#5-15").attr("display", "none");
-      }, 1000);
+  if(eventData == '2') {
+    $("#6-2").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-2").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '16') {
-      $("#5-16").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#5-16").attr("display", "none");
-      }, 1000);
+  if(eventData == '3') {
+    $("#6-3").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-3").attr("display", "none");
+    }, 1000);
 
-  };
+  }
 
-  //ws6
-  var ws6 = new WebSocket("ws://128.110.155.9:8080/NodeStream/NodeStream");
+  if(eventData == '4') {
+    $("#6-4").removeAttr("display", "none");
 
-  ws6.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+    setTimeout(function() {
+      $("#6-4").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '1') {
-      $("#6-1").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#6-1").attr("display", "none");
-      }, 1000);
+  if(eventData == '5') {
+    $("#6-5").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-5").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '2') {
-      $("#6-2").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#6-2").attr("display", "none");
-      }, 1000);
+  if(eventData == '7') {
+    $("#6-7").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-7").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '3') {
-      $("#6-3").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#6-3").attr("display", "none");
-      }, 1000);
+  if(eventData == '8') {
+    $("#6-8").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-8").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '4') {
-      $("#6-4").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#6-4").attr("display", "none");
-      }, 1000);
+  if(eventData == '9') {
+    $("#6-9").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-9").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '5') {
-      $("#6-5").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#6-5").attr("display", "none");
-      }, 1000);
+  if(eventData == '10') {
+    $("#6-10").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-10").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '7') {
-      $("#6-7").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#6-7").attr("display", "none");
-      }, 1000);
+  if(eventData == '11') {
+    $("#6-11").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-11").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '8') {
-      $("#6-8").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#6-8").attr("display", "none");
-      }, 1000);
+  if(eventData == '12') {
+    $("#6-12").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-12").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '9') {
-      $("#6-9").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#6-9").attr("display", "none");
-      }, 1000);
+  if(eventData == '13') {
+    $("#6-13").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-13").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '10') {
-      $("#6-10").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#6-10").attr("display", "none");
-      }, 1000);
+  if(eventData == '14') {
+    $("#6-14").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-14").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '11') {
-      $("#6-11").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#6-11").attr("display", "none");
-      }, 1000);
+  if(eventData == '15') {
+    $("#6-15").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-15").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '12') {
-      $("#6-12").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#6-12").attr("display", "none");
-      }, 1000);
+  if(eventData == '16') {
+    $("#6-16").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#6-16").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '13') {
-      $("#6-13").removeAttr("display", "none");
+  }
+}
 
-      setTimeout(function() {
-        $("#6-13").attr("display", "none");
-      }, 1000);
+function triggerNode7(eventData) {
+  console.log("Received the WS 7 data :: " + eventData);
 
-    }
+  if(eventData == '1') {
+    $("#7-1").removeAttr("display", "none");
 
-    if(event.data == '14') {
-      $("#6-14").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-1").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#6-14").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '2') {
+    $("#7-2").removeAttr("display", "none");
 
-    if(event.data == '15') {
-      $("#6-15").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-2").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#6-15").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '3') {
+    $("#7-3").removeAttr("display", "none");
 
-    if(event.data == '16') {
-      $("#6-16").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-3").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#6-16").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '4') {
+    $("#7-4").removeAttr("display", "none");
 
-  };
+    setTimeout(function() {
+      $("#7-4").attr("display", "none");
+    }, 1000);
 
-  //ws7
-  var ws7 = new WebSocket("ws://128.110.155.25:8080/NodeStream/NodeStream");
+  }
 
-  ws7.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+  if(eventData == '5') {
+    $("#7-5").removeAttr("display", "none");
 
-    if(event.data == '1') {
-      $("#7-1").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-5").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#7-1").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '6') {
+    $("#7-6").removeAttr("display", "none");
 
-    if(event.data == '2') {
-      $("#7-2").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-6").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#7-2").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '8') {
+    $("#7-8").removeAttr("display", "none");
 
-    if(event.data == '3') {
-      $("#7-3").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-8").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#7-3").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '9') {
+    $("#7-9").removeAttr("display", "none");
 
-    if(event.data == '4') {
-      $("#7-4").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-9").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#7-4").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '10') {
+    $("#7-10").removeAttr("display", "none");
 
-    if(event.data == '5') {
-      $("#7-5").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-10").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#7-5").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '11') {
+    $("#7-11").removeAttr("display", "none");
 
-    if(event.data == '6') {
-      $("#7-6").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-11").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#7-6").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '12') {
+    $("#7-12").removeAttr("display", "none");
 
-    if(event.data == '8') {
-      $("#7-8").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-12").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#7-8").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '13') {
+    $("#7-13").removeAttr("display", "none");
 
-    if(event.data == '9') {
-      $("#7-9").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-13").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#7-9").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '14') {
+    $("#7-14").removeAttr("display", "none");
 
-    if(event.data == '10') {
-      $("#7-10").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-14").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#7-10").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '15') {
+    $("#7-15").removeAttr("display", "none");
 
-    if(event.data == '11') {
-      $("#7-11").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-15").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#7-11").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '16') {
+    $("#7-16").removeAttr("display", "none");
 
-    if(event.data == '12') {
-      $("#7-12").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#7-16").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#7-12").attr("display", "none");
-      }, 1000);
+  }
+}
 
-    }
+function triggerNode8(eventData) {
+  console.log("Received the WS 8 data :: " + eventData);
 
-    if(event.data == '13') {
-      $("#7-13").removeAttr("display", "none");
+  if(eventData == '1') {
+    $("#8-1").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#7-13").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-1").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '14') {
-      $("#7-14").removeAttr("display", "none");
+  if(eventData == '2') {
+    $("#8-2").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#7-14").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-2").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '15') {
-      $("#7-15").removeAttr("display", "none");
+  if(eventData == '3') {
+    $("#8-3").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#7-15").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-3").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '16') {
-      $("#7-16").removeAttr("display", "none");
+  if(eventData == '4') {
+    $("#8-4").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#7-16").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-4").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-  };
+  if(eventData == '5') {
+    $("#8-5").removeAttr("display", "none");
 
-  //ws8
-  var ws8 = new WebSocket("ws://128.110.155.22:8080/NodeStream/NodeStream");
+    setTimeout(function() {
+      $("#8-5").attr("display", "none");
+    }, 1000);
 
-  ws8.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+  }
 
-    if(event.data == '1') {
-      $("#8-1").removeAttr("display", "none");
+  if(eventData == '6') {
+    $("#8-6").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#8-1").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-6").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '2') {
-      $("#8-2").removeAttr("display", "none");
+  if(eventData == '7') {
+    $("#8-7").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#8-2").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-7").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '3') {
-      $("#8-3").removeAttr("display", "none");
+  if(eventData == '9') {
+    $("#8-9").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#8-3").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-9").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '4') {
-      $("#8-4").removeAttr("display", "none");
+  if(eventData == '10') {
+    $("#8-10").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#8-4").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-10").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '5') {
-      $("#8-5").removeAttr("display", "none");
+  if(eventData == '11') {
+    $("#8-11").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#8-5").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-11").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '6') {
-      $("#8-6").removeAttr("display", "none");
+  if(eventData == '12') {
+    $("#8-12").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#8-6").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-12").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '7') {
-      $("#8-7").removeAttr("display", "none");
+  if(eventData == '13') {
+    $("#8-13").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#8-7").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-13").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '9') {
-      $("#8-9").removeAttr("display", "none");
+  if(eventData == '14') {
+    $("#8-14").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#8-9").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-14").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '10') {
-      $("#8-10").removeAttr("display", "none");
+  if(eventData == '15') {
+    $("#8-15").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#8-10").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-15").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '11') {
-      $("#8-11").removeAttr("display", "none");
+  if(eventData == '16') {
+    $("#8-16").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#8-11").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#8-16").attr("display", "none");
+    }, 1000);
 
-    }
+  }
+}
 
-    if(event.data == '12') {
-      $("#8-12").removeAttr("display", "none");
+function triggerNode9(eventData) {
+  console.log("Received the WS 9 data :: " + eventData);
 
-      setTimeout(function() {
-        $("#8-12").attr("display", "none");
-      }, 1000);
+  if(eventData == '1') {
+    $("#9-1").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-1").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '13') {
-      $("#8-13").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#8-13").attr("display", "none");
-      }, 1000);
+  if(eventData == '2') {
+    $("#9-2").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-2").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '14') {
-      $("#8-14").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#8-14").attr("display", "none");
-      }, 1000);
+  if(eventData == '3') {
+    $("#9-3").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-3").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '15') {
-      $("#8-15").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#8-15").attr("display", "none");
-      }, 1000);
+  if(eventData == '4') {
+    $("#9-4").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-4").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '16') {
-      $("#8-16").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#8-16").attr("display", "none");
-      }, 1000);
+  if(eventData == '5') {
+    $("#9-5").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-5").attr("display", "none");
+    }, 1000);
 
-  };
+  }
 
-  //ws9
-  var ws9 = new WebSocket("ws://128.110.154.140:8080/NodeStream/NodeStream");
+  if(eventData == '6') {
+    $("#9-6").removeAttr("display", "none");
 
-  ws9.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+    setTimeout(function() {
+      $("#9-6").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '1') {
-      $("#9-1").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#9-1").attr("display", "none");
-      }, 1000);
+  if(eventData == '7') {
+    $("#9-7").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-7").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '2') {
-      $("#9-2").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#9-2").attr("display", "none");
-      }, 1000);
+  if(eventData == '8') {
+    $("#9-8").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-8").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '3') {
-      $("#9-3").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#9-3").attr("display", "none");
-      }, 1000);
+  if(eventData == '10') {
+    $("#9-10").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-10").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '4') {
-      $("#9-4").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#9-4").attr("display", "none");
-      }, 1000);
+  if(eventData == '11') {
+    $("#9-11").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-11").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '5') {
-      $("#9-5").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#9-5").attr("display", "none");
-      }, 1000);
+  if(eventData == '12') {
+    $("#9-12").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-12").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '6') {
-      $("#9-6").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#9-6").attr("display", "none");
-      }, 1000);
+  if(eventData == '13') {
+    $("#9-13").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-13").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '7') {
-      $("#9-7").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#9-7").attr("display", "none");
-      }, 1000);
+  if(eventData == '14') {
+    $("#9-14").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-14").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '8') {
-      $("#9-8").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#9-8").attr("display", "none");
-      }, 1000);
+  if(eventData == '15') {
+    $("#9-15").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-15").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '10') {
-      $("#9-10").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#9-10").attr("display", "none");
-      }, 1000);
+  if(eventData == '16') {
+    $("#9-16").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#9-16").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '11') {
-      $("#9-11").removeAttr("display", "none");
+  }
+}
 
-      setTimeout(function() {
-        $("#9-11").attr("display", "none");
-      }, 1000);
+function triggerNode10(eventData) {
+  console.log("Received the WS 10 data :: " + eventData);
 
-    }
+  if(eventData == '1') {
+    $("#10-1").removeAttr("display", "none");
 
-    if(event.data == '12') {
-      $("#9-12").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-1").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#9-12").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '2') {
+    $("#10-2").removeAttr("display", "none");
 
-    if(event.data == '13') {
-      $("#9-13").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-2").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#9-13").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '3') {
+    $("#10-3").removeAttr("display", "none");
 
-    if(event.data == '14') {
-      $("#9-14").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-3").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#9-14").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '4') {
+    $("#10-4").removeAttr("display", "none");
 
-    if(event.data == '15') {
-      $("#9-15").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-4").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#9-15").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '5') {
+    $("#10-5").removeAttr("display", "none");
 
-    if(event.data == '16') {
-      $("#9-16").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-5").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#9-16").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '6') {
+    $("#10-6").removeAttr("display", "none");
 
-  };
+    setTimeout(function() {
+      $("#10-6").attr("display", "none");
+    }, 1000);
 
-  //ws10
-  var ws10 = new WebSocket("ws://128.110.154.159:8080/NodeStream/NodeStream");
+  }
 
-  ws10.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+  if(eventData == '7') {
+    $("#10-7").removeAttr("display", "none");
 
-    if(event.data == '1') {
-      $("#10-1").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-7").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#10-1").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '8') {
+    $("#10-8").removeAttr("display", "none");
 
-    if(event.data == '2') {
-      $("#10-2").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-8").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#10-2").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '9') {
+    $("#10-9").removeAttr("display", "none");
 
-    if(event.data == '3') {
-      $("#10-3").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-9").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#10-3").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '11') {
+    $("#10-11").removeAttr("display", "none");
 
-    if(event.data == '4') {
-      $("#10-4").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-11").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#10-4").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '12') {
+    $("#10-12").removeAttr("display", "none");
 
-    if(event.data == '5') {
-      $("#10-5").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-12").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#10-5").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '13') {
+    $("#10-13").removeAttr("display", "none");
 
-    if(event.data == '6') {
-      $("#10-6").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-13").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#10-6").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '14') {
+    $("#10-14").removeAttr("display", "none");
 
-    if(event.data == '7') {
-      $("#10-7").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-14").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#10-7").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '15') {
+    $("#10-15").removeAttr("display", "none");
 
-    if(event.data == '8') {
-      $("#10-8").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-15").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#10-8").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '16') {
+    $("#10-16").removeAttr("display", "none");
 
-    if(event.data == '9') {
-      $("#10-9").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#10-16").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#10-9").attr("display", "none");
-      }, 1000);
+  }
+}
 
-    }
+function triggerNode11(eventData) {
+  console.log("Received the WS 11 data :: " + eventData);
 
-    if(event.data == '11') {
-      $("#10-11").removeAttr("display", "none");
+  if(eventData == '1') {
+    $("#11-1").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#10-11").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-1").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '12') {
-      $("#10-12").removeAttr("display", "none");
+  if(eventData == '2') {
+    $("#11-2").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#10-12").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-2").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '13') {
-      $("#10-13").removeAttr("display", "none");
+  if(eventData == '3') {
+    $("#11-3").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#10-13").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-3").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '14') {
-      $("#10-14").removeAttr("display", "none");
+  if(eventData == '4') {
+    $("#11-4").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#10-14").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-4").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '15') {
-      $("#10-15").removeAttr("display", "none");
+  if(eventData == '5') {
+    $("#11-5").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#10-15").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-5").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '16') {
-      $("#10-16").removeAttr("display", "none");
+  if(eventData == '6') {
+    $("#11-6").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#10-16").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-6").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-  };
+  if(eventData == '7') {
+    $("#11-7").removeAttr("display", "none");
 
-  //ws
-  var ws11 = new WebSocket("ws://128.110.154.243:8080/NodeStream/NodeStream");
+    setTimeout(function() {
+      $("#11-7").attr("display", "none");
+    }, 1000);
 
-  ws11.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+  }
 
-    if(event.data == '1') {
-      $("#11-1").removeAttr("display", "none");
+  if(eventData == '8') {
+    $("#11-8").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#11-1").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-8").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '2') {
-      $("#11-2").removeAttr("display", "none");
+  if(eventData == '9') {
+    $("#11-9").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#11-2").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-9").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '3') {
-      $("#11-3").removeAttr("display", "none");
+  if(eventData == '10') {
+    $("#11-10").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#11-3").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-10").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '4') {
-      $("#11-4").removeAttr("display", "none");
+  if(eventData == '12') {
+    $("#11-12").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#11-4").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-12").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '5') {
-      $("#11-5").removeAttr("display", "none");
+  if(eventData == '13') {
+    $("#11-13").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#11-5").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-13").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '6') {
-      $("#11-6").removeAttr("display", "none");
+  if(eventData == '14') {
+    $("#11-14").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#11-6").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-14").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '7') {
-      $("#11-7").removeAttr("display", "none");
+  if(eventData == '15') {
+    $("#11-15").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#11-7").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-15").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '8') {
-      $("#11-8").removeAttr("display", "none");
+  if(eventData == '16') {
+    $("#11-16").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#11-8").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#11-16").attr("display", "none");
+    }, 1000);
 
-    }
+  }
+}
 
-    if(event.data == '9') {
-      $("#11-9").removeAttr("display", "none");
+function triggerNode12(eventData) {
+  console.log("Received the WS 12 data :: " + eventData);
 
-      setTimeout(function() {
-        $("#11-9").attr("display", "none");
-      }, 1000);
+  if(eventData == '1') {
+    $("#12-1").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#12-1").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '10') {
-      $("#11-10").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#11-10").attr("display", "none");
-      }, 1000);
+  if(eventData == '2') {
+    $("#12-2").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#12-2").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '12') {
-      $("#11-12").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#11-12").attr("display", "none");
-      }, 1000);
+  if(eventData == '3') {
+    $("#12-3").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#12-3").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '13') {
-      $("#11-13").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#11-13").attr("display", "none");
-      }, 1000);
+  if(eventData == '4') {
+    $("#2-4").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#2-4").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '14') {
-      $("#11-14").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#11-14").attr("display", "none");
-      }, 1000);
+  if(eventData == '5') {
+    $("#12-5").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#12-5").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '15') {
-      $("#11-15").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#11-15").attr("display", "none");
-      }, 1000);
+  if(eventData == '6') {
+    $("#12-6").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#12-6").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '16') {
-      $("#11-16").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#11-16").attr("display", "none");
-      }, 1000);
+  if(eventData == '7') {
+    $("#12-7").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#2-7").attr("display", "none");
+    }, 1000);
 
-  };
+  }
 
-  //ws12
-  var ws12 = new WebSocket("ws://128.110.155.4:8080/NodeStream/NodeStream");
+  if(eventData == '8') {
+    $("#12-8").removeAttr("display", "none");
 
-  ws12.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+    setTimeout(function() {
+      $("#12-8").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '1') {
-      $("#12-1").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#12-1").attr("display", "none");
-      }, 1000);
+  if(eventData == '9') {
+    $("#12-9").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#12-9").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '2') {
-      $("#12-2").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#12-2").attr("display", "none");
-      }, 1000);
+  if(eventData == '10') {
+    $("#12-10").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#12-10").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '3') {
-      $("#12-3").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#12-3").attr("display", "none");
-      }, 1000);
+  if(eventData == '11') {
+    $("#12-11").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#12-11").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '4') {
-      $("#2-4").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#2-4").attr("display", "none");
-      }, 1000);
+  if(eventData == '13') {
+    $("#12-13").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#12-13").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '5') {
-      $("#12-5").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#12-5").attr("display", "none");
-      }, 1000);
+  if(eventData == '14') {
+    $("#12-14").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#12-14").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '6') {
-      $("#12-6").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#12-6").attr("display", "none");
-      }, 1000);
+  if(eventData == '15') {
+    $("#12-15").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#12-15").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '7') {
-      $("#12-7").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#2-7").attr("display", "none");
-      }, 1000);
+  if(eventData == '16') {
+    $("#12-16").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#12-16").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '8') {
-      $("#12-8").removeAttr("display", "none");
+  }
+}
 
-      setTimeout(function() {
-        $("#12-8").attr("display", "none");
-      }, 1000);
+function triggerNode13(eventData) {
+  console.log("Received the WS 13 data :: " + eventData);
 
-    }
+  if(eventData == '1') {
+    $("#13-1").removeAttr("display", "none");
 
-    if(event.data == '9') {
-      $("#12-9").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-1").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#12-9").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '2') {
+    $("#13-2").removeAttr("display", "none");
 
-    if(event.data == '10') {
-      $("#12-10").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-2").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#12-10").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '3') {
+    $("#13-3").removeAttr("display", "none");
 
-    if(event.data == '11') {
-      $("#12-11").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-3").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#12-11").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '4') {
+    $("#13-4").removeAttr("display", "none");
 
-    if(event.data == '13') {
-      $("#12-13").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-4").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#12-13").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '5') {
+    $("#13-5").removeAttr("display", "none");
 
-    if(event.data == '14') {
-      $("#12-14").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-5").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#12-14").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '6') {
+    $("#13-6").removeAttr("display", "none");
 
-    if(event.data == '15') {
-      $("#12-15").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-6").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#12-15").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '7') {
+    $("#13-7").removeAttr("display", "none");
 
-    if(event.data == '16') {
-      $("#12-16").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-7").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#12-16").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '8') {
+    $("#13-8").removeAttr("display", "none");
 
-  };
+    setTimeout(function() {
+      $("#13-8").attr("display", "none");
+    }, 1000);
 
-  //ws2
-  var ws13 = new WebSocket("ws://128.110.155.10:8080/NodeStream/NodeStream");
+  }
 
-  ws13.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+  if(eventData == '9') {
+    $("#13-9").removeAttr("display", "none");
 
-    if(event.data == '1') {
-      $("#13-1").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-9").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#13-1").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '10') {
+    $("#13-10").removeAttr("display", "none");
 
-    if(event.data == '2') {
-      $("#13-2").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-10").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#13-2").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '11') {
+    $("#13-11").removeAttr("display", "none");
 
-    if(event.data == '3') {
-      $("#13-3").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-11").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#13-3").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '12') {
+    $("#13-12").removeAttr("display", "none");
 
-    if(event.data == '4') {
-      $("#13-4").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-12").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#13-4").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '14') {
+    $("#13-14").removeAttr("display", "none");
 
-    if(event.data == '5') {
-      $("#13-5").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-14").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#13-5").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '15') {
+    $("#13-15").removeAttr("display", "none");
 
-    if(event.data == '6') {
-      $("#13-6").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-15").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#13-6").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '16') {
+    $("#13-16").removeAttr("display", "none");
 
-    if(event.data == '7') {
-      $("#13-7").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#13-16").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#13-7").attr("display", "none");
-      }, 1000);
+  }
+}
 
-    }
+function triggerNode14(eventData) {
+  console.log("Received the WS 14 data :: " + eventData);
 
-    if(event.data == '8') {
-      $("#13-8").removeAttr("display", "none");
+  if(eventData == '1') {
+    $("#14-1").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#13-8").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#14-1").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '9') {
-      $("#13-9").removeAttr("display", "none");
+  if(eventData == '2') {
+    $("#14-2").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#13-9").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#14-2").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '10') {
-      $("#13-10").removeAttr("display", "none");
+  if(eventData == '3') {
+    $("#14-3").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#13-10").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#14-3").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '11') {
-      $("#13-11").removeAttr("display", "none");
+  if(eventData == '4') {
+    $("#14-4").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#13-11").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#14-4").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '12') {
-      $("#13-12").removeAttr("display", "none");
+  if(eventData == '5') {
+    $("#14-5").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#13-12").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#14-5").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '14') {
-      $("#13-14").removeAttr("display", "none");
+  if(eventData == '6') {
+    $("#14-6").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#13-14").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#14-6").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '15') {
-      $("#13-15").removeAttr("display", "none");
+  if(eventData == '7') {
+    $("#14-7").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#13-15").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#14-7").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '16') {
-      $("#13-16").removeAttr("display", "none");
+  if(eventData == '8') {
+    $("#14-8").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#13-16").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#14-8").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-  };
+  if(eventData == '9') {
+    $("#14-9").removeAttr("display", "none");
 
-  //ws14
-  var ws14 = new WebSocket("ws://128.110.154.156:8080/NodeStream/NodeStream");
+    setTimeout(function() {
+      $("#14-9").attr("display", "none");
+    }, 1000);
 
-  ws14.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+  }
 
-    if(event.data == '1') {
-      $("#14-1").removeAttr("display", "none");
+  if(eventData == '10') {
+    $("#2-10").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#14-1").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#2-10").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '2') {
-      $("#14-2").removeAttr("display", "none");
+  if(eventData == '11') {
+    $("#14-11").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#14-2").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#14-11").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '3') {
-      $("#14-3").removeAttr("display", "none");
+  if(eventData == '12') {
+    $("#14-12").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#14-3").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#14-12").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '4') {
-      $("#14-4").removeAttr("display", "none");
+  if(eventData == '13') {
+    $("#14-13").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#14-4").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#14-13").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '5') {
-      $("#14-5").removeAttr("display", "none");
+  if(eventData == '15') {
+    $("#14-15").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#14-5").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#14-15").attr("display", "none");
+    }, 1000);
 
-    }
+  }
 
-    if(event.data == '6') {
-      $("#14-6").removeAttr("display", "none");
+  if(eventData == '16') {
+    $("#14-16").removeAttr("display", "none");
 
-      setTimeout(function() {
-        $("#14-6").attr("display", "none");
-      }, 1000);
+    setTimeout(function() {
+      $("#14-16").attr("display", "none");
+    }, 1000);
 
-    }
+  }
+}
 
-    if(event.data == '7') {
-      $("#14-7").removeAttr("display", "none");
+function triggerNode15(eventData) {
+  console.log("Received the WS 15 data :: " + eventData);
 
-      setTimeout(function() {
-        $("#14-7").attr("display", "none");
-      }, 1000);
+  if(eventData == '1') {
+    $("#15-1").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-1").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '8') {
-      $("#14-8").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#14-8").attr("display", "none");
-      }, 1000);
+  if(eventData == '2') {
+    $("#15-2").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-2").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '9') {
-      $("#14-9").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#14-9").attr("display", "none");
-      }, 1000);
+  if(eventData == '3') {
+    $("#15-3").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-3").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '10') {
-      $("#2-10").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#2-10").attr("display", "none");
-      }, 1000);
+  if(eventData == '4') {
+    $("#15-4").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-4").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '11') {
-      $("#14-11").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#14-11").attr("display", "none");
-      }, 1000);
+  if(eventData == '5') {
+    $("#15-5").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-5").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '12') {
-      $("#14-12").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#14-12").attr("display", "none");
-      }, 1000);
+  if(eventData == '6') {
+    $("#15-6").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-6").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '13') {
-      $("#14-13").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#14-13").attr("display", "none");
-      }, 1000);
+  if(eventData == '7') {
+    $("#15-7").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-7").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '15') {
-      $("#14-15").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#14-15").attr("display", "none");
-      }, 1000);
+  if(eventData == '8') {
+    $("#15-8").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-8").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '16') {
-      $("#14-16").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#14-16").attr("display", "none");
-      }, 1000);
+  if(eventData == '9') {
+    $("#15-9").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-9").attr("display", "none");
+    }, 1000);
 
-  };
+  }
 
-  //ws15
-  var ws15 = new WebSocket("ws://128.110.155.21:8080/NodeStream/NodeStream");
+  if(eventData == '10') {
+    $("#15-10").removeAttr("display", "none");
 
-  ws15.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+    setTimeout(function() {
+      $("#15-10").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '1') {
-      $("#15-1").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#15-1").attr("display", "none");
-      }, 1000);
+  if(eventData == '11') {
+    $("#15-11").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-11").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '2') {
-      $("#15-2").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#15-2").attr("display", "none");
-      }, 1000);
+  if(eventData == '12') {
+    $("#15-12").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-12").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '3') {
-      $("#15-3").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#15-3").attr("display", "none");
-      }, 1000);
+  if(eventData == '13') {
+    $("#15-13").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-13").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '4') {
-      $("#15-4").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#15-4").attr("display", "none");
-      }, 1000);
+  if(eventData == '14') {
+    $("#15-14").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-14").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '5') {
-      $("#15-5").removeAttr("display", "none");
+  }
 
-      setTimeout(function() {
-        $("#15-5").attr("display", "none");
-      }, 1000);
+  if(eventData == '16') {
+    $("#15-16").removeAttr("display", "none");
 
-    }
+    setTimeout(function() {
+      $("#15-16").attr("display", "none");
+    }, 1000);
 
-    if(event.data == '6') {
-      $("#15-6").removeAttr("display", "none");
+  }
+}
 
-      setTimeout(function() {
-        $("#15-6").attr("display", "none");
-      }, 1000);
+function triggerNode16(eventData) {
+  console.log("Received the WS 16 data :: " + eventData);
 
-    }
+  if(eventData == '1') {
+    $("#16-1").removeAttr("display", "none");
 
-    if(event.data == '7') {
-      $("#15-7").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-1").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#15-7").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '2') {
+    $("#16-2").removeAttr("display", "none");
 
-    if(event.data == '8') {
-      $("#15-8").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-2").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#15-8").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '3') {
+    $("#16-3").removeAttr("display", "none");
 
-    if(event.data == '9') {
-      $("#15-9").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-3").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#15-9").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '4') {
+    $("#16-4").removeAttr("display", "none");
 
-    if(event.data == '10') {
-      $("#15-10").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-4").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#15-10").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '5') {
+    $("#16-5").removeAttr("display", "none");
 
-    if(event.data == '11') {
-      $("#15-11").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-5").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#15-11").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '6') {
+    $("#16-6").removeAttr("display", "none");
 
-    if(event.data == '12') {
-      $("#15-12").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-6").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#15-12").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '7') {
+    $("#16-7").removeAttr("display", "none");
 
-    if(event.data == '13') {
-      $("#15-13").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-7").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#15-13").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '8') {
+    $("#16-8").removeAttr("display", "none");
 
-    if(event.data == '14') {
-      $("#15-14").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-8").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#15-14").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '9') {
+    $("#16-9").removeAttr("display", "none");
 
-    if(event.data == '16') {
-      $("#15-16").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-9").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#15-16").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '10') {
+    $("#16-10").removeAttr("display", "none");
 
-  };
+    setTimeout(function() {
+      $("#16-10").attr("display", "none");
+    }, 1000);
 
-  //ws16
-  var ws16 = new WebSocket("ws://128.110.155.27:8080/NodeStream/NodeStream");
+  }
 
-  ws16.onmessage = function(event) {
-    console.log("Received the data :: " + event.data);
+  if(eventData == '11') {
+    $("#16-11").removeAttr("display", "none");
 
-    if(event.data == '1') {
-      $("#16-1").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-11").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#16-1").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '12') {
+    $("#16-12").removeAttr("display", "none");
 
-    if(event.data == '2') {
-      $("#16-2").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-12").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#16-2").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '13') {
+    $("#16-13").removeAttr("display", "none");
 
-    if(event.data == '3') {
-      $("#16-3").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-13").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#16-3").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '14') {
+    $("#16-14").removeAttr("display", "none");
 
-    if(event.data == '4') {
-      $("#16-4").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-14").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#16-4").attr("display", "none");
-      }, 1000);
+  }
 
-    }
+  if(eventData == '15') {
+    $("#16-15").removeAttr("display", "none");
 
-    if(event.data == '5') {
-      $("#16-5").removeAttr("display", "none");
+    setTimeout(function() {
+      $("#16-15").attr("display", "none");
+    }, 1000);
 
-      setTimeout(function() {
-        $("#16-5").attr("display", "none");
-      }, 1000);
+  }
 
-    }
-
-    if(event.data == '6') {
-      $("#16-6").removeAttr("display", "none");
-
-      setTimeout(function() {
-        $("#16-6").attr("display", "none");
-      }, 1000);
-
-    }
-
-    if(event.data == '7') {
-      $("#16-7").removeAttr("display", "none");
-
-      setTimeout(function() {
-        $("#16-7").attr("display", "none");
-      }, 1000);
-
-    }
-
-    if(event.data == '8') {
-      $("#16-8").removeAttr("display", "none");
-
-      setTimeout(function() {
-        $("#16-8").attr("display", "none");
-      }, 1000);
-
-    }
-
-    if(event.data == '9') {
-      $("#16-9").removeAttr("display", "none");
-
-      setTimeout(function() {
-        $("#16-9").attr("display", "none");
-      }, 1000);
-
-    }
-
-    if(event.data == '10') {
-      $("#16-10").removeAttr("display", "none");
-
-      setTimeout(function() {
-        $("#16-10").attr("display", "none");
-      }, 1000);
-
-    }
-
-    if(event.data == '11') {
-      $("#16-11").removeAttr("display", "none");
-
-      setTimeout(function() {
-        $("#16-11").attr("display", "none");
-      }, 1000);
-
-    }
-
-    if(event.data == '12') {
-      $("#16-12").removeAttr("display", "none");
-
-      setTimeout(function() {
-        $("#16-12").attr("display", "none");
-      }, 1000);
-
-    }
-
-    if(event.data == '13') {
-      $("#16-13").removeAttr("display", "none");
-
-      setTimeout(function() {
-        $("#16-13").attr("display", "none");
-      }, 1000);
-
-    }
-
-    if(event.data == '14') {
-      $("#16-14").removeAttr("display", "none");
-
-      setTimeout(function() {
-        $("#16-14").attr("display", "none");
-      }, 1000);
-
-    }
-
-    if(event.data == '15') {
-      $("#16-15").removeAttr("display", "none");
-
-      setTimeout(function() {
-        $("#16-15").attr("display", "none");
-      }, 1000);
-
-    }
-
-  };
-
-});
+}

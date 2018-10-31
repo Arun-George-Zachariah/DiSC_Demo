@@ -1,59 +1,71 @@
 $(document).ready(function() {
-    //Check if the gossip is in progress. If not redirect to display plots.
-    $("#button").click( function() {
-      $.ajax({
-        url: 'http://localhost:8000/disc/plots',
-        success: function (data) {
-          if(typeof(data.inProgress) === 'undefined') {
-            //window.location.replace('http://localhost:8000/disc/plots');
-          } else {
-            alert("Please Wait! The Gossip Process is in progress.");
-          }
-        }
-      });
-      return false;
-    });
 
-    //To display accordions
-    $(function() {
-      $( "#accordion" ).accordion();
-    });
+  //IP List
+  var IP1 = "128.110.154.223";
+  var IP2 = "128.110.154.206";
+  var IP3 = "128.110.154.141";
+  var IP4 = "128.110.154.233";
+  var IP5 = "128.110.154.161";
+  var IP6 = "128.110.154.238";
+  var IP7 = "128.110.154.144";
+  var IP8 = "128.110.154.231";
+  var IP9 = "128.110.154.138";
+  var IP10 = "128.110.154.214";
+  var IP11 = "128.110.154.146";
+  var IP12 = "128.110.154.150";
+  var IP13 = "128.110.154.236";
+  var IP14 = "128.110.154.152";
+  var IP15 = "128.110.154.227";
+  var IP16 = "128.110.154.155";
 
-    //To check if the gossip is complete and to auto redirect to the plots page.
-    var w;
-    if(typeof(Worker) !== "undefined") {
-      if(typeof(w) == "undefined") {
-        w = new Worker("../static/js/gossipWorker.js");
-      }
-      w.onmessage = function(event) {
-        try {
-          if($.parseJSON(event.data).inProgress == 'true') {
-            console.log("The Gossip Process is in progress.");
-          }
-        }
-        catch(err) {
-          console.log("Gossip is Completed");
-          $("#div1").removeAttr("style");
-          $("#div2").removeAttr("style");
-          //window.location.replace('http://localhost:8000/disc/plots');
-        }
-      };
-    } else {
-      alert("Sorry, your browser will not support the Demo");
-    }
+  //To display accordions
+  $(function() {
+    $( "#accordion" ).accordion();
+  });
 
-    //Error Plot Stream - Start
-    var dps1 = []; // dataPoints
+  //Initializing Number of nodes for displaying family size.
+  var nodes=document.getElementById('NodesCount').value;
+  dps = initDataPoints(nodes);
 
-  var updateInterval = 1000;
+  //Creating the Family Size Chart.
+  var chart = new CanvasJS.Chart("chartContainer", {
+    title:{
+      text:"Reduction in the Family List Size"
+    },
+    width:1600,
+    axisX:{
+      interval: 1
+    },
+    axisY:{
+      title: "Family Size"
+    },
+    data: [{
+      type: "column",
+      indexLabel: "{y}",
+      dataPoints: dps
+    }]
+  });
+  chart.render();
+
+  //Updating the Family Size Chart
+  var updateChart = function (nodeVal, yVal, labelVal) {
+    var dps = chart.options.data[0].dataPoints;
+    dps[nodeVal] = {label: labelVal , y: yVal};
+    chart.options.data[0].dataPoints = dps;
+    chart.render();
+  };
+
+  //Displaying Error Plot  - 1
+  var dps1 = []; // dataPoints
+
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Creating Charts - Start
-  //Chart 1 - Start
   var chart1 = new CanvasJS.Chart("chartContainer1", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -81,34 +93,40 @@ $(document).ready(function() {
 
     chart1.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws1 = new WebSocket("ws://128.110.154.248:8080/StreamData/discStream");
+  //Creating Web Socket 1
+  var ws1 = new WebSocket("ws://"+ IP1 +":8080/StreamData/discStream");
 
   ws1.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart1(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart1(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode1(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws1.onerror = function(event){
     console.log("Error on WebSocket 1", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot Stream - 2
   var dps2 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 2 - Start
-  var chart2= new CanvasJS.Chart("chartContainer2", {
+  var chart2 = new CanvasJS.Chart("chartContainer2", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -136,34 +154,40 @@ $(document).ready(function() {
 
     chart2.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws2 = new WebSocket("ws://128.110.155.13:8080/StreamData/discStream");
+  //Creating Web Socket 2
+  var ws2 = new WebSocket("ws://"+ IP2 +":8080/StreamData/discStream");
 
   ws2.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart2(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart2(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode2(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws2.onerror = function(event){
     console.log("Error on WebSocket 2", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot Stream - 3
   var dps3 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 3 - Start
   var chart3 = new CanvasJS.Chart("chartContainer3", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -191,34 +215,40 @@ $(document).ready(function() {
 
     chart3.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws3 = new WebSocket("ws://128.110.154.160:8080/StreamData/discStream");
+  //Creating Web Socket 3
+  var ws3 = new WebSocket("ws://"+ IP3 +":8080/StreamData/discStream");
 
   ws3.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart3(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart3(Number(res[0]), Number(res[1]));
+    }  else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode3(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws3.onerror = function(event){
     console.log("Error on WebSocket 3", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot  - 4
   var dps4 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 4 - Start
   var chart4 = new CanvasJS.Chart("chartContainer4", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -246,34 +276,40 @@ $(document).ready(function() {
 
     chart4.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws4 = new WebSocket("ws://128.110.154.137:8080/StreamData/discStream");
+  //Creating Web Socket 4
+  var ws4 = new WebSocket("ws://"+ IP4 +":8080/StreamData/discStream");
 
   ws4.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart4(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart4(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode4(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws4.onerror = function(event){
     console.log("Error on WebSocket 4", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot  - 5
   var dps5 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 5 - Start
   var chart5 = new CanvasJS.Chart("chartContainer5", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -301,34 +337,40 @@ $(document).ready(function() {
 
     chart5.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws5 = new WebSocket("ws://128.110.154.149:8080/StreamData/discStream");
+  //Creating Web Socket 5
+  var ws5 = new WebSocket("ws://"+ IP5 +":8080/StreamData/discStream");
 
   ws5.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart5(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart5(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode5(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws5.onerror = function(event){
     console.log("Error on WebSocket 5", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot  - 6
   var dps6 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 4 - Start
   var chart6 = new CanvasJS.Chart("chartContainer6", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -356,34 +398,40 @@ $(document).ready(function() {
 
     chart6.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws6 = new WebSocket("ws://128.110.155.9:8080/StreamData/discStream");
+  //Creating Web Socket 6
+  var ws6 = new WebSocket("ws://"+ IP6 +":8080/StreamData/discStream");
 
   ws6.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart6(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart6(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode6(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws6.onerror = function(event){
     console.log("Error on WebSocket 6", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot  - 7
   var dps7 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 4 - Start
   var chart7 = new CanvasJS.Chart("chartContainer7", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -411,34 +459,40 @@ $(document).ready(function() {
 
     chart7.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws7 = new WebSocket("ws://128.110.155.25:8080/StreamData/discStream");
+  //Creating Web Socket 7
+  var ws7 = new WebSocket("ws://"+ IP7 +":8080/StreamData/discStream");
 
   ws7.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart7(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart7(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode7(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws7.onerror = function(event){
     console.log("Error on WebSocket 7", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot  - 8
   var dps8 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 4 - Start
   var chart8 = new CanvasJS.Chart("chartContainer8", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -466,34 +520,40 @@ $(document).ready(function() {
 
     chart8.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws8 = new WebSocket("ws://128.110.155.22:8080/StreamData/discStream");
+  //Creating Web Socket 8
+  var ws8 = new WebSocket("ws://"+ IP8 +":8080/StreamData/discStream");
 
   ws8.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart8(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart8(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode8(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws8.onerror = function(event){
     console.log("Error on WebSocket 8", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot  - 9
   var dps9 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 4 - Start
   var chart9 = new CanvasJS.Chart("chartContainer9", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -521,34 +581,40 @@ $(document).ready(function() {
 
     chart9.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws9 = new WebSocket("ws://128.110.154.140:8080/StreamData/discStream");
+  //Creating Web Socket 9
+  var ws9 = new WebSocket("ws://"+ IP9 +":8080/StreamData/discStream");
 
   ws9.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart9(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart9(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode9(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws9.onerror = function(event){
     console.log("Error on WebSocket 9", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot  - 10
   var dps10 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 4 - Start
   var chart10 = new CanvasJS.Chart("chartContainer10", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -576,34 +642,40 @@ $(document).ready(function() {
 
     chart10.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws10 = new WebSocket("ws://128.110.154.159:8080/StreamData/discStream");
+  //Creating Web Socket 10
+  var ws10 = new WebSocket("ws://"+ IP10 +":8080/StreamData/discStream");
 
   ws10.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart10(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart10(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode10(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws10.onerror = function(event){
     console.log("Error on WebSocket 10", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot  - 11
   var dps11 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 4 - Start
   var chart11 = new CanvasJS.Chart("chartContainer11", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -631,34 +703,40 @@ $(document).ready(function() {
 
     chart11.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws11 = new WebSocket("ws://128.110.154.243:8080/StreamData/discStream");
+  //Creating Web Socket 11
+  var ws11 = new WebSocket("ws://"+ IP11 +":8080/StreamData/discStream");
 
   ws11.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart11(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart11(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode11(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws11.onerror = function(event){
     console.log("Error on WebSocket 11", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot  - 12
   var dps12 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 4 - Start
   var chart12 = new CanvasJS.Chart("chartContainer12", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -686,34 +764,40 @@ $(document).ready(function() {
 
     chart12.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws12 = new WebSocket("ws://128.110.155.4:8080/StreamData/discStream");
+  //Creating Web Socket 12
+  var ws12 = new WebSocket("ws://"+ IP12 +":8080/StreamData/discStream");
 
   ws12.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart12(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart12(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode12(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws12.onerror = function(event){
     console.log("Error on WebSocket 12", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot  - 13
   var dps13 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 4 - Start
   var chart13 = new CanvasJS.Chart("chartContainer13", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -741,34 +825,40 @@ $(document).ready(function() {
 
     chart13.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws13 = new WebSocket("ws://128.110.155.10:8080/StreamData/discStream");
+  //Creating Web Socket 13
+  var ws13 = new WebSocket("ws://"+ IP13 +":8080/StreamData/discStream");
 
   ws13.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart13(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart13(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode13(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws13.onerror = function(event){
     console.log("Error on WebSocket 13", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot  - 14
   var dps14 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 4 - Start
   var chart14 = new CanvasJS.Chart("chartContainer14", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -796,34 +886,40 @@ $(document).ready(function() {
 
     chart14.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws14 = new WebSocket("ws://128.110.154.156:8080/StreamData/discStream");
+  //Creating Web Socket 14
+  var ws14 = new WebSocket("ws://"+ IP14 +":8080/StreamData/discStream");
 
   ws14.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart14(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart14(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode14(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws14.onerror = function(event){
     console.log("Error on WebSocket 14", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot  - 15
   var dps15 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 4 - Start
   var chart15 = new CanvasJS.Chart("chartContainer15", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -851,34 +947,40 @@ $(document).ready(function() {
 
     chart15.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws15 = new WebSocket("ws://128.110.155.21:8080/StreamData/discStream");
+  //Creating Web Socket 15
+  var ws15 = new WebSocket("ws://"+ IP15 +":8080/StreamData/discStream");
 
   ws15.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart15(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart15(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode15(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws15.onerror = function(event){
     console.log("Error on WebSocket 15", event)
   }
-  //Creating Web Socket - End
 
+  //Displaying Error Plot  - 16
   var dps16 = []; // dataPoints
 
-  var updateInterval = 1000;
+  var updateInterval = 100;
   var dataLength = 20000000; // number of dataPoints visible at any point
 
-  //Chart 4 - Start
   var chart16 = new CanvasJS.Chart("chartContainer16", {
     title :{
       text: "Relative Error"
     },
+
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
@@ -906,21 +1008,36 @@ $(document).ready(function() {
 
     chart16.render();
   };
-  //Creating Charts - End
 
-  //Creating Web Socket - Start
-  var ws16 = new WebSocket("ws://128.110.155.27:8080/StreamData/discStream");
+  //Creating Web Socket 16
+  var ws16 = new WebSocket("ws://"+ IP16 +":8080/StreamData/discStream");
 
   ws16.onmessage = function(event) {
-    console.log("Sending the data");
     var str = event.data;
-    var res = str.split(",");
-
-    updateChart16(Number(res[0]), Number(res[1]));
+    if(str.includes("EstC")==1) {
+      var line = str.split("::");
+      var res = line[1].split(",");
+      updateChart16(Number(res[0]), Number(res[1]));
+    } else if(str.includes("Node")==1) {
+      var line = str.split("::");
+      triggerNode16(line[1]);
+    } else {
+      var res = str.split("::");
+      updateChart(Number(res[0])-1, Number(res[1]), "Node "+res[0]);
+    }
   };
 
   ws16.onerror = function(event){
     console.log("Error on WebSocket 16", event)
   }
-  //Creating Web Socket - End
-  });
+
+});
+
+function initDataPoints(size) {
+  var dps = [];
+  for(var i=0; i<size; i++) {
+    dps[i] = {label: "Node " + (i+1), y:0};
+  }
+  console.log(dps)
+  return dps;
+}

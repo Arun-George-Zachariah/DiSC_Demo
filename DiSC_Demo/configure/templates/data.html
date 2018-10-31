@@ -9,10 +9,12 @@
   <link rel="stylesheet" href="../static/styles/home.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link href="../static/styles/bootstrap.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link href="../static/styles/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.6/svg.min.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
   <script src="../static/js/data.js"></script>
   <script src="../static/js/displayNodes.js"></script>
 </head>
@@ -101,7 +103,6 @@
                 </div>
                 <p>*Note: Graphs would appear, once the data starts streaming.
                 </div>
-                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
               </div>
             </div>
           </div>
@@ -138,40 +139,17 @@
       <!--Grid row-->
       <div class="row wow fadeIn">
         <!--Grid column-->
-        <div id = "div1" class="col-md-6 mb-4" style="display: none;">
+        <div id = "div1" class="col-md-12 mb-4">
           <!--Card-->
           <div class="card mb-4">
-            <div class="card-header text-center">
-              Convergence speed of DiSC on Cluster Nodes.
-            </div>
             <!--Card content-->
-            <div class="card-body">
-              <img src="http://128.110.153.173:8800/DiSC/all_nodes_output.png" style="margin-left: 100px; width:600px;height:500px;"> <br>
-            </div>
-
+            <div id="chartContainer" style="height: 400px; width: 100%;"></div>
           </div>
           <!--/.Card-->
 
         </div>
         <!--Grid column-->
 
-        <!--Grid column-->
-        <div id = "div2" class="col-md-6 mb-4" style="display: none">
-          <!--Card-->
-          <div class="card mb-4">
-            <div class="card-header text-center">
-              Family Size Reduction.
-            </div>
-            <!--Card content-->
-            <div class="card-body">
-              <img src="http://128.110.153.173:8800/DiSC/fam-list-size-output.png" style="margin-left: 100px; width:600px;height:500px;">
-            </div>
-
-          </div>
-          <!--/.Card-->
-
-        </div>
-        <!--Grid column-->
       </div>
       <!--Grid row-->
     </div>
