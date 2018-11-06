@@ -32,7 +32,7 @@ $(document).ready(function() {
     title:{
       text:"Reduction in the Family List Size"
     },
-    width:1600,
+    width:1450,
     axisX:{
       interval: 1
     },

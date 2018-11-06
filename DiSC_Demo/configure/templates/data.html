@@ -5,14 +5,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="../static/images/favicon.ico"/>
+  <link href="../static/styles/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../static/styles/mdb.css">
+  <link rel="stylesheet" href="../static/styles/style.css">
   <link rel="stylesheet" href="../static/styles/home.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <link href="../static/styles/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.6/svg.min.js"></script>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
   <script src="../static/js/data.js"></script>
@@ -31,47 +32,78 @@
         <strong class="blue-text">DiSC</strong>
       </a>
 
-      <!-- Collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <!-- Links -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/"
+            target="_blank">About DiSC</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Config</a>
+          </li>
 
-      <!-- Left -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link waves-effect" href="#">Home
-            <span class="sr-only">(current)</span>
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
+            target="_blank">
+            <i class="fa fa-github mr-2"></i>GitHub
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/"
-          target="_blank">About DiSC</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Config</a>
-        </li>
-
       </ul>
 
-      <!-- Right -->
-      <ul class="navbar-nav nav-flex-icons">
-        <li class="nav-item">
-          <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
-          target="_blank">
-          <i class="fa fa-github mr-2"></i>GitHub
-        </a>
-      </li>
-    </ul>
+    </div>
 
   </div>
-
-</div>
 </nav>
 <!-- Navbar -->
+
+<!-- Sidebar -->
+<div class="sidebar-fixed position-fixed">
+
+  <a class="img-fluid" href="http://localhost:8000/disc/"
+  target="_blank">
+  <strong class="blue-text img-fluid">DiSC</strong>
+  </a>
+
+  <div class="list-group list-group-flush">
+    <form class="form">
+        <div class="form-group">
+          <label>N:</label>
+          <input type="text" class="form-control" value={{N}} readonly>
+        </div>
+        <div class="form-group">
+          <label>L:</label>
+          <input type="text" class="form-control" value={{L}} readonly>
+        </div>
+        <div class="form-group">
+          <label>K:</label>
+          <input type="text" class="form-control" value={{K}} readonly>
+        </div>
+        <div class="form-group">
+          <label>R:</label>
+          <input type="text" class="form-control" value={{R}} readonly>
+        </div>
+        <div class="form-group">
+          <label>Dtaset :</label>
+          <input type="text" class="form-control" value={{Dataset}} readonly>
+        </div>
+        <button id="button" class="btn btn-default">ReSubmit</button>
+      </form>
+  </div>
+</div>
+<!-- Sidebar -->
+
 </header>
 <!--Main Navigation-->
 
@@ -139,7 +171,7 @@
       <!--Grid row-->
       <div class="row wow fadeIn">
         <!--Grid column-->
-        <div id = "div1" class="col-md-12 mb-4">
+        <div id = "div1" class="col-md-10 mb-4">
           <!--Card-->
           <div class="card mb-4">
             <!--Card content-->

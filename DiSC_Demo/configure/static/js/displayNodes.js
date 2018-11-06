@@ -16,6 +16,23 @@ var IP14 = "128.110.154.152";
 var IP15 = "128.110.154.227";
 var IP16 = "128.110.154.155";
 
+var node1Count = 0;
+var node2Count = 0;
+var node3Count = 0;
+var node4Count = 0;
+var node5Count = 0;
+var node6Count = 0;
+var node7Count = 0;
+var node8Count = 0;
+var node9Count = 0;
+var node10Count = 0;
+var node11Count = 0;
+var node12Count = 0;
+var node13Count = 0;
+var node14Count = 0;
+var node15Count = 0;
+var node16Count = 0;
+
 $(document).ready(function(){
 
   var nodes=document.getElementById('NodesCount').value;
@@ -23,12 +40,21 @@ $(document).ready(function(){
 
   var j;
   for (j = 1;j <= nodes; j++) {
+    //Node Num
     var iDiv = document.createElement('div');
     iDiv.id = 'field'+j;
     iDiv.className = 'field';
     document.getElementById("container").appendChild(iDiv);
     var textnode = document.createTextNode(j);
     document.getElementById('field'+j).appendChild(textnode);
+
+    //Counter
+    var jDiv = document.createElement('div');
+    jDiv.id = 'count'+j;
+    jDiv.className = 'count';
+    document.getElementById("container").appendChild(jDiv);
+    var textnode = document.createTextNode("Count:0");
+    document.getElementById('count'+j).appendChild(textnode);
   }
 
   function makeSVG(tag, attrs) {
@@ -55,6 +81,26 @@ $(document).ready(function(){
     angle += step;
     i += 1;
   });
+
+
+  var countMap = new Object();
+  var countRadius = 260;
+  var countfields = $('.count'), container = $('#container'), width = container.width(), height = container.height();
+  var angle = 0, step = (2*Math.PI) / fields.length;
+  var i=1;
+  countfields.each(function() {
+    var x = Math.round(width/2 + countRadius * Math.cos(angle) - $(this).width()/2);
+    var y = Math.round(height/2 + countRadius * Math.sin(angle) - $(this).height()/2);
+    var cordMap = {"x":x,"y":y};
+    countMap[i] = cordMap;
+    $(this).css({
+      left: x + 'px',
+      top: y + 'px'
+    });
+    angle += step;
+    i += 1;
+  });
+
 
   for (var key1 in map) {
     for(var key2 in map) {
@@ -84,6 +130,11 @@ function triggerNode1(eventData) {
       $("#1-2").attr("display", "none");
     }, 1000);
 
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
+
   }
 
   if(eventData == '3') {
@@ -93,6 +144,11 @@ function triggerNode1(eventData) {
       $("#1-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+    
   }
 
   if(eventData == '4') {
@@ -101,6 +157,11 @@ function triggerNode1(eventData) {
     setTimeout(function() {
       $("#1-4").attr("display", "none");
     }, 1000);
+
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
 
   }
 
@@ -111,6 +172,11 @@ function triggerNode1(eventData) {
       $("#1-5").attr("display", "none");
     }, 1000);
 
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
+
   }
 
   if(eventData == '6') {
@@ -119,6 +185,11 @@ function triggerNode1(eventData) {
     setTimeout(function() {
       $("#1-6").attr("display", "none");
     }, 1000);
+
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
 
   }
 
@@ -129,6 +200,11 @@ function triggerNode1(eventData) {
       $("#1-7").attr("display", "none");
     }, 1000);
 
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
+
   }
 
   if(eventData == '8') {
@@ -137,6 +213,11 @@ function triggerNode1(eventData) {
     setTimeout(function() {
       $("#1-8").attr("display", "none");
     }, 1000);
+
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
 
   }
 
@@ -147,6 +228,11 @@ function triggerNode1(eventData) {
       $("#1-9").attr("display", "none");
     }, 1000);
 
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
+
   }
 
   if(eventData == '10') {
@@ -155,6 +241,11 @@ function triggerNode1(eventData) {
     setTimeout(function() {
       $("#1-10").attr("display", "none");
     }, 1000);
+
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
 
   }
 
@@ -165,6 +256,11 @@ function triggerNode1(eventData) {
       $("#1-11").attr("display", "none");
     }, 1000);
 
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
+
   }
 
   if(eventData == '12') {
@@ -173,6 +269,11 @@ function triggerNode1(eventData) {
     setTimeout(function() {
       $("#1-12").attr("display", "none");
     }, 1000);
+
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
 
   }
 
@@ -183,6 +284,11 @@ function triggerNode1(eventData) {
       $("#1-13").attr("display", "none");
     }, 1000);
 
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
+
   }
 
   if(eventData == '14') {
@@ -191,6 +297,11 @@ function triggerNode1(eventData) {
     setTimeout(function() {
       $("#1-14").attr("display", "none");
     }, 1000);
+
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
 
   }
 
@@ -201,6 +312,12 @@ function triggerNode1(eventData) {
       $("#1-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+    
+
   }
 
   if(eventData == '16') {
@@ -209,6 +326,11 @@ function triggerNode1(eventData) {
     setTimeout(function() {
       $("#1-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -223,6 +345,11 @@ function triggerNode2(eventData) {
       $("#2-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '3') {
@@ -231,6 +358,11 @@ function triggerNode2(eventData) {
     setTimeout(function() {
       $("#2-3").attr("display", "none");
     }, 1000);
+
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
 
   }
 
@@ -241,6 +373,12 @@ function triggerNode2(eventData) {
       $("#2-4").attr("display", "none");
     }, 1000);
 
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
+
   }
 
   if(eventData == '5') {
@@ -249,6 +387,11 @@ function triggerNode2(eventData) {
     setTimeout(function() {
       $("#2-5").attr("display", "none");
     }, 1000);
+
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
 
   }
 
@@ -259,6 +402,11 @@ function triggerNode2(eventData) {
       $("#2-6").attr("display", "none");
     }, 1000);
 
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
+
   }
 
   if(eventData == '7') {
@@ -267,6 +415,11 @@ function triggerNode2(eventData) {
     setTimeout(function() {
       $("#2-7").attr("display", "none");
     }, 1000);
+
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
 
   }
 
@@ -277,6 +430,11 @@ function triggerNode2(eventData) {
       $("#2-8").attr("display", "none");
     }, 1000);
 
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
+
   }
 
   if(eventData == '9') {
@@ -285,6 +443,11 @@ function triggerNode2(eventData) {
     setTimeout(function() {
       $("#2-9").attr("display", "none");
     }, 1000);
+
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
 
   }
 
@@ -295,6 +458,11 @@ function triggerNode2(eventData) {
       $("#2-10").attr("display", "none");
     }, 1000);
 
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
+
   }
 
   if(eventData == '11') {
@@ -303,6 +471,11 @@ function triggerNode2(eventData) {
     setTimeout(function() {
       $("#2-11").attr("display", "none");
     }, 1000);
+
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
 
   }
 
@@ -313,6 +486,11 @@ function triggerNode2(eventData) {
       $("#2-12").attr("display", "none");
     }, 1000);
 
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
+
   }
 
   if(eventData == '13') {
@@ -321,6 +499,11 @@ function triggerNode2(eventData) {
     setTimeout(function() {
       $("#2-13").attr("display", "none");
     }, 1000);
+
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
 
   }
 
@@ -331,6 +514,11 @@ function triggerNode2(eventData) {
       $("#2-14").attr("display", "none");
     }, 1000);
 
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
+
   }
 
   if(eventData == '15') {
@@ -340,6 +528,12 @@ function triggerNode2(eventData) {
       $("#2-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
+
   }
 
   if(eventData == '16') {
@@ -348,6 +542,11 @@ function triggerNode2(eventData) {
     setTimeout(function() {
       $("#2-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -362,6 +561,11 @@ function triggerNode3(eventData) {
       $("#3-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -370,6 +574,11 @@ function triggerNode3(eventData) {
     setTimeout(function() {
       $("#3-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -380,6 +589,12 @@ function triggerNode3(eventData) {
       $("#3-4").attr("display", "none");
     }, 1000);
 
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
+
   }
 
   if(eventData == '5') {
@@ -389,6 +604,10 @@ function triggerNode3(eventData) {
       $("#3-5").attr("display", "none");
     }, 1000);
 
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
   }
 
   if(eventData == '6') {
@@ -397,6 +616,11 @@ function triggerNode3(eventData) {
     setTimeout(function() {
       $("#3-6").attr("display", "none");
     }, 1000);
+
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
 
   }
 
@@ -407,6 +631,11 @@ function triggerNode3(eventData) {
       $("#3-7").attr("display", "none");
     }, 1000);
 
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
+
   }
 
   if(eventData == '8') {
@@ -415,6 +644,11 @@ function triggerNode3(eventData) {
     setTimeout(function() {
       $("#3-8").attr("display", "none");
     }, 1000);
+
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
 
   }
 
@@ -425,6 +659,11 @@ function triggerNode3(eventData) {
       $("#3-9").attr("display", "none");
     }, 1000);
 
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
+
   }
 
   if(eventData == '10') {
@@ -433,6 +672,11 @@ function triggerNode3(eventData) {
     setTimeout(function() {
       $("#3-10").attr("display", "none");
     }, 1000);
+
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
 
   }
 
@@ -443,6 +687,11 @@ function triggerNode3(eventData) {
       $("#3-11").attr("display", "none");
     }, 1000);
 
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
+
   }
 
   if(eventData == '12') {
@@ -451,6 +700,11 @@ function triggerNode3(eventData) {
     setTimeout(function() {
       $("#3-12").attr("display", "none");
     }, 1000);
+
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
 
   }
 
@@ -461,6 +715,11 @@ function triggerNode3(eventData) {
       $("#3-13").attr("display", "none");
     }, 1000);
 
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
+
   }
 
   if(eventData == '14') {
@@ -469,6 +728,11 @@ function triggerNode3(eventData) {
     setTimeout(function() {
       $("#3-14").attr("display", "none");
     }, 1000);
+
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
 
   }
 
@@ -479,6 +743,12 @@ function triggerNode3(eventData) {
       $("#3-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
+
   }
 
   if(eventData == '16') {
@@ -487,6 +757,11 @@ function triggerNode3(eventData) {
     setTimeout(function() {
       $("#3-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -501,6 +776,11 @@ function triggerNode4(eventData) {
       $("#4-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -509,6 +789,11 @@ function triggerNode4(eventData) {
     setTimeout(function() {
       $("#4-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -519,6 +804,11 @@ function triggerNode4(eventData) {
       $("#4-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+
   }
 
   if(eventData == '5') {
@@ -527,6 +817,11 @@ function triggerNode4(eventData) {
     setTimeout(function() {
       $("#4-5").attr("display", "none");
     }, 1000);
+
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
 
   }
 
@@ -537,6 +832,11 @@ function triggerNode4(eventData) {
       $("#4-6").attr("display", "none");
     }, 1000);
 
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
+
   }
 
   if(eventData == '7') {
@@ -545,6 +845,11 @@ function triggerNode4(eventData) {
     setTimeout(function() {
       $("#4-7").attr("display", "none");
     }, 1000);
+
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
 
   }
 
@@ -555,6 +860,11 @@ function triggerNode4(eventData) {
       $("#4-8").attr("display", "none");
     }, 1000);
 
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
+
   }
 
   if(eventData == '9') {
@@ -563,6 +873,11 @@ function triggerNode4(eventData) {
     setTimeout(function() {
       $("#4-9").attr("display", "none");
     }, 1000);
+
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
 
   }
 
@@ -573,6 +888,11 @@ function triggerNode4(eventData) {
       $("#4-10").attr("display", "none");
     }, 1000);
 
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
+
   }
 
   if(eventData == '11') {
@@ -581,6 +901,11 @@ function triggerNode4(eventData) {
     setTimeout(function() {
       $("#4-11").attr("display", "none");
     }, 1000);
+
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
 
   }
 
@@ -591,6 +916,11 @@ function triggerNode4(eventData) {
       $("#4-12").attr("display", "none");
     }, 1000);
 
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
+
   }
 
   if(eventData == '13') {
@@ -599,6 +929,11 @@ function triggerNode4(eventData) {
     setTimeout(function() {
       $("#4-13").attr("display", "none");
     }, 1000);
+
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
 
   }
 
@@ -609,6 +944,11 @@ function triggerNode4(eventData) {
       $("#4-14").attr("display", "none");
     }, 1000);
 
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
+
   }
 
   if(eventData == '15') {
@@ -618,6 +958,12 @@ function triggerNode4(eventData) {
       $("#4-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
+
   }
 
   if(eventData == '16') {
@@ -626,6 +972,11 @@ function triggerNode4(eventData) {
     setTimeout(function() {
       $("#4-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -640,6 +991,11 @@ function triggerNode5(eventData) {
       $("#5-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -648,6 +1004,11 @@ function triggerNode5(eventData) {
     setTimeout(function() {
       $("#5-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -658,6 +1019,11 @@ function triggerNode5(eventData) {
       $("#5-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+
   }
 
   if(eventData == '4') {
@@ -666,6 +1032,12 @@ function triggerNode5(eventData) {
     setTimeout(function() {
       $("#5-4").attr("display", "none");
     }, 1000);
+
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
 
   }
 
@@ -676,6 +1048,11 @@ function triggerNode5(eventData) {
       $("#5-6").attr("display", "none");
     }, 1000);
 
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
+
   }
 
   if(eventData == '7') {
@@ -684,6 +1061,11 @@ function triggerNode5(eventData) {
     setTimeout(function() {
       $("#5-7").attr("display", "none");
     }, 1000);
+
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
 
   }
 
@@ -694,6 +1076,11 @@ function triggerNode5(eventData) {
       $("#5-8").attr("display", "none");
     }, 1000);
 
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
+
   }
 
   if(eventData == '9') {
@@ -702,6 +1089,11 @@ function triggerNode5(eventData) {
     setTimeout(function() {
       $("#5-9").attr("display", "none");
     }, 1000);
+
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
 
   }
 
@@ -712,6 +1104,11 @@ function triggerNode5(eventData) {
       $("#5-10").attr("display", "none");
     }, 1000);
 
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
+
   }
 
   if(eventData == '11') {
@@ -720,6 +1117,11 @@ function triggerNode5(eventData) {
     setTimeout(function() {
       $("#5-11").attr("display", "none");
     }, 1000);
+
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
 
   }
 
@@ -730,6 +1132,11 @@ function triggerNode5(eventData) {
       $("#5-12").attr("display", "none");
     }, 1000);
 
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
+
   }
 
   if(eventData == '13') {
@@ -738,6 +1145,11 @@ function triggerNode5(eventData) {
     setTimeout(function() {
       $("#5-13").attr("display", "none");
     }, 1000);
+
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
 
   }
 
@@ -748,6 +1160,11 @@ function triggerNode5(eventData) {
       $("#5-14").attr("display", "none");
     }, 1000);
 
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
+
   }
 
   if(eventData == '15') {
@@ -757,6 +1174,12 @@ function triggerNode5(eventData) {
       $("#5-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
+
   }
 
   if(eventData == '16') {
@@ -765,6 +1188,11 @@ function triggerNode5(eventData) {
     setTimeout(function() {
       $("#5-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -779,6 +1207,11 @@ function triggerNode6(eventData) {
       $("#6-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -787,6 +1220,11 @@ function triggerNode6(eventData) {
     setTimeout(function() {
       $("#6-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -797,6 +1235,11 @@ function triggerNode6(eventData) {
       $("#6-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+
   }
 
   if(eventData == '4') {
@@ -805,6 +1248,12 @@ function triggerNode6(eventData) {
     setTimeout(function() {
       $("#6-4").attr("display", "none");
     }, 1000);
+
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
 
   }
 
@@ -815,6 +1264,11 @@ function triggerNode6(eventData) {
       $("#6-5").attr("display", "none");
     }, 1000);
 
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
+
   }
 
   if(eventData == '7') {
@@ -823,6 +1277,11 @@ function triggerNode6(eventData) {
     setTimeout(function() {
       $("#6-7").attr("display", "none");
     }, 1000);
+
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
 
   }
 
@@ -833,6 +1292,11 @@ function triggerNode6(eventData) {
       $("#6-8").attr("display", "none");
     }, 1000);
 
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
+
   }
 
   if(eventData == '9') {
@@ -841,6 +1305,11 @@ function triggerNode6(eventData) {
     setTimeout(function() {
       $("#6-9").attr("display", "none");
     }, 1000);
+
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
 
   }
 
@@ -851,6 +1320,11 @@ function triggerNode6(eventData) {
       $("#6-10").attr("display", "none");
     }, 1000);
 
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
+
   }
 
   if(eventData == '11') {
@@ -859,6 +1333,11 @@ function triggerNode6(eventData) {
     setTimeout(function() {
       $("#6-11").attr("display", "none");
     }, 1000);
+
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
 
   }
 
@@ -869,6 +1348,11 @@ function triggerNode6(eventData) {
       $("#6-12").attr("display", "none");
     }, 1000);
 
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
+
   }
 
   if(eventData == '13') {
@@ -877,6 +1361,11 @@ function triggerNode6(eventData) {
     setTimeout(function() {
       $("#6-13").attr("display", "none");
     }, 1000);
+
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
 
   }
 
@@ -887,6 +1376,11 @@ function triggerNode6(eventData) {
       $("#6-14").attr("display", "none");
     }, 1000);
 
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
+
   }
 
   if(eventData == '15') {
@@ -896,6 +1390,12 @@ function triggerNode6(eventData) {
       $("#6-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
+
   }
 
   if(eventData == '16') {
@@ -904,6 +1404,11 @@ function triggerNode6(eventData) {
     setTimeout(function() {
       $("#6-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -918,6 +1423,11 @@ function triggerNode7(eventData) {
       $("#7-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -926,6 +1436,11 @@ function triggerNode7(eventData) {
     setTimeout(function() {
       $("#7-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -936,6 +1451,11 @@ function triggerNode7(eventData) {
       $("#7-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+
   }
 
   if(eventData == '4') {
@@ -944,6 +1464,12 @@ function triggerNode7(eventData) {
     setTimeout(function() {
       $("#7-4").attr("display", "none");
     }, 1000);
+
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
 
   }
 
@@ -954,6 +1480,11 @@ function triggerNode7(eventData) {
       $("#7-5").attr("display", "none");
     }, 1000);
 
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
+
   }
 
   if(eventData == '6') {
@@ -962,6 +1493,11 @@ function triggerNode7(eventData) {
     setTimeout(function() {
       $("#7-6").attr("display", "none");
     }, 1000);
+
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
 
   }
 
@@ -972,6 +1508,11 @@ function triggerNode7(eventData) {
       $("#7-8").attr("display", "none");
     }, 1000);
 
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
+
   }
 
   if(eventData == '9') {
@@ -980,6 +1521,11 @@ function triggerNode7(eventData) {
     setTimeout(function() {
       $("#7-9").attr("display", "none");
     }, 1000);
+
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
 
   }
 
@@ -990,6 +1536,11 @@ function triggerNode7(eventData) {
       $("#7-10").attr("display", "none");
     }, 1000);
 
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
+
   }
 
   if(eventData == '11') {
@@ -998,6 +1549,11 @@ function triggerNode7(eventData) {
     setTimeout(function() {
       $("#7-11").attr("display", "none");
     }, 1000);
+
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
 
   }
 
@@ -1008,6 +1564,11 @@ function triggerNode7(eventData) {
       $("#7-12").attr("display", "none");
     }, 1000);
 
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
+
   }
 
   if(eventData == '13') {
@@ -1016,6 +1577,11 @@ function triggerNode7(eventData) {
     setTimeout(function() {
       $("#7-13").attr("display", "none");
     }, 1000);
+
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
 
   }
 
@@ -1026,6 +1592,11 @@ function triggerNode7(eventData) {
       $("#7-14").attr("display", "none");
     }, 1000);
 
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
+
   }
 
   if(eventData == '15') {
@@ -1035,6 +1606,12 @@ function triggerNode7(eventData) {
       $("#7-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
+
   }
 
   if(eventData == '16') {
@@ -1043,6 +1620,11 @@ function triggerNode7(eventData) {
     setTimeout(function() {
       $("#7-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -1057,6 +1639,11 @@ function triggerNode8(eventData) {
       $("#8-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -1065,6 +1652,11 @@ function triggerNode8(eventData) {
     setTimeout(function() {
       $("#8-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -1075,6 +1667,11 @@ function triggerNode8(eventData) {
       $("#8-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+
   }
 
   if(eventData == '4') {
@@ -1083,6 +1680,12 @@ function triggerNode8(eventData) {
     setTimeout(function() {
       $("#8-4").attr("display", "none");
     }, 1000);
+
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
 
   }
 
@@ -1093,6 +1696,11 @@ function triggerNode8(eventData) {
       $("#8-5").attr("display", "none");
     }, 1000);
 
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
+
   }
 
   if(eventData == '6') {
@@ -1101,6 +1709,11 @@ function triggerNode8(eventData) {
     setTimeout(function() {
       $("#8-6").attr("display", "none");
     }, 1000);
+
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
 
   }
 
@@ -1111,6 +1724,11 @@ function triggerNode8(eventData) {
       $("#8-7").attr("display", "none");
     }, 1000);
 
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
+
   }
 
   if(eventData == '9') {
@@ -1119,6 +1737,11 @@ function triggerNode8(eventData) {
     setTimeout(function() {
       $("#8-9").attr("display", "none");
     }, 1000);
+
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
 
   }
 
@@ -1129,6 +1752,11 @@ function triggerNode8(eventData) {
       $("#8-10").attr("display", "none");
     }, 1000);
 
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
+
   }
 
   if(eventData == '11') {
@@ -1137,6 +1765,11 @@ function triggerNode8(eventData) {
     setTimeout(function() {
       $("#8-11").attr("display", "none");
     }, 1000);
+
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
 
   }
 
@@ -1147,6 +1780,11 @@ function triggerNode8(eventData) {
       $("#8-12").attr("display", "none");
     }, 1000);
 
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
+
   }
 
   if(eventData == '13') {
@@ -1155,6 +1793,11 @@ function triggerNode8(eventData) {
     setTimeout(function() {
       $("#8-13").attr("display", "none");
     }, 1000);
+
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
 
   }
 
@@ -1165,6 +1808,11 @@ function triggerNode8(eventData) {
       $("#8-14").attr("display", "none");
     }, 1000);
 
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
+
   }
 
   if(eventData == '15') {
@@ -1174,6 +1822,12 @@ function triggerNode8(eventData) {
       $("#8-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
+
   }
 
   if(eventData == '16') {
@@ -1182,6 +1836,11 @@ function triggerNode8(eventData) {
     setTimeout(function() {
       $("#8-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -1196,6 +1855,11 @@ function triggerNode9(eventData) {
       $("#9-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -1204,6 +1868,11 @@ function triggerNode9(eventData) {
     setTimeout(function() {
       $("#9-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -1214,6 +1883,11 @@ function triggerNode9(eventData) {
       $("#9-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+
   }
 
   if(eventData == '4') {
@@ -1222,6 +1896,12 @@ function triggerNode9(eventData) {
     setTimeout(function() {
       $("#9-4").attr("display", "none");
     }, 1000);
+
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
 
   }
 
@@ -1232,6 +1912,11 @@ function triggerNode9(eventData) {
       $("#9-5").attr("display", "none");
     }, 1000);
 
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
+
   }
 
   if(eventData == '6') {
@@ -1240,6 +1925,11 @@ function triggerNode9(eventData) {
     setTimeout(function() {
       $("#9-6").attr("display", "none");
     }, 1000);
+
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
 
   }
 
@@ -1250,6 +1940,11 @@ function triggerNode9(eventData) {
       $("#9-7").attr("display", "none");
     }, 1000);
 
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
+
   }
 
   if(eventData == '8') {
@@ -1258,6 +1953,11 @@ function triggerNode9(eventData) {
     setTimeout(function() {
       $("#9-8").attr("display", "none");
     }, 1000);
+
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
 
   }
 
@@ -1268,6 +1968,11 @@ function triggerNode9(eventData) {
       $("#9-10").attr("display", "none");
     }, 1000);
 
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
+
   }
 
   if(eventData == '11') {
@@ -1276,6 +1981,11 @@ function triggerNode9(eventData) {
     setTimeout(function() {
       $("#9-11").attr("display", "none");
     }, 1000);
+
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
 
   }
 
@@ -1286,6 +1996,11 @@ function triggerNode9(eventData) {
       $("#9-12").attr("display", "none");
     }, 1000);
 
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
+
   }
 
   if(eventData == '13') {
@@ -1294,6 +2009,11 @@ function triggerNode9(eventData) {
     setTimeout(function() {
       $("#9-13").attr("display", "none");
     }, 1000);
+
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
 
   }
 
@@ -1304,6 +2024,11 @@ function triggerNode9(eventData) {
       $("#9-14").attr("display", "none");
     }, 1000);
 
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
+
   }
 
   if(eventData == '15') {
@@ -1313,6 +2038,12 @@ function triggerNode9(eventData) {
       $("#9-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
+
   }
 
   if(eventData == '16') {
@@ -1321,6 +2052,11 @@ function triggerNode9(eventData) {
     setTimeout(function() {
       $("#9-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -1335,6 +2071,11 @@ function triggerNode10(eventData) {
       $("#10-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -1343,6 +2084,11 @@ function triggerNode10(eventData) {
     setTimeout(function() {
       $("#10-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -1353,6 +2099,11 @@ function triggerNode10(eventData) {
       $("#10-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+
   }
 
   if(eventData == '4') {
@@ -1361,6 +2112,12 @@ function triggerNode10(eventData) {
     setTimeout(function() {
       $("#10-4").attr("display", "none");
     }, 1000);
+
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
 
   }
 
@@ -1371,6 +2128,11 @@ function triggerNode10(eventData) {
       $("#10-5").attr("display", "none");
     }, 1000);
 
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
+
   }
 
   if(eventData == '6') {
@@ -1379,6 +2141,11 @@ function triggerNode10(eventData) {
     setTimeout(function() {
       $("#10-6").attr("display", "none");
     }, 1000);
+
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
 
   }
 
@@ -1389,6 +2156,11 @@ function triggerNode10(eventData) {
       $("#10-7").attr("display", "none");
     }, 1000);
 
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
+
   }
 
   if(eventData == '8') {
@@ -1397,6 +2169,11 @@ function triggerNode10(eventData) {
     setTimeout(function() {
       $("#10-8").attr("display", "none");
     }, 1000);
+
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
 
   }
 
@@ -1407,6 +2184,11 @@ function triggerNode10(eventData) {
       $("#10-9").attr("display", "none");
     }, 1000);
 
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
+
   }
 
   if(eventData == '11') {
@@ -1415,6 +2197,11 @@ function triggerNode10(eventData) {
     setTimeout(function() {
       $("#10-11").attr("display", "none");
     }, 1000);
+
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
 
   }
 
@@ -1425,6 +2212,11 @@ function triggerNode10(eventData) {
       $("#10-12").attr("display", "none");
     }, 1000);
 
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
+
   }
 
   if(eventData == '13') {
@@ -1433,6 +2225,11 @@ function triggerNode10(eventData) {
     setTimeout(function() {
       $("#10-13").attr("display", "none");
     }, 1000);
+
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
 
   }
 
@@ -1443,6 +2240,11 @@ function triggerNode10(eventData) {
       $("#10-14").attr("display", "none");
     }, 1000);
 
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
+
   }
 
   if(eventData == '15') {
@@ -1452,6 +2254,12 @@ function triggerNode10(eventData) {
       $("#10-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
+
   }
 
   if(eventData == '16') {
@@ -1460,6 +2268,11 @@ function triggerNode10(eventData) {
     setTimeout(function() {
       $("#10-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -1474,6 +2287,11 @@ function triggerNode11(eventData) {
       $("#11-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -1482,6 +2300,11 @@ function triggerNode11(eventData) {
     setTimeout(function() {
       $("#11-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -1492,6 +2315,11 @@ function triggerNode11(eventData) {
       $("#11-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+
   }
 
   if(eventData == '4') {
@@ -1500,6 +2328,12 @@ function triggerNode11(eventData) {
     setTimeout(function() {
       $("#11-4").attr("display", "none");
     }, 1000);
+
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
 
   }
 
@@ -1510,6 +2344,11 @@ function triggerNode11(eventData) {
       $("#11-5").attr("display", "none");
     }, 1000);
 
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
+
   }
 
   if(eventData == '6') {
@@ -1518,6 +2357,11 @@ function triggerNode11(eventData) {
     setTimeout(function() {
       $("#11-6").attr("display", "none");
     }, 1000);
+
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
 
   }
 
@@ -1528,6 +2372,11 @@ function triggerNode11(eventData) {
       $("#11-7").attr("display", "none");
     }, 1000);
 
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
+
   }
 
   if(eventData == '8') {
@@ -1536,6 +2385,11 @@ function triggerNode11(eventData) {
     setTimeout(function() {
       $("#11-8").attr("display", "none");
     }, 1000);
+
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
 
   }
 
@@ -1546,6 +2400,11 @@ function triggerNode11(eventData) {
       $("#11-9").attr("display", "none");
     }, 1000);
 
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
+
   }
 
   if(eventData == '10') {
@@ -1554,6 +2413,11 @@ function triggerNode11(eventData) {
     setTimeout(function() {
       $("#11-10").attr("display", "none");
     }, 1000);
+
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
 
   }
 
@@ -1564,6 +2428,11 @@ function triggerNode11(eventData) {
       $("#11-12").attr("display", "none");
     }, 1000);
 
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
+
   }
 
   if(eventData == '13') {
@@ -1572,6 +2441,11 @@ function triggerNode11(eventData) {
     setTimeout(function() {
       $("#11-13").attr("display", "none");
     }, 1000);
+
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
 
   }
 
@@ -1582,6 +2456,11 @@ function triggerNode11(eventData) {
       $("#11-14").attr("display", "none");
     }, 1000);
 
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
+
   }
 
   if(eventData == '15') {
@@ -1591,6 +2470,12 @@ function triggerNode11(eventData) {
       $("#11-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
+
   }
 
   if(eventData == '16') {
@@ -1599,6 +2484,11 @@ function triggerNode11(eventData) {
     setTimeout(function() {
       $("#11-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -1613,6 +2503,11 @@ function triggerNode12(eventData) {
       $("#12-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -1621,6 +2516,11 @@ function triggerNode12(eventData) {
     setTimeout(function() {
       $("#12-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -1631,6 +2531,11 @@ function triggerNode12(eventData) {
       $("#12-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+
   }
 
   if(eventData == '4') {
@@ -1639,6 +2544,12 @@ function triggerNode12(eventData) {
     setTimeout(function() {
       $("#12-4").attr("display", "none");
     }, 1000);
+
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
 
   }
 
@@ -1649,6 +2560,11 @@ function triggerNode12(eventData) {
       $("#12-5").attr("display", "none");
     }, 1000);
 
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
+
   }
 
   if(eventData == '6') {
@@ -1657,6 +2573,11 @@ function triggerNode12(eventData) {
     setTimeout(function() {
       $("#12-6").attr("display", "none");
     }, 1000);
+
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
 
   }
 
@@ -1667,6 +2588,11 @@ function triggerNode12(eventData) {
       $("#12-7").attr("display", "none");
     }, 1000);
 
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
+
   }
 
   if(eventData == '8') {
@@ -1675,6 +2601,11 @@ function triggerNode12(eventData) {
     setTimeout(function() {
       $("#12-8").attr("display", "none");
     }, 1000);
+
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
 
   }
 
@@ -1685,6 +2616,11 @@ function triggerNode12(eventData) {
       $("#12-9").attr("display", "none");
     }, 1000);
 
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
+
   }
 
   if(eventData == '10') {
@@ -1693,6 +2629,11 @@ function triggerNode12(eventData) {
     setTimeout(function() {
       $("#12-10").attr("display", "none");
     }, 1000);
+
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
 
   }
 
@@ -1703,6 +2644,11 @@ function triggerNode12(eventData) {
       $("#12-11").attr("display", "none");
     }, 1000);
 
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
+
   }
 
   if(eventData == '13') {
@@ -1711,6 +2657,11 @@ function triggerNode12(eventData) {
     setTimeout(function() {
       $("#12-13").attr("display", "none");
     }, 1000);
+
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
 
   }
 
@@ -1721,6 +2672,11 @@ function triggerNode12(eventData) {
       $("#12-14").attr("display", "none");
     }, 1000);
 
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
+
   }
 
   if(eventData == '15') {
@@ -1730,6 +2686,12 @@ function triggerNode12(eventData) {
       $("#12-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
+
   }
 
   if(eventData == '16') {
@@ -1738,6 +2700,11 @@ function triggerNode12(eventData) {
     setTimeout(function() {
       $("#12-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -1752,6 +2719,11 @@ function triggerNode13(eventData) {
       $("#13-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -1760,6 +2732,11 @@ function triggerNode13(eventData) {
     setTimeout(function() {
       $("#13-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -1770,6 +2747,11 @@ function triggerNode13(eventData) {
       $("#13-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+
   }
 
   if(eventData == '4') {
@@ -1778,6 +2760,12 @@ function triggerNode13(eventData) {
     setTimeout(function() {
       $("#13-4").attr("display", "none");
     }, 1000);
+
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
 
   }
 
@@ -1788,6 +2776,11 @@ function triggerNode13(eventData) {
       $("#13-5").attr("display", "none");
     }, 1000);
 
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
+
   }
 
   if(eventData == '6') {
@@ -1796,6 +2789,11 @@ function triggerNode13(eventData) {
     setTimeout(function() {
       $("#13-6").attr("display", "none");
     }, 1000);
+
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
 
   }
 
@@ -1806,6 +2804,11 @@ function triggerNode13(eventData) {
       $("#13-7").attr("display", "none");
     }, 1000);
 
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
+
   }
 
   if(eventData == '8') {
@@ -1814,6 +2817,11 @@ function triggerNode13(eventData) {
     setTimeout(function() {
       $("#13-8").attr("display", "none");
     }, 1000);
+
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
 
   }
 
@@ -1824,6 +2832,11 @@ function triggerNode13(eventData) {
       $("#13-9").attr("display", "none");
     }, 1000);
 
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
+
   }
 
   if(eventData == '10') {
@@ -1832,6 +2845,11 @@ function triggerNode13(eventData) {
     setTimeout(function() {
       $("#13-10").attr("display", "none");
     }, 1000);
+
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
 
   }
 
@@ -1842,6 +2860,11 @@ function triggerNode13(eventData) {
       $("#13-11").attr("display", "none");
     }, 1000);
 
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
+
   }
 
   if(eventData == '12') {
@@ -1850,6 +2873,11 @@ function triggerNode13(eventData) {
     setTimeout(function() {
       $("#13-12").attr("display", "none");
     }, 1000);
+
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
 
   }
 
@@ -1860,6 +2888,11 @@ function triggerNode13(eventData) {
       $("#13-14").attr("display", "none");
     }, 1000);
 
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
+
   }
 
   if(eventData == '15') {
@@ -1869,6 +2902,12 @@ function triggerNode13(eventData) {
       $("#13-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
+
   }
 
   if(eventData == '16') {
@@ -1877,6 +2916,11 @@ function triggerNode13(eventData) {
     setTimeout(function() {
       $("#13-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -1891,6 +2935,11 @@ function triggerNode14(eventData) {
       $("#14-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -1899,6 +2948,11 @@ function triggerNode14(eventData) {
     setTimeout(function() {
       $("#14-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -1909,6 +2963,11 @@ function triggerNode14(eventData) {
       $("#14-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+
   }
 
   if(eventData == '4') {
@@ -1917,6 +2976,12 @@ function triggerNode14(eventData) {
     setTimeout(function() {
       $("#14-4").attr("display", "none");
     }, 1000);
+
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
 
   }
 
@@ -1927,6 +2992,11 @@ function triggerNode14(eventData) {
       $("#14-5").attr("display", "none");
     }, 1000);
 
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
+
   }
 
   if(eventData == '6') {
@@ -1935,6 +3005,11 @@ function triggerNode14(eventData) {
     setTimeout(function() {
       $("#14-6").attr("display", "none");
     }, 1000);
+
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
 
   }
 
@@ -1945,6 +3020,11 @@ function triggerNode14(eventData) {
       $("#14-7").attr("display", "none");
     }, 1000);
 
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
+
   }
 
   if(eventData == '8') {
@@ -1953,6 +3033,11 @@ function triggerNode14(eventData) {
     setTimeout(function() {
       $("#14-8").attr("display", "none");
     }, 1000);
+
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
 
   }
 
@@ -1963,6 +3048,11 @@ function triggerNode14(eventData) {
       $("#14-9").attr("display", "none");
     }, 1000);
 
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
+
   }
 
   if(eventData == '10') {
@@ -1971,6 +3061,11 @@ function triggerNode14(eventData) {
     setTimeout(function() {
       $("#14-10").attr("display", "none");
     }, 1000);
+
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
 
   }
 
@@ -1981,6 +3076,11 @@ function triggerNode14(eventData) {
       $("#14-11").attr("display", "none");
     }, 1000);
 
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
+
   }
 
   if(eventData == '12') {
@@ -1989,6 +3089,11 @@ function triggerNode14(eventData) {
     setTimeout(function() {
       $("#14-12").attr("display", "none");
     }, 1000);
+
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
 
   }
 
@@ -1999,6 +3104,11 @@ function triggerNode14(eventData) {
       $("#14-13").attr("display", "none");
     }, 1000);
 
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
+
   }
 
   if(eventData == '15') {
@@ -2008,6 +3118,12 @@ function triggerNode14(eventData) {
       $("#14-15").attr("display", "none");
     }, 1000);
 
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
+
   }
 
   if(eventData == '16') {
@@ -2016,6 +3132,11 @@ function triggerNode14(eventData) {
     setTimeout(function() {
       $("#14-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -2030,6 +3151,11 @@ function triggerNode15(eventData) {
       $("#15-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -2038,6 +3164,11 @@ function triggerNode15(eventData) {
     setTimeout(function() {
       $("#15-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -2048,6 +3179,11 @@ function triggerNode15(eventData) {
       $("#15-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+
   }
 
   if(eventData == '4') {
@@ -2056,6 +3192,12 @@ function triggerNode15(eventData) {
     setTimeout(function() {
       $("#15-4").attr("display", "none");
     }, 1000);
+
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
 
   }
 
@@ -2066,6 +3208,11 @@ function triggerNode15(eventData) {
       $("#15-5").attr("display", "none");
     }, 1000);
 
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
+
   }
 
   if(eventData == '6') {
@@ -2074,6 +3221,11 @@ function triggerNode15(eventData) {
     setTimeout(function() {
       $("#15-6").attr("display", "none");
     }, 1000);
+
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
 
   }
 
@@ -2084,6 +3236,11 @@ function triggerNode15(eventData) {
       $("#15-7").attr("display", "none");
     }, 1000);
 
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
+
   }
 
   if(eventData == '8') {
@@ -2092,6 +3249,11 @@ function triggerNode15(eventData) {
     setTimeout(function() {
       $("#15-8").attr("display", "none");
     }, 1000);
+
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
 
   }
 
@@ -2102,6 +3264,11 @@ function triggerNode15(eventData) {
       $("#15-9").attr("display", "none");
     }, 1000);
 
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
+
   }
 
   if(eventData == '10') {
@@ -2110,6 +3277,11 @@ function triggerNode15(eventData) {
     setTimeout(function() {
       $("#15-10").attr("display", "none");
     }, 1000);
+
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
 
   }
 
@@ -2120,6 +3292,11 @@ function triggerNode15(eventData) {
       $("#15-11").attr("display", "none");
     }, 1000);
 
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
+
   }
 
   if(eventData == '12') {
@@ -2128,6 +3305,11 @@ function triggerNode15(eventData) {
     setTimeout(function() {
       $("#15-12").attr("display", "none");
     }, 1000);
+
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
 
   }
 
@@ -2138,6 +3320,11 @@ function triggerNode15(eventData) {
       $("#15-13").attr("display", "none");
     }, 1000);
 
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
+
   }
 
   if(eventData == '14') {
@@ -2147,6 +3334,11 @@ function triggerNode15(eventData) {
       $("#15-14").attr("display", "none");
     }, 1000);
 
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
+
   }
 
   if(eventData == '16') {
@@ -2155,6 +3347,11 @@ function triggerNode15(eventData) {
     setTimeout(function() {
       $("#15-16").attr("display", "none");
     }, 1000);
+
+    node16Count += 1;
+    $("#count16").empty();
+    var textnode = document.createTextNode("Count : " + node16Count);
+    $("#count16").append(textnode);
 
   }
 }
@@ -2169,6 +3366,11 @@ function triggerNode16(eventData) {
       $("#16-1").attr("display", "none");
     }, 1000);
 
+    node1Count += 1;
+    $("#count1").empty();
+    var textnode = document.createTextNode("Count : " + node1Count);
+    $("#count1").append(textnode);
+
   }
 
   if(eventData == '2') {
@@ -2177,6 +3379,11 @@ function triggerNode16(eventData) {
     setTimeout(function() {
       $("#16-2").attr("display", "none");
     }, 1000);
+
+    node2Count += 1;
+    $("#count2").empty();
+    var textnode = document.createTextNode("Count : " + node2Count);
+    $("#count2").append(textnode);
 
   }
 
@@ -2187,6 +3394,11 @@ function triggerNode16(eventData) {
       $("#16-3").attr("display", "none");
     }, 1000);
 
+    node3Count += 1;
+    $("#count3").empty();
+    var textnode = document.createTextNode("Count : " + node3Count);
+    $("#count3").append(textnode);
+
   }
 
   if(eventData == '4') {
@@ -2195,6 +3407,12 @@ function triggerNode16(eventData) {
     setTimeout(function() {
       $("#16-4").attr("display", "none");
     }, 1000);
+
+    node4Count += 1;
+    $("#count4").empty();
+    var textnode = document.createTextNode("Count : " + node4Count);
+    $("#count4").append(textnode);
+
 
   }
 
@@ -2205,6 +3423,11 @@ function triggerNode16(eventData) {
       $("#16-5").attr("display", "none");
     }, 1000);
 
+    node5Count += 1;
+    $("#count5").empty();
+    var textnode = document.createTextNode("Count : " + node5Count);
+    $("#count5").append(textnode);
+
   }
 
   if(eventData == '6') {
@@ -2213,6 +3436,11 @@ function triggerNode16(eventData) {
     setTimeout(function() {
       $("#16-6").attr("display", "none");
     }, 1000);
+
+    node6Count += 1;
+    $("#count6").empty();
+    var textnode = document.createTextNode("Count : " + node6Count);
+    $("#count6").append(textnode);
 
   }
 
@@ -2223,6 +3451,11 @@ function triggerNode16(eventData) {
       $("#16-7").attr("display", "none");
     }, 1000);
 
+    node7Count += 1;
+    $("#count7").empty();
+    var textnode = document.createTextNode("Count : " + node7Count);
+    $("#count7").append(textnode);
+
   }
 
   if(eventData == '8') {
@@ -2231,6 +3464,11 @@ function triggerNode16(eventData) {
     setTimeout(function() {
       $("#16-8").attr("display", "none");
     }, 1000);
+
+    node8Count += 1;
+    $("#count8").empty();
+    var textnode = document.createTextNode("Count : " + node8Count);
+    $("#count8").append(textnode);
 
   }
 
@@ -2241,6 +3479,11 @@ function triggerNode16(eventData) {
       $("#16-9").attr("display", "none");
     }, 1000);
 
+    node9Count += 1;
+    $("#count9").empty();
+    var textnode = document.createTextNode("Count : " + node9Count);
+    $("#count9").append(textnode);
+
   }
 
   if(eventData == '10') {
@@ -2249,6 +3492,11 @@ function triggerNode16(eventData) {
     setTimeout(function() {
       $("#16-10").attr("display", "none");
     }, 1000);
+
+    node10Count += 1;
+    $("#count10").empty();
+    var textnode = document.createTextNode("Count : " + node10Count);
+    $("#count10").append(textnode);
 
   }
 
@@ -2259,6 +3507,11 @@ function triggerNode16(eventData) {
       $("#16-11").attr("display", "none");
     }, 1000);
 
+    node11Count += 1;
+    $("#count11").empty();
+    var textnode = document.createTextNode("Count : " + node11Count);
+    $("#count11").append(textnode);
+
   }
 
   if(eventData == '12') {
@@ -2267,6 +3520,11 @@ function triggerNode16(eventData) {
     setTimeout(function() {
       $("#16-12").attr("display", "none");
     }, 1000);
+
+    node12Count += 1;
+    $("#count12").empty();
+    var textnode = document.createTextNode("Count : " + node12Count);
+    $("#count12").append(textnode);
 
   }
 
@@ -2277,6 +3535,11 @@ function triggerNode16(eventData) {
       $("#16-13").attr("display", "none");
     }, 1000);
 
+    node13Count += 1;
+    $("#count13").empty();
+    var textnode = document.createTextNode("Count : " + node13Count);
+    $("#count13").append(textnode);
+
   }
 
   if(eventData == '14') {
@@ -2286,6 +3549,11 @@ function triggerNode16(eventData) {
       $("#16-14").attr("display", "none");
     }, 1000);
 
+    node14Count += 1;
+    $("#count14").empty();
+    var textnode = document.createTextNode("Count : " + node14Count);
+    $("#count14").append(textnode);
+
   }
 
   if(eventData == '15') {
@@ -2294,6 +3562,12 @@ function triggerNode16(eventData) {
     setTimeout(function() {
       $("#16-15").attr("display", "none");
     }, 1000);
+
+    node15Count += 1;
+    $("#count15").empty();
+    var textnode = document.createTextNode("Count : " + node15Count);
+    $("#count15").append(textnode);
+
 
   }
 
