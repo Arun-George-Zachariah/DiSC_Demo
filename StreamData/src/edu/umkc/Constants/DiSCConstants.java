@@ -8,6 +8,7 @@ public class DiSCConstants {
 	public static final String NODE_NUM = "NODE_NUM";
 	public static final String FAMILY_SIZE_SEARCH_STRING = "visible families";
 	public static final String NODE_SEARCH_STRING = "DiSC Demo :: ActiveGossipThread :: sendDiscData :: Sending Data from Node ::";
+	public static final String EST_C_FILE = "Est_Counts.txt";
 
 	public static final String IP_1 = "128.110.154.223";
 	public static final String IP_2 = "128.110.154.206";

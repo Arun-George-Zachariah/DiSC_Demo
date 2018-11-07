@@ -132,4 +132,18 @@ public class CommonUtil {
 		return null;
 	}
 	
+	public static Double[][] convertToMatrix(LinkedList<LinkedList<Double>> inp) {
+		Double[][] retArr = new Double[2][4]; 
+		int i=0;
+		for(LinkedList<Double> lst : inp) {
+			int j=0;
+			for(Double num : lst) {
+				retArr[i][j] = num;
+				j+=1;
+			}
+			i+=1;
+		}
+		return retArr;
+	}
+		
 }

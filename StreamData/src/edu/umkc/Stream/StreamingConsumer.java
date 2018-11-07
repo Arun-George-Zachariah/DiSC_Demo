@@ -13,8 +13,8 @@ import javax.websocket.Session;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import edu.umkc.Compute.ErrorCalculator;
 import edu.umkc.Constants.DiSCConstants;
-import edu.umkc.ErrorCalc.ErrorCalculator;
 import edu.umkc.Util.CommonUtil;
 import edu.umkc.Util.PropertyReader;
 
@@ -41,6 +41,12 @@ public class StreamingConsumer implements Runnable {
 						String[] arr = line.split("=");
 						if (arr != null) {
 							try {
+								try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(DiSCConstants.EST_C_FILE)))) {
+									bw.write(arr[1].trim());
+								} catch(Exception e) {
+									logger.error("StreamingConsumer :: run ::  Exception encountered while writing the estimated counts :: " + e);
+									e.printStackTrace();
+								}
 								Map<String, LinkedList<LinkedList<Double>>> estimatedCounts = CommonUtil.convertJsonToMap(arr[1].trim());
 								Map<String, LinkedList<LinkedList<Double>>> trueCounts = CommonUtil.convertJsonToMap(CommonUtil.getTrueCount());
 								String result = ErrorCalculator.calculateError(trueCounts, estimatedCounts, PropertyReader.getInstance().getProperty(DiSCConstants.FAMILY), startTime);
