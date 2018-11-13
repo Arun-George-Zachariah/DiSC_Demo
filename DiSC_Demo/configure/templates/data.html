@@ -16,8 +16,10 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.6/svg.min.js"></script>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script src="../static/js/blockUI.js"></script>
   <script src="../static/js/data.js"></script>
   <script src="../static/js/displayNodes.js"></script>
+  <script src="../static/js/scoreDisp.js"></script>
 </head>
 <body class="grey lighten-3">
   <!--Main Navigation-->
@@ -77,26 +79,31 @@
   </a>
 
   <div class="list-group list-group-flush">
+    <br><br><br><br>
     <form class="form">
         <div class="form-group">
-          <label>N:</label>
+          <label>N (No. of Nodes):</label><br>
           <input type="text" class="form-control" value={{N}} readonly>
         </div>
         <div class="form-group">
-          <label>L:</label>
+          <label>L (LSH Parameter):</label>
           <input type="text" class="form-control" value={{L}} readonly>
         </div>
         <div class="form-group">
-          <label>K:</label>
+          <label>K (LSH Parameter):</label>
           <input type="text" class="form-control" value={{K}} readonly>
         </div>
         <div class="form-group">
-          <label>R:</label>
+          <label>R (Accuracy Tuning Parameter):</label>
           <input type="text" class="form-control" value={{R}} readonly>
         </div>
         <div class="form-group">
-          <label>Dtaset :</label>
+          <label>Dataset:</label>
           <input type="text" class="form-control" value={{Dataset}} readonly>
+        </div>
+        <div class="form-group">
+          <label>Family:</label>
+          <input type="text" class="form-control" value={{Family}} readonly>
         </div>
         <button id="button" class="btn btn-default">ReSubmit</button>
       </form>
@@ -126,7 +133,7 @@
               <div class="dataAccContainer">
                 <div id="accordion">
                   {% load my_filters %}
-                  {% for i in N|times %}
+                  {% for i in 15|times %}
                   <h3>Node {{forloop.counter}}</h3>
                   <div>
                     <div id="chartContainer{{forloop.counter}}" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>

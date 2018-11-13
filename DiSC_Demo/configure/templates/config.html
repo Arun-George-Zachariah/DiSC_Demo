@@ -14,11 +14,22 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.6/svg.min.js"></script>
-  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-  <script src="../static/js/data.js"></script>
-  <script src="../static/js/displayNodes.js"></script>
+  <script src="../static/js/blockUI.js"></script>
+  <script src="../static/js/ConfigureScripts.js"></script>
 </head>
+<script>
+$(document).ready(function() {
+  var $select1 = $( '#select1' ),
+  $select2 = $( '#select2' ),
+  $options = $select2.find( 'option' );
+
+  $select1.on( 'change', function() {
+    $select2.html( $options.filter( '[id="' + this.value + '"]' ) );
+  }).trigger( 'change' );
+})
+</script>
+
+<body>
 <body class="grey lighten-3">
   <!--Main Navigation-->
   <header>
@@ -74,26 +85,99 @@
   <a class="img-fluid" href="http://localhost:8000/disc/"
   target="_blank">
   <strong class="blue-text img-fluid">DiSC</strong>
-  </a>
+</a>
 
-  <div class="list-group list-group-flush">
-    <form method="post" class="form">
-      {% csrf_token %}
-      {% for field in form  %}
-      <div class="form-group">
-        <label>{{ field.label_tag }}</label>
-        {{ field }}
-      </div>
-      {% endfor %}
-      <button type="submit" id="submit" class="btn btn-default">Submit</button>
-    </form>
+<div class="list-group list-group-flush">
+  <br><br><br><br>
+  <form method="post" class="form">
+    {% csrf_token %}
+    {% for field in form  %}
+    <div class="form-group">
+      <label>{{ field.label_tag }}</label>
+      {{ field }}
+    </div>
+    {% endfor %}
+    <div class="form-group">
+      Dataset:<br><br>
+      <select class="form-control" name="select1" id="select1">
+        <option value="Higgs">Higgs</option>
+        <option value="Twitter">Twitter</option>
+        <option value="Synthetic">Synthetic</option>
+      </select><br>
+
+      Family:<br><br>
+
+      <select class="form-control" name="select2" id="select2">
+        <option id = "Higgs" value="jet_2_pt|missing_energy_magnitude">jet_2_pt|missing_energy_magnitude</option>
+        <option id = "Higgs" value="jet_1_eta|lepton_phi,m_lv">jet_1_eta|lepton_phi,m_lv</option>
+        <option id = "Higgs" value="m_jj|jet_2_b-tag">m_jj|jet_2_b-tag</option>
+        <option id = "Higgs" value="lepton_pT|lepton_eta">m_jj|jet_1_eta</option>
+        <option id = "Higgs" value="m_jj|jet_1_eta">lepton_pT|lepton_eta</option>
+        <option id = "Higgs" value="lepton_pT|lepton_eta,missing_energy_magnitude">lepton_pT|lepton_eta,missing_energy_magnitude</option>
+        <option id = "Higgs" value="jet_2_b-tag|lepton_phi,m_wwbb">jet_2_b-tag|lepton_phi,m_wwbb</option>
+        <option id = "Higgs" value="jet_2_b-tag|jet_3_phi,jet_4_phi">jet_2_b-tag|jet_3_phi,jet_4_phi</option>
+        <option id = "Higgs" value="jet_2_eta|jet_1_pt,missing_energy_phi">jet_2_eta|jet_1_pt,missing_energy_phi</option>
+        <option id = "Higgs" value="lepton_eta|jet_2_b-tag,jet_4_b-tag">lepton_eta|jet_2_b-tag,jet_4_b-tag</option>
+
+        <option id = "Twitter" value="jet_2_pt,missing_energy_magnitude">jet_2_pt,missing_energy_magnitude</option>
+        <option id = "Twitter" value="jet_1_eta,lepton_phi,m_lv">jet_1_eta,lepton_phi,m_lv</option>
+        <option id = "Twitter" value="m_jj,jet_2_b-tag">m_jj,jet_2_b-tag</option>
+        <option id = "Twitter" value="lepton_pT,lepton_eta">m_jj,jet_1_eta</option>
+        <option id = "Twitter" value="m_jj,jet_1_eta">lepton_pT,lepton_eta</option>
+        <option id = "Twitter" value="lepton_pT,lepton_eta,missing_energy_magnitude">lepton_pT,lepton_eta,missing_energy_magnitude</option>
+        <option id = "Twitter" value="jet_2_b-tag,lepton_phi,m_wwbb">jet_2_b-tag,lepton_phi,m_wwbb</option>
+        <option id = "Twitter" value="jet_2_b-tag,jet_3_phi,jet_4_phi">jet_2_b-tag,jet_3_phi,jet_4_phi</option>
+        <option id = "Twitter" value="jet_2_eta	jet_1_pt,missing_energy_phi">jet_2_eta	jet_1_pt,missing_energy_phi</option>
+        <option id = "Twitter" value="lepton_eta,jet_2_b-tag,jet_4_b-tag">lepton_eta,jet_2_b-tag,jet_4_b-tag</option>
+
+      </select>
+    </div>
   </div>
+  <button type="submit" id="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
 </div>
 <!-- Sidebar -->
 
 </header>
 <!--Main Navigation-->
+<main class="pt-5 mx-lg-5"><br><br><br><br><br><br><br><br>
+  <div class="container-fluid mt-5">
 
+    <!--Grid row-->
+    <div class="row wow fadeIn">
+
+      <!--Grid column-->
+      <div class="col-md-12 mb-4">
+      </div>
+    </div>
+
+
+    <!--Grid row-->
+    <div class="row wow fadeIn">
+
+      <!--Grid column-->
+      <div class="col-md-12 mb-4">
+        <!--Card-->
+        <div class="card">
+          <div class="card-header text-center">
+            Distributed Score Computation
+          </div>
+          <!--Card content-->
+          <div class="card-body">
+
+            <p>In this paper, we focus on the problem of learning a Bayesian network over distributed data stored in acommodity cluster. Specifically, we address the challenge of computing the scoring function over distributeddata in an efficient and scalable manner, which is a fundamental task during learning. While exact scorecomputation can be done using the MapReduce-style computation, our goal is to compute approximate scoresmuch faster with probabilistic error bounds and in a scalable manner. We propose a novel approach which isdesigned to achieve: (a) decentralized score computation using the principle of gossiping; (b) lower resourceconsumption via a probabilistic approach for maintaining scores using the properties of a Markov chain; and(c) effective distribution of tasks during score computation (on large datasets) by synergistically combiningwell-known hashing techniques. We conduct theoretical analysis of our approach in terms of convergencespeed, and memory and network bandwidth consumption. We also discuss how our approach is capable ofefficiently recomputing scores when new data are available. We conducted a comprehensive evaluation of ourapproach and compared with the MapReduce-style computation using datasets of different characteristicson a 16-node cluster. When the MapReduce-style computation provided exact sufficient statistics of families,it was nearly 10 times slower thanDiSC. Although it ran faster on randomly sampled datasets than on theentire datasets, it performed worse thanDiSCin terms of accuracy.DiSCachieved high accuracy (below 6%average relative error) on all the tested datasets. Thus,DiSCprovides a feasible tradeoff between computationtime and accuracy for fast approximate score computation on large-scale distributed data</p>
+          </div>
+          <!--/.Card-->
+        </div>
+        <!--Grid column-->
+
+
+
+      </div>
+      <!--Grid row-->
+    </div>
+  </main>
 
 </body>
 
