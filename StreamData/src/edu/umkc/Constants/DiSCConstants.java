@@ -9,6 +9,8 @@ public class DiSCConstants {
 	public static final String FAMILY_SIZE_SEARCH_STRING = "visible families";
 	public static final String NODE_SEARCH_STRING = "DiSC Demo :: ActiveGossipThread :: sendDiscData :: Sending Data from Node ::";
 	public static final String EST_C_FILE = "Est_Counts.txt";
+	public static final String CONFIG_FILE = "/users/arung/target/configuration/config.txt";
+	public static final String CONFIG_GSP_FAMILY_SEARCH_STRING="gspfams";
 
 	public static final String IP_1 = "128.110.154.223";
 	public static final String IP_2 = "128.110.154.206";
@@ -60,6 +62,23 @@ public class DiSCConstants {
 	public static final String N_14 = "14-0";
 	public static final String N_15 = "15-0";
 	public static final String N_16 = "16-0";
+	
+	public static final String GSP_FAM_1 = "Node_1-0_gspfams";
+	public static final String GSP_FAM_2 = "Node_2-0_gspfams";
+	public static final String GSP_FAM_3 = "Node_3-0_gspfams";
+	public static final String GSP_FAM_4 = "Node_4-0_gspfams";
+	public static final String GSP_FAM_5 = "Node_5-0_gspfams";
+	public static final String GSP_FAM_6 = "Node_6-0_gspfams";
+	public static final String GSP_FAM_7 = "Node_7-0_gspfams";
+	public static final String GSP_FAM_8 = "Node_8-0_gspfams";
+	public static final String GSP_FAM_9 = "Node_9-0_gspfams";
+	public static final String GSP_FAM_10 = "Node_10-0_gspfams";
+	public static final String GSP_FAM_11 = "Node_11-0_gspfams";
+	public static final String GSP_FAM_12 = "Node_12-0_gspfams";
+	public static final String GSP_FAM_13 = "Node_13-0_gspfams";
+	public static final String GSP_FAM_14 = "Node_14-0_gspfams";
+	public static final String GSP_FAM_15 = "Node_15-0_gspfams";
+	public static final String GSP_FAM_16 = "Node_16-0_gspfams";
 
 
 	

@@ -132,8 +132,47 @@ public class CommonUtil {
 		return null;
 	}
 	
+	public static String getNodeIp(String nodeNum) {
+		logger.debug("CommonUtil :: getNode :: nodeNum :: " + nodeNum);
+		if(nodeNum.equals(DiSCConstants.GSP_FAM_1)) {
+			return DiSCConstants.IP_1;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_2)) {
+			return DiSCConstants.IP_2;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_3)) {
+			return DiSCConstants.IP_3;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_4)) {
+			return DiSCConstants.IP_4;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_5)) {
+			return DiSCConstants.IP_5;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_6)) {
+			return DiSCConstants.IP_6;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_7)) {
+			return DiSCConstants.IP_7;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_8)) {
+			return DiSCConstants.IP_8;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_9)) {
+			return DiSCConstants.IP_9;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_10)) {
+			return DiSCConstants.IP_10;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_11)) {
+			return DiSCConstants.IP_11;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_12)) {
+			return DiSCConstants.IP_12;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_13)) {
+			return DiSCConstants.IP_13;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_14)) {
+			return DiSCConstants.IP_14;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_15)) {
+			return DiSCConstants.IP_15;
+		} else if(nodeNum.equals(DiSCConstants.GSP_FAM_16)) {
+			return DiSCConstants.IP_16;
+		}
+		
+		return null;
+	}
+	
 	public static Double[][] convertToMatrix(LinkedList<LinkedList<Double>> inp) {
-		Double[][] retArr = new Double[2][4]; 
+		Double[][] retArr = new Double[inp.size()][inp.get(0).size()]; 
 		int i=0;
 		for(LinkedList<Double> lst : inp) {
 			int j=0;
