@@ -13,13 +13,7 @@ import json
 def enterConfig(request) :
 
 		#Check for any existing gossip process running.
-		try:
-			output = subprocess.check_output(shlex.split("ssh arung@hp142.utah.cloudlab.us 'ps -xww | grep \'[g]ossip\''"))
-			print("Output ::", output)
-			if not (output is None):
-				return render(request, '../templates/error.html')
-		except:
-			print("No Existing Gossip Process Found")
+
 
 		if request.method == 'POST' :
 			form = ConfigForm(request.POST)
@@ -35,6 +29,49 @@ def enterConfig(request) :
 				family = reqFam.replace("|",",")
 				print("Dataset :: ", dataset)
 				print("Family :: ", family)
+
+				#nodeResp = executeShell("ssh arung@hp142.utah.cloudlab.us 'python3 getNodeResp.py" + family + '")
+				#nodeResp = executeShell("ssh arung@hp142.utah.cloudlab.us 'python3 test.py " + family + "'")
+				nodeRes = str(subprocess.getstatusoutput("ssh arung@hp142.utah.cloudlab.us 'python3 test.py " + family + "'")).replace('(','').replace(')','').split(',')[1].replace('\'','')
+				print('Node Resp :: raw data ::' + nodeRes + "::")
+
+				node = -1
+				if nodeRes == ' Node_1-0_gspfams' :
+					node = 1
+				elif nodeRes == ' Node_2-0_gspfams' :
+					node = 2
+				elif nodeRes == ' Node_3-0_gspfams' :
+					print("Setting 3")
+					node = 3
+				elif nodeRes == ' Node_4-0_gspfams' :
+					node = 4
+				elif nodeRes == ' Node_5-0_gspfams' :
+					node = 5
+				elif nodeRes == ' Node_6-0_gspfams' :
+					node = 6
+				elif nodeRes == ' Node_7-0_gspfams' :
+					node = 7
+				elif nodeRes == ' Node_8-0_gspfams' :
+					node = 8
+				elif nodeRes == ' Node_9-0_gspfams' :
+					node = 9
+				elif nodeRes == ' Node_10-0_gspfams' :
+					node = 10
+				elif nodeRes == ' Node_11-0_gspfams' :
+					node = 11
+				elif nodeRes == ' Node_12-0_gspfams' :
+					node = 12
+				elif nodeRes == ' Node_13-0_gspfams' :
+					node = 13
+				elif nodeRes == ' Node_14-0_gspfams' :
+					node = 14
+				elif nodeRes == ' Node_15-0_gspfams' :
+					node = 15
+				elif nodeRes == ' Node_16-0_gspfams' :
+					node = 16
+
+				#nodeResp = subprocess.call(shlex.split("ssh arung@hp142.utah.cloudlab.us 'python3 test.py " + family + "'"))
+				print("The node responsible for the family :: ", node)
 
 				#Hardcoded family. Needs to be in a dropdown
 				#family = "jet_4_eta,jet_2_b-tag,jet_2_phi"
@@ -57,7 +94,7 @@ def enterConfig(request) :
 
 				f = open("form.json", "w")
 				f.write("{\"N\":"+str(n)+",\"L\":"+str(l)+",\"K\":"+str(k)+",\"R\":"+str(r)+",\"Dataset\":\""+dataset+"\",\"Family\":\""+reqFam+"\"}")
-				return render(request, '../templates/data.html', {'N':n,'L':l,'K':k,'R':r,'Dataset':dataset,'Family':reqFam})
+				return render(request, '../templates/data.html', {'N':n,'L':l,'K':k,'R':r,'Dataset':dataset,'Family':reqFam,'NodeResp':node})
 
 		form = ConfigForm()
 		messages.success(request, 'Form submission successful')

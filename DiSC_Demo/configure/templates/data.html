@@ -49,7 +49,7 @@
             target="_blank">About DiSC</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Config</a>
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Spark Execution</a>
           </li>
 
         </ul>
@@ -79,7 +79,7 @@
   </a>
 
   <div class="list-group list-group-flush">
-    <br><br><br><br>
+    <br><br><br>
     <form class="form">
         <div class="form-group">
           <label>N (No. of Nodes):</label><br>
@@ -94,18 +94,21 @@
           <input type="text" class="form-control" value={{K}} readonly>
         </div>
         <div class="form-group">
-          <label>R (Accuracy Tuning Parameter):</label>
+          <label>r (Accuracy Tuning Parameter):</label>
           <input type="text" class="form-control" value={{R}} readonly>
+        </div>
+        <div class="form-group">
+          <label>Scoring Function :</label>
+          <input type="text" class="form-control" value="K2" readonly>
         </div>
         <div class="form-group">
           <label>Dataset:</label>
           <input type="text" class="form-control" value={{Dataset}} readonly>
         </div>
         <div class="form-group">
-          <label>Family:</label>
+          <label>Family To Visualize:</label>
           <input type="text" class="form-control" value={{Family}} readonly>
         </div>
-        <button id="button" class="btn btn-default">ReSubmit</button>
       </form>
   </div>
 </div>
@@ -125,22 +128,27 @@
         <!--Card-->
         <div class="card">
           <div class="card-header text-center">
-            Error Stream
+            Convergence of Relative Error
           </div>
           <!--Card content-->
           <div class="card-body">
             <div class="charts">
+              <input type="hidden" id="NodeResp" value={{NodeResp}}>
               <div class="dataAccContainer">
-                <div id="accordion">
+                <div id="tabs">
                   {% load my_filters %}
-                  {% for i in 15|times %}
-                  <h3>Node {{forloop.counter}}</h3>
-                  <div>
+                  <ul>
+                    {% for i in 16|times %}
+                    <li><a href="#tabs-{{forloop.counter}}" style="font-size: 13px;">Node {{forloop.counter}}</a></li>
+                    {% endfor %}
+                  </ul>
+                  {% for i in 16|times %}
+                  <div id="tabs-{{forloop.counter}}">
                     <div id="chartContainer{{forloop.counter}}" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
                   </div>
                   {% endfor %}
                 </div>
-                <p>*Note: Graphs would appear, once the data starts streaming.
+              <p>*Note: Graphs would appear, once the data starts streaming.</p>
                 </div>
               </div>
             </div>
@@ -152,15 +160,15 @@
         <!--Grid column-->
         <div class="col-md-6 mb-4">
           <!--Card-->
-          <div class="card mb-4">
+          <div class="card">
             <!-- Card header -->
             <div class="card-header text-center">
-              Gossiping Visualization
+              Messages Exchanged During Gossip
             </div>
             <!--Card content-->
             <div class="card-body">
               <div id="container">
-                <input type="hidden" id="NodesCount" value={{N}}>
+                <input type="hidden" id="NodesCount" value=16>
                 <!-- To Do:
                 1) Allign the text to center.
                 2) If Possible change the squares to circles -->

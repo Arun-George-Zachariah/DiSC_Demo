@@ -18,9 +18,13 @@ $(document).ready(function() {
   var IP15 = "128.110.154.227";
   var IP16 = "128.110.154.155";
 
-  //To display accordions
+  //To display tabs
+  var nodeResp=document.getElementById('NodeResp').value;
   $(function() {
-    $( "#accordion" ).accordion();
+    $( "#tabs" ).tabs({
+      active: nodeResp-1
+    });
+
   });
 
   //Initializing Number of nodes for displaying family size.
@@ -65,7 +69,6 @@ $(document).ready(function() {
     title :{
       text: "Relative Error"
     },
-
     axisX: {
       includeZero: true,
       title: 'Time (Seconds)',
