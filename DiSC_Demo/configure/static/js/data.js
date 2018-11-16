@@ -41,7 +41,8 @@ $(document).ready(function() {
       interval: 1
     },
     axisY:{
-      title: "Family Size"
+      title: "Family Size",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "column",
@@ -76,7 +77,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -137,7 +139,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -198,7 +201,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -259,7 +263,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -320,7 +325,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -381,7 +387,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -442,7 +449,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -503,7 +511,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -564,7 +573,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -625,7 +635,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -686,7 +697,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -747,7 +759,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -808,7 +821,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -869,7 +883,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -930,7 +945,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",
@@ -991,7 +1007,8 @@ $(document).ready(function() {
     axisY: {
       includeZero: true,
       title: "Avg. Relative Error",
-      suffix: "%"
+      suffix: "%",
+      gridColor: "#b0b5bc"
     },
     data: [{
       type: "line",

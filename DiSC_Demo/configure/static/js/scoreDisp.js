@@ -8,7 +8,10 @@ var ajax = function(url, type) {
   req.onreadystatechange = function() {
     if (req.readyState == 4 && req.status == 200) {
       output = JSON.parse(req.responseText)
-      $.blockUI({ message: '<div style="top:25%; position:relative;"><br><p style="font-size: 20px;">The Estimated score calculated is :: ' + output.EstScore + ' while the actual score is '+ output.ActScore + '.</p></div>' });
+      alert("The Score has been generated!")
+      $( "#score" ).append("The Estimated score calculated is "+ output.EstScore + " while the actual score is "+ output.ActScore + "." );
+      //Preventing UI from being blocked.
+      //$.blockUI({ message: '<div style="top:25%; position:relative;"><br><p style="font-size: 20px;">The Estimated score calculated is :: ' + output.EstScore + ' while the actual score is '+ output.ActScore + '.</p></div>' });
     }
   };
   req.send("");

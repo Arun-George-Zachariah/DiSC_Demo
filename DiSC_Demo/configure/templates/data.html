@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="../static/images/favicon.ico"/>
+  <link rel="stylesheet" href="../static/styles/home.css">
   <link href="../static/styles/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../static/styles/mdb.css">
   <link rel="stylesheet" href="../static/styles/style.css">
-  <link rel="stylesheet" href="../static/styles/home.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -21,6 +21,13 @@
   <script src="../static/js/displayNodes.js"></script>
   <script src="../static/js/scoreDisp.js"></script>
 </head>
+<style>
+/* To change the color scheme of active tabs */
+.ui-tabs .ui-tabs-active {
+    background-color: #38ACEC;
+}
+
+</style>
 <body class="grey lighten-3">
   <!--Main Navigation-->
   <header>
@@ -109,6 +116,8 @@
           <label>Family To Visualize:</label>
           <input type="text" class="form-control" value={{Family}} readonly>
         </div>
+        <br><br>
+        <div id="score"></div>
       </form>
   </div>
 </div>
@@ -172,7 +181,13 @@
                 <!-- To Do:
                 1) Allign the text to center.
                 2) If Possible change the squares to circles -->
-                <svg height="600" width="600" id = "svg">
+                <svg height="600" width="600" id = "svg" class="svgStyle">
+                  defs>
+    <marker style="z-index: 10;" id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f00" />
+<animate attributeType="XML" attributeName="opacity" from="0" to="1" dur="2s" begin="0s" repeatCount="0" fill="freeze" />
+    </marker>
+  </defs>
                 </svg>
               </div>
             </div>
