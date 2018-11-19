@@ -11,7 +11,6 @@ import json
 
 # Create your views here.
 def enterConfig(request) :
-
 		#Check for any existing gossip process running.
 
 
@@ -30,9 +29,7 @@ def enterConfig(request) :
 				print("Dataset :: ", dataset)
 				print("Family :: ", family)
 
-				#nodeResp = executeShell("ssh arung@hp142.utah.cloudlab.us 'python3 getNodeResp.py" + family + '")
-				#nodeResp = executeShell("ssh arung@hp142.utah.cloudlab.us 'python3 test.py " + family + "'")
-				nodeRes = str(subprocess.getstatusoutput("ssh arung@hp142.utah.cloudlab.us 'python3 test.py " + family + "'")).replace('(','').replace(')','').split(',')[1].replace('\'','')
+				nodeRes = str(subprocess.getstatusoutput("ssh arung@ms0406.utah.cloudlab.us 'python /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/getNodeResp.py " + family + "'")).replace('(','').replace(')','').split(',')[1].replace('\'','')
 				print('Node Resp :: raw data ::' + nodeRes + "::")
 
 				node = -1
@@ -70,7 +67,6 @@ def enterConfig(request) :
 				elif nodeRes == ' Node_16-0_gspfams' :
 					node = 16
 
-				#nodeResp = subprocess.call(shlex.split("ssh arung@hp142.utah.cloudlab.us 'python3 test.py " + family + "'"))
 				print("The node responsible for the family :: ", node)
 
 				#Hardcoded family. Needs to be in a dropdown
@@ -79,18 +75,18 @@ def enterConfig(request) :
 				if dataset == 'Higgs' :
 					logFile = "/users/arung/higgs.r" + str(r) + ".k" + str(k) + ".txt"
 					#Stopping an existing gossip process
-					subprocess.call(shlex.split("ssh arung@hp142.utah.cloudlab.us 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs/stopHiggsGossip.sh " + str(n-1) + "'"))
+					subprocess.call(shlex.split("ssh arung@ms0406.utah.cloudlab.us 'bash /users/arung/stopHiggsGossip.sh " + str(n-1) + "'"))
 					#Initializing the Streaming process.
-					subprocess.call(shlex.split("ssh arung@hp142.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts.txt'"))
+					subprocess.call(shlex.split("ssh arung@ms0406.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts'"))
 					#Starting the gossip process
-					_thread.start_new_thread(executeShell , ("ssh arung@hp142.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
+					_thread.start_new_thread(executeShell , ("ssh arung@ms0406.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
 				elif dataset == 'Synthetic_Dataset' :
 					_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.syn.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 				elif dataset == 'Twitter' :
 					logFile = "/users/arung/higgs.r" + str(r) + ".k" + str(k) + ".txt"
-					subprocess.call(shlex.split("ssh arung@hp142.utah.cloudlab.us 'bash stopHiggsGossip.sh " + str(n-1) + "'"))
-					subprocess.call(shlex.split("ssh arung@hp142.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts.txt'"))
-					_thread.start_new_thread(executeShell , ("ssh arung@hp142.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash runDemo.twtr.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
+					subprocess.call(shlex.split("ssh arung@ms0406.utah.cloudlab.us 'bash stopHiggsGossip.sh " + str(n-1) + "'"))
+					subprocess.call(shlex.split("ssh arung@ms0406.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts.txt'"))
+					_thread.start_new_thread(executeShell , ("ssh arung@ms0406.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash runDemo.twtr.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 
 				f = open("form.json", "w")
 				f.write("{\"N\":"+str(n)+",\"L\":"+str(l)+",\"K\":"+str(k)+",\"R\":"+str(r)+",\"Dataset\":\""+dataset+"\",\"Family\":\""+reqFam+"\"}")
@@ -108,7 +104,7 @@ def executeShell(command) :
 def viewPlots(request) :
 	print("Entering the request to print plots.")
 	try:
-		output = subprocess.check_output(shlex.split("ssh arung@hp142.utah.cloudlab.us 'jps | grep jar'"))
+		output = subprocess.check_output(shlex.split("ssh arung@ms0406.utah.cloudlab.us 'jps | grep jar'"))
 		print(output)
 		if not (output is None):
 			print("Gossip is in progress")
@@ -119,7 +115,7 @@ def viewPlots(request) :
 		f = open("form.json", "r")
 		data = json.load(f)
 		print(data["N"])
-		subprocess.check_output(shlex.split("ssh arung@hp142.utah.cloudlab.us 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/startService.sh " + str(data["N"]) + "'"))
+		subprocess.check_output(shlex.split("ssh arung@ms0406.utah.cloudlab.us 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/startService.sh " + str(data["N"] - 1) + "'"))
 		retData = {'inProgress': 'false'}
 		return JsonResponse(retData)
 		#return render(request, '../templates/plots.html', {'N':data["N"],'L':data["L"],'K':data["K"],'R':data["R"],'Dataset':data["Dataset"],'Family':data["Family"]})

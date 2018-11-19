@@ -8,7 +8,8 @@ var ajax = function(url, type) {
   req.onreadystatechange = function() {
     if (req.readyState == 4 && req.status == 200) {
       output = JSON.parse(req.responseText)
-      alert("The Score has been generated!")
+      //alert("The Score has been generated!")
+      $( "#scorePlaceholder" ).remove();
       $( "#score" ).append("The Estimated score calculated is "+ output.EstScore + " while the actual score is "+ output.ActScore + "." );
       //Preventing UI from being blocked.
       //$.blockUI({ message: '<div style="top:25%; position:relative;"><br><p style="font-size: 20px;">The Estimated score calculated is :: ' + output.EstScore + ' while the actual score is '+ output.ActScore + '.</p></div>' });
@@ -35,7 +36,7 @@ $(document).ready(function() {
             //Killing the worker as the gossip process is completed.
             w.terminate();
             console.log("Gossip is Completed");
-            ajax('http://128.110.154.223:8080/StreamData/CalcScore','GET');
+            ajax('http://128.110.152.141:8080/StreamData/CalcScore','GET');
           }
       };
     } else {

@@ -5,8 +5,8 @@
   width: 6%;
   font-size: 150%;
   position: absolute;
-  background:  #38ACEC ;
-  border-radius: 50%;
+  background:  #C7EFFB ;
+  border-radius: 54%;
   text-align: center;
 }
 
@@ -40,10 +40,4 @@
 /* To change the color scheme of active tabs */
 .ui-tabs .ui-tabs-active {
     background-color: green;
-}
-
-.svgStyle {
-  z-index: 1;
-  position: relative;
-
 }

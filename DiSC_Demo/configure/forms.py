@@ -1,8 +1,9 @@
 from django import forms
 
 EXP_CHOICES=[
-('Alog1','Alog1'),
-('Algo2', 'Algo2'),
+('BDeu','BDeu'),
+('BD', 'BD'),
+('LL', 'LL'),
 ]
 
 class ConfigForm(forms.Form):

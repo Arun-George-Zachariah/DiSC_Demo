@@ -1,22 +1,22 @@
 $(document).ready(function() {
 
   //IP List
-  var IP1 = "128.110.154.223";
-  var IP2 = "128.110.154.206";
-  var IP3 = "128.110.154.141";
-  var IP4 = "128.110.154.233";
-  var IP5 = "128.110.154.161";
-  var IP6 = "128.110.154.238";
-  var IP7 = "128.110.154.144";
-  var IP8 = "128.110.154.231";
-  var IP9 = "128.110.154.138";
-  var IP10 = "128.110.154.214";
-  var IP11 = "128.110.154.146";
-  var IP12 = "128.110.154.150";
-  var IP13 = "128.110.154.236";
-  var IP14 = "128.110.154.152";
-  var IP15 = "128.110.154.227";
-  var IP16 = "128.110.154.155";
+  var IP1 = "128.110.152.141";
+  var IP2 = "128.110.152.142";
+  var IP3 = "128.110.152.149";
+  var IP4 = "128.110.152.164";
+  var IP5 = "128.110.152.175";
+  var IP6 = "128.110.152.170";
+  var IP7 = "128.110.152.165";
+  var IP8 = "128.110.152.168";
+  var IP9 = "128.110.152.137";
+  var IP10 = "128.110.152.180";
+  var IP11 = "128.110.152.156";
+  var IP12 = "128.110.152.150";
+  var IP13 = "128.110.152.154";
+  var IP14 = "128.110.152.145";
+  var IP15 = "128.110.152.138";
+  var IP16 = "128.110.152.155";
 
   //To display tabs
   var nodeResp=document.getElementById('NodeResp').value;
@@ -34,9 +34,11 @@ $(document).ready(function() {
   //Creating the Family Size Chart.
   var chart = new CanvasJS.Chart("chartContainer", {
     title:{
-      text:"Reduction in the Family List Size"
+      text:"Reduction in the Family List Size",
+      fontSize:20,
+      fontFamily:"Helvetica"
     },
-    width:1450,
+    width:1360,
     axisX:{
       interval: 1
     },
@@ -68,7 +70,7 @@ $(document).ready(function() {
 
   var chart1 = new CanvasJS.Chart("chartContainer1", {
     title :{
-      text: "Relative Error"
+
     },
     axisX: {
       includeZero: true,
@@ -129,7 +131,7 @@ $(document).ready(function() {
 
   var chart2 = new CanvasJS.Chart("chartContainer2", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -191,7 +193,7 @@ $(document).ready(function() {
 
   var chart3 = new CanvasJS.Chart("chartContainer3", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -253,7 +255,7 @@ $(document).ready(function() {
 
   var chart4 = new CanvasJS.Chart("chartContainer4", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -315,7 +317,7 @@ $(document).ready(function() {
 
   var chart5 = new CanvasJS.Chart("chartContainer5", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -377,7 +379,7 @@ $(document).ready(function() {
 
   var chart6 = new CanvasJS.Chart("chartContainer6", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -439,7 +441,7 @@ $(document).ready(function() {
 
   var chart7 = new CanvasJS.Chart("chartContainer7", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -501,7 +503,7 @@ $(document).ready(function() {
 
   var chart8 = new CanvasJS.Chart("chartContainer8", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -563,7 +565,7 @@ $(document).ready(function() {
 
   var chart9 = new CanvasJS.Chart("chartContainer9", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -625,7 +627,7 @@ $(document).ready(function() {
 
   var chart10 = new CanvasJS.Chart("chartContainer10", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -687,7 +689,7 @@ $(document).ready(function() {
 
   var chart11 = new CanvasJS.Chart("chartContainer11", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -749,7 +751,7 @@ $(document).ready(function() {
 
   var chart12 = new CanvasJS.Chart("chartContainer12", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -811,7 +813,7 @@ $(document).ready(function() {
 
   var chart13 = new CanvasJS.Chart("chartContainer13", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -873,7 +875,7 @@ $(document).ready(function() {
 
   var chart14 = new CanvasJS.Chart("chartContainer14", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -935,7 +937,7 @@ $(document).ready(function() {
 
   var chart15 = new CanvasJS.Chart("chartContainer15", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {
@@ -997,7 +999,7 @@ $(document).ready(function() {
 
   var chart16 = new CanvasJS.Chart("chartContainer16", {
     title :{
-      text: "Relative Error"
+
     },
 
     axisX: {

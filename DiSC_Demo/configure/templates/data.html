@@ -3,6 +3,9 @@
 <head>
   <title>DiSC</title>
   <meta charset="utf-8">
+  <meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="../static/images/favicon.ico"/>
   <link rel="stylesheet" href="../static/styles/home.css">
@@ -24,7 +27,7 @@
 <style>
 /* To change the color scheme of active tabs */
 .ui-tabs .ui-tabs-active {
-    background-color: #38ACEC;
+  background-color: #38ACEC;
 }
 
 </style>
@@ -83,43 +86,44 @@
   <a class="img-fluid" href="http://localhost:8000/disc/"
   target="_blank">
   <strong class="blue-text img-fluid">DiSC</strong>
-  </a>
+</a>
 
-  <div class="list-group list-group-flush">
-    <br><br><br>
-    <form class="form">
-        <div class="form-group">
-          <label>N (No. of Nodes):</label><br>
-          <input type="text" class="form-control" value={{N}} readonly>
-        </div>
-        <div class="form-group">
-          <label>L (LSH Parameter):</label>
-          <input type="text" class="form-control" value={{L}} readonly>
-        </div>
-        <div class="form-group">
-          <label>K (LSH Parameter):</label>
-          <input type="text" class="form-control" value={{K}} readonly>
-        </div>
-        <div class="form-group">
-          <label>r (Accuracy Tuning Parameter):</label>
-          <input type="text" class="form-control" value={{R}} readonly>
-        </div>
-        <div class="form-group">
-          <label>Scoring Function :</label>
-          <input type="text" class="form-control" value="K2" readonly>
-        </div>
-        <div class="form-group">
-          <label>Dataset:</label>
-          <input type="text" class="form-control" value={{Dataset}} readonly>
-        </div>
-        <div class="form-group">
-          <label>Family To Visualize:</label>
-          <input type="text" class="form-control" value={{Family}} readonly>
-        </div>
-        <br><br>
-        <div id="score"></div>
-      </form>
-  </div>
+<div class="list-group list-group-flush">
+  <br><br><br>
+  <form class="form">
+    <div class="form-group">
+      <label class = "font-weight-bold">N</label><label>&nbsp;(No. of Nodes):</label><br>
+      <input type="text" class="form-control" value={{N}} readonly>
+    </div>
+    <div class="form-group">
+      <label class = "font-weight-bold">L</label><label>&nbsp;(LSH Parameter):</label>
+      <input type="text" class="form-control" value={{L}} readonly>
+    </div>
+    <div class="form-group">
+      <label class = "font-weight-bold">K</label><label>&nbsp;(LSH Parameter):</label>
+      <input type="text" class="form-control" value={{K}} readonly>
+    </div>
+    <div class="form-group">
+      <label class = "font-weight-bold">r</label><label>&nbsp;(Accuracy Tuning Parameter):</label>
+      <input type="text" class="form-control" value={{R}} readonly>
+    </div>
+    <div class="form-group">
+      <label class = "font-weight-bold">Dataset:</label>
+      <input type="text" class="form-control" value={{Dataset}} readonly>
+    </div>
+    <div class="form-group">
+      <label class = "font-weight-bold">Family To Visualize:</label>
+      <input type="text" class="form-control" value={{Family}} readonly>
+    </div>
+    <div class="form-group">
+      <label class = "font-weight-bold">Scoring Function :</label>
+      <input type="text" class="form-control" value="BDeu" readonly>
+    </div>
+    <br><br>
+    <div id="scorePlaceholder">*Note: Score would be displayed here once the gossip is complete.</div>
+    <div id="score"></div>
+  </form>
+</div>
 </div>
 <!-- Sidebar -->
 
@@ -137,7 +141,7 @@
         <!--Card-->
         <div class="card">
           <div class="card-header text-center">
-            Convergence of Relative Error
+            Relative Error for the Family : "{{Family}}"
           </div>
           <!--Card content-->
           <div class="card-body">
@@ -153,69 +157,68 @@
                   </ul>
                   {% for i in 16|times %}
                   <div id="tabs-{{forloop.counter}}">
-                    <div id="chartContainer{{forloop.counter}}" style="height: 380px; max-width: 1020px; margin: 0px auto;"></div>
+                    <div id="chartContainer{{forloop.counter}}" style="height: 421px; max-width: 1020px; margin: 0px auto;"></div>
                   </div>
                   {% endfor %}
                 </div>
-              <p>*Note: Graphs would appear, once the data starts streaming.</p>
-                </div>
+                <p>*Note: Graphs would appear, once the data starts streaming.</p>
               </div>
             </div>
           </div>
-          <!--/.Card-->
         </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-6 mb-4">
-          <!--Card-->
-          <div class="card">
-            <!-- Card header -->
-            <div class="card-header text-center">
-              Messages Exchanged During Gossip
-            </div>
-            <!--Card content-->
-            <div class="card-body">
-              <div id="container">
-                <input type="hidden" id="NodesCount" value=16>
-                <!-- To Do:
-                1) Allign the text to center.
-                2) If Possible change the squares to circles -->
-                <svg height="600" width="600" id = "svg" class="svgStyle">
-                  defs>
-    <marker style="z-index: 10;" id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#f00" />
-<animate attributeType="XML" attributeName="opacity" from="0" to="1" dur="2s" begin="0s" repeatCount="0" fill="freeze" />
-    </marker>
-  </defs>
-                </svg>
-              </div>
-            </div>
-          </div>
-          <!--/.Card-->
-        </div>
-        <!--Grid column-->
+        <!--/.Card-->
       </div>
-      <!--Grid row-->
+      <!--Grid column-->
 
-      <!--Grid row-->
-      <div class="row wow fadeIn">
-        <!--Grid column-->
-        <div id = "div1" class="col-md-10 mb-4">
-          <!--Card-->
-          <div class="card mb-4">
-            <!--Card content-->
-            <div id="chartContainer" style="height: 400px; width: 100%;"></div>
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <!--Card-->
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header text-center">
+            Messages Exchanged During Gossip
           </div>
-          <!--/.Card-->
-
+          <!--Card content-->
+          <div class="card-body">
+            <div id="container">
+              <input type="hidden" id="NodesCount" value=16>
+              <!-- To Do:
+              1) Allign the text to center.
+              2) If Possible change the squares to circles -->
+              <svg height="600" width="600" id = "svg" class="svgStyle">
+                defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#f00" />
+                </marker>
+              </defs>
+            </svg>
+          </div>
         </div>
-        <!--Grid column-->
-
       </div>
-      <!--Grid row-->
+      <!--/.Card-->
     </div>
-  </main>
+    <!--Grid column-->
+  </div>
+  <!--Grid row-->
+
+  <!--Grid row-->
+  <div class="row wow fadeIn">
+    <!--Grid column-->
+    <div id = "div3" class="col-md-10 mb-4">
+      <!--Card-->
+      <div class="card col-md-15">
+        <!--Card content-->
+        <div id="chartContainer" style="height: 400px; width: 100%;"></div>
+      </div>
+      <!--/.Card-->
+
+    </div>
+    <!--Grid column-->
+
+  </div>
+  <!--Grid row-->
+</div>
+</main>
 </body>
 
 </html>

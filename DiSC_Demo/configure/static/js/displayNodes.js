@@ -1,20 +1,20 @@
 //IP List
-var IP1 = "128.110.154.223";
-var IP2 = "128.110.154.206";
-var IP3 = "128.110.154.141";
-var IP4 = "128.110.154.233";
-var IP5 = "128.110.154.161";
-var IP6 = "128.110.154.238";
-var IP7 = "128.110.154.144";
-var IP8 = "128.110.154.231";
-var IP9 = "128.110.154.138";
-var IP10 = "128.110.154.214";
-var IP11 = "128.110.154.146";
-var IP12 = "128.110.154.150";
-var IP13 = "128.110.154.236";
-var IP14 = "128.110.154.152";
-var IP15 = "128.110.154.227";
-var IP16 = "128.110.154.155";
+var IP1 = "128.110.152.141";
+var IP2 = "128.110.152.142";
+var IP3 = "128.110.152.149";
+var IP4 = "128.110.152.164";
+var IP5 = "128.110.152.175";
+var IP6 = "128.110.152.170";
+var IP7 = "128.110.152.165";
+var IP8 = "128.110.152.168";
+var IP9 = "128.110.152.137";
+var IP10 = "128.110.152.180";
+var IP11 = "128.110.152.156";
+var IP12 = "128.110.152.150";
+var IP13 = "128.110.152.154";
+var IP14 = "128.110.152.145";
+var IP15 = "128.110.152.138";
+var IP16 = "128.110.152.155";
 
 var node1Count = 0;
 var node2Count = 0;
@@ -65,7 +65,7 @@ $(document).ready(function(){
   }
 
   var map = new Object();
-  var radius = 200;
+  var radius = 180;
   var fields = $('.field'), container = $('#container'), width = container.width(), height = container.height();
   var angle = 0, step = (2*Math.PI) / fields.length;
   var i=1;
@@ -84,7 +84,7 @@ $(document).ready(function(){
 
 
   var countMap = new Object();
-  var countRadius = 272;
+  var countRadius = 250;
   var countfields = $('.count'), container = $('#container'), width = container.width(), height = container.height();
   var angle = 0, step = (2*Math.PI) / fields.length;
   var i=1;
@@ -113,11 +113,23 @@ $(document).ready(function(){
         var yb = destMap["y"];
         //console.log("x1 :: " + xa + " :: y1 :: " + ya);
         //console.log("x2 :: " + xb + " :: y2 :: " + yb);
-        var line= makeSVG('line', {id: key1+"-"+key2, display: "none", class : "key-anim1",x1: xa+20, y1: ya+20, x2: xb+20, y2:yb+20, stroke: 'black', 'stroke-width': 2});
+        var line= makeSVG('line', {id: key1+"-"+key2, display: "none",x1: xa+20, y1: ya+20, x2: xb+20, y2:yb+20, stroke: 'black', 'stroke-width': 2, 'marker-end':"url(#arrow)"});
         document.getElementById("svg").appendChild(line);
+
+        //Adding the arrow heads
+        var arr1 = makeSVG('animate', {id: key1+"-"+key2, display: "none",attributeType:"XML",attributeName:"x2",from:xa+20,to:xb+20,dur:"1.02s", repeatCount:"indefinite"});
+        line.appendChild(arr1);
+        var arr2 = makeSVG('animate', {id: key1+"-"+key2, display: "none",attributeType:"XML",attributeName:"y2",from:ya+20,to:yb+20,dur:"1.02", repeatCount:"indefinite"});
+        line.appendChild(arr2);
       }
     }
   }
+  //triggerNode1("2");
+  //triggerNode8("16");
+  //setTimeout(function() {
+    //triggerNode1("2");
+  //}, 3000);
+
 });
 
 function triggerNode1(eventData) {
