@@ -30,6 +30,14 @@
   background-color: #38ACEC;
 }
 
+.tempFont {
+  font-size:22px
+}
+
+.tempFont2 {
+  font-size:22px
+}
+
 </style>
 <body class="grey lighten-3">
   <!--Main Navigation-->
@@ -41,7 +49,7 @@
         <!-- Brand -->
         <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/"
         target="_blank">
-        <strong class="blue-text">DiSC</strong>
+        <strong class="blue-text">DiS</strong>
       </a>
 
       <!-- Links -->
@@ -89,38 +97,38 @@
 </a>
 
 <div class="list-group list-group-flush">
-  <br><br><br>
+  <br>
   <form class="form">
     <div class="form-group">
-      <label class = "font-weight-bold">N</label><label>&nbsp;(No. of Nodes):</label><br>
-      <input type="text" class="form-control" value={{N}} readonly>
+      <label class = "font-weight-bold tempFont">N</label><label>&nbsp;(No. of Nodes):</label><br>
+      <input type="text" class="form-control tempFont2" value={{N}} readonly>
     </div>
     <div class="form-group">
-      <label class = "font-weight-bold">L</label><label>&nbsp;(LSH Parameter):</label>
-      <input type="text" class="form-control" value={{L}} readonly>
+      <label class = "font-weight-bold tempFont">L</label><label>&nbsp;(LSH Parameter):</label>
+      <input type="text" class="form-control tempFont2" value={{L}} readonly>
     </div>
     <div class="form-group">
-      <label class = "font-weight-bold">K</label><label>&nbsp;(LSH Parameter):</label>
-      <input type="text" class="form-control" value={{K}} readonly>
+      <label class = "font-weight-bold tempFont">K</label><label>&nbsp;(LSH Parameter):</label>
+      <input type="text" class="form-control tempFont2" value={{K}} readonly>
     </div>
     <div class="form-group">
-      <label class = "font-weight-bold">r</label><label>&nbsp;(Accuracy Tuning Parameter):</label>
-      <input type="text" class="form-control" value={{R}} readonly>
+      <label class = "font-weight-bold tempFont">r</label><label>&nbsp;(Accuracy Tuning Parameter):</label>
+      <input type="text" class="form-control tempFont2" value={{R}} readonly>
     </div>
     <div class="form-group">
-      <label class = "font-weight-bold">Dataset:</label>
-      <input type="text" class="form-control" value={{Dataset}} readonly>
+      <label class = "font-weight-bold tempFont">Dataset:</label>
+      <input type="text" class="form-control tempFont2" value={{Dataset}} readonly>
     </div>
     <div class="form-group">
-      <label class = "font-weight-bold">Family To Visualize:</label>
-      <input type="text" class="form-control" value={{Family}} readonly>
+      <label class = "font-weight-bold tempFont">Family To Visualize:</label>
+      <input type="text" class="form-control tempFont2" value={{Family}} readonly>
     </div>
     <div class="form-group">
-      <label class = "font-weight-bold">Scoring Function :</label>
-      <input type="text" class="form-control" value="BDeu" readonly>
+      <label class = "font-weight-bold tempFont">Scoring Function :</label>
+      <input type="text" class="form-control tempFont2" value="BDeu" readonly>
     </div>
     <br><br>
-    <div id="scorePlaceholder">*Note: Score would be displayed here once the gossip is complete.</div>
+    <div id="scorePlaceholder"><p class="tempFont2">*Note: Score would be displayed here once the gossip is complete.</</div>
     <div id="score"></div>
   </form>
 </div>
@@ -140,7 +148,7 @@
       <div class="col-md-6 mb-4">
         <!--Card-->
         <div class="card">
-          <div class="card-header text-center">
+          <div class="card-header text-center tempFont2">
             Relative Error for the Family : "{{Family}}"
           </div>
           <!--Card content-->
@@ -175,7 +183,7 @@
         <!--Card-->
         <div class="card">
           <!-- Card header -->
-          <div class="card-header text-center">
+          <div class="card-header text-center tempFont2">
             Messages Exchanged During Gossip
           </div>
           <!--Card content-->

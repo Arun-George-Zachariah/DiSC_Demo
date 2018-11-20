@@ -35,7 +35,7 @@ $(document).ready(function() {
   var chart = new CanvasJS.Chart("chartContainer", {
     title:{
       text:"Reduction in the Family List Size",
-      fontSize:20,
+      fontSize:24,
       fontFamily:"Helvetica"
     },
     width:1360,
@@ -78,7 +78,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -140,7 +140,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -202,7 +202,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -264,7 +264,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -326,7 +326,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -388,7 +388,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -450,7 +450,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -512,7 +512,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -574,7 +574,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -636,7 +636,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -698,7 +698,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -760,7 +760,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -822,7 +822,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -884,7 +884,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -946,7 +946,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -1008,7 +1008,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error",
+      title: "Avg. Relative Error (%)",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
