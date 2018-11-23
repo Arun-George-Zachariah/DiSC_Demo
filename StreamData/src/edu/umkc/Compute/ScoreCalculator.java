@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.util.LinkedList;
 import java.util.Map;
 
+import org.apache.commons.math3.special.Gamma;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,12 +32,14 @@ public class ScoreCalculator {
 		for(int i=0; i<inp[0].length; i++) {
 			Double sumM = inp[0][i] + inp[1][i];
 			Double sumAplha = prior[0][i] + prior[1][i];
-			score += Math.log10(sumAplha/(sumAplha + sumM));
+			score += Gamma.logGamma(sumAplha) - Gamma.logGamma(sumAplha + sumM);
+			//score += Math.log10(sumAplha/(sumAplha + sumM));
 		}
 		
 		for(int i=0; i<inp.length; i++) {
 			for(int j=0; j<inp[0].length; j++) {
-				score += Math.log10((prior[i][j] + inp[i][j])/prior[i][j]);
+				score += Gamma.logGamma(prior[i][j] + inp[i][j]) - Gamma.logGamma(prior[i][j]);
+				//score += Math.log10((prior[i][j] + inp[i][j])/prior[i][j]);
 			}
 		}
 		

@@ -47,7 +47,6 @@ public class ScoreServlet extends HttpServlet {
 		// Find out the node responsible for the Family and get the score from the node.
 		if (PropertyReader.getInstance().getProperty(DiSCConstants.NODE_NUM).equals("1")) {
 			try (BufferedReader br = new BufferedReader(new FileReader(new File(DiSCConstants.CONFIG_FILE)))) {
-				logger.debug("Arun");
 				String line = null;
 				boolean isNode1 = false;
 				while ((line = br.readLine()) != null) {
