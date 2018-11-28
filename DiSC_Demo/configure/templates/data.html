@@ -38,6 +38,9 @@
   font-size:22px
 }
 
+.tempFont3 {
+  font-size:20px
+}
 </style>
 <body class="grey lighten-3">
   <!--Main Navigation-->
@@ -57,17 +60,25 @@
 
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <!-- <li class="nav-item active">
             <a class="nav-link waves-effect" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/"
+            target="_blank">Live!</a>
           </li>
           <li class="nav-item">
             <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/"
-            target="_blank">About DiSC</a>
+            target="_blank">Update</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Spark Execution</a>
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/"
+            target="_blank">Summary</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">About</a>
           </li>
 
         </ul>
@@ -116,6 +127,10 @@
       <input type="text" class="form-control tempFont2" value={{R}} readonly>
     </div>
     <div class="form-group">
+      <label class = "font-weight-bold tempFont">r</label><label>Delay Constant:</label>
+      <input type="text" class="form-control tempFont2" value=10 readonly>
+    </div>
+    <div class="form-group">
       <label class = "font-weight-bold tempFont">Dataset:</label>
       <input type="text" class="form-control tempFont2" value={{Dataset}} readonly>
     </div>
@@ -124,11 +139,11 @@
       <input type="text" class="form-control tempFont2" value={{Family}} readonly>
     </div>
     <div class="form-group">
-      <label class = "font-weight-bold tempFont">Scoring Function :</label>
+      <label class = "font-weight-bold tempFont">Scoring Function:</label>
       <input type="text" class="form-control tempFont2" value="BDeu" readonly>
     </div>
     <br><br>
-    <div id="scorePlaceholder"><p class="tempFont2">*Note: Score would be displayed here once the gossip is complete.</</div>
+    <div id="scorePlaceholder"><p class="tempFont2">*Note: Family score will be displayed here once DiSC finishes gossiping.</</div>
     <div id="score"></div>
   </form>
 </div>
@@ -148,8 +163,8 @@
       <div class="col-md-6 mb-4">
         <!--Card-->
         <div class="card">
-          <div class="card-header text-center tempFont2">
-            Relative Error for the Family : "{{Family}}"
+          <div class="card-header text-center tempFont3">
+            Convergence speed for the family: "{{Family}}"
           </div>
           <!--Card content-->
           <div class="card-body">
@@ -165,7 +180,7 @@
                   </ul>
                   {% for i in 16|times %}
                   <div id="tabs-{{forloop.counter}}">
-                    <div id="chartContainer{{forloop.counter}}" style="height: 421px; max-width: 1020px; margin: 0px auto;"></div>
+                    <div id="chartContainer{{forloop.counter}}" style="height: 392px; max-width: 1020px; margin: 0px auto;"></div>
                   </div>
                   {% endfor %}
                 </div>
@@ -184,7 +199,7 @@
         <div class="card">
           <!-- Card header -->
           <div class="card-header text-center tempFont2">
-            Messages Exchanged During Gossip
+            Messages exchanged during gossip
           </div>
           <!--Card content-->
           <div class="card-body">

@@ -1,22 +1,22 @@
 $(document).ready(function() {
 
   //IP List
-  var IP1 = "128.110.152.141";
-  var IP2 = "128.110.152.142";
-  var IP3 = "128.110.152.149";
-  var IP4 = "128.110.152.164";
-  var IP5 = "128.110.152.175";
-  var IP6 = "128.110.152.170";
-  var IP7 = "128.110.152.165";
-  var IP8 = "128.110.152.168";
-  var IP9 = "128.110.152.137";
-  var IP10 = "128.110.152.180";
-  var IP11 = "128.110.152.156";
-  var IP12 = "128.110.152.150";
-  var IP13 = "128.110.152.154";
-  var IP14 = "128.110.152.145";
-  var IP15 = "128.110.152.138";
-  var IP16 = "128.110.152.155";
+  var IP1 = "128.110.154.247";
+  var IP2 = "128.110.154.248";
+  var IP3 = "128.110.154.250";
+  var IP4 = "128.110.154.242";
+  var IP5 = "128.110.155.11";
+  var IP6 = "128.110.155.14";
+  var IP7 = "128.110.155.25";
+  var IP8 = "128.110.155.29";
+  var IP9 = "128.110.155.9";
+  var IP10 = "128.110.155.5";
+  var IP11 = "128.110.154.244";
+  var IP12 = "128.110.155.13";
+  var IP13 = "128.110.155.4";
+  var IP14 = "128.110.154.246";
+  var IP15 = "128.110.154.253";
+  var IP16 = "128.110.155.8";
 
   //To display tabs
   var nodeResp=document.getElementById('NodeResp').value;
@@ -34,7 +34,7 @@ $(document).ready(function() {
   //Creating the Family Size Chart.
   var chart = new CanvasJS.Chart("chartContainer", {
     title:{
-      text:"Reduction in the Family List Size",
+      text:"Family list size on nodes",
       fontSize:24,
       fontFamily:"Helvetica"
     },
@@ -78,7 +78,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -140,7 +140,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -202,7 +202,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -264,7 +264,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -326,7 +326,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -388,7 +388,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -450,7 +450,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -512,7 +512,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -574,7 +574,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -636,7 +636,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -698,7 +698,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -760,7 +760,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -822,7 +822,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -884,7 +884,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -946,7 +946,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
@@ -1008,7 +1008,7 @@ $(document).ready(function() {
     },
     axisY: {
       includeZero: true,
-      title: "Avg. Relative Error (%)",
+      title: "Relative Error",
       suffix: "%",
       gridColor: "#b0b5bc"
     },
