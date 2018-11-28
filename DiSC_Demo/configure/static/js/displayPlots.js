@@ -5,7 +5,7 @@ $(document).ready(function() {
   var req = ajax("http://" + ip + ":8080/StreamData/CalcScore",'GET');
   if (req.readyState == 4 && req.status == 200) {
      output = JSON.parse(req.responseText)
-     $( "#score" ).append("<p class='tempFont2 font-weight-bold'>Estimated score: "+ output.EstScore + "</p><br><p>Actual score: "+ output.ActScore + "</p>" );
+     $( "#score" ).append("<p class='tempFont2 font-weight-bold'>Estimated score: "+ output.EstScore + "</p><br><p class='tempFont2 font-weight-bold'>Actual score: "+ output.ActScore + "</p>" );
   }
 
   //Displaying the Average Time Convergance plots.
