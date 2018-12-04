@@ -15,7 +15,7 @@ var ajax = function(url, type) {
 };
 
 function timedCount() {
-  ajax('http://localhost:8000/disc/plots','GET');
+  ajax('http://localhost:8000/disc/plots?redirect=false','GET');
   self.postMessage(output);
   setTimeout("timedCount()",50000);
 }

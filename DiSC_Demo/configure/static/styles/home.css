@@ -1,47 +1,43 @@
-body {
-    margin:0px;
-    padding:0px;
-    box-sizing:border-box;
-    background:#E5E4E2;
+#container {
+  position: relative;
+}
+.field {
+  width: 6%;
+  font-size: 150%;
+  position: absolute;
+  background:  #C7EFFB ;
+  border-radius: 54%;
+  text-align: center;
 }
 
-.main_sidebar {
-    min-height:100vh;
-    position:fixed;
-    top:0;
-    left:0;
-    width:500px;
-    transition: all 300ms cubic-bezier(0.65, 0.05, 0.36, 1);
-    will-change: left, width;
-    box-shadow: inset -1px 0 10px rgba(0, 0, 0, 0.4);
-    background: #95B9C7;
+.count {
+  position: absolute;
 }
 
-.main {
-    float:right;
-    color:#fff;
-    display:block;
-    width:100%;
-    background:red;
-    min-height:100vh;
+.key-anim1 {
+  -webkit-animation: Drawpath 1s linear forwards;
+  animation: Drawpath 1s linear forwards;
+  stroke-dasharray: 0, 600;
+  marker-end: url(#arrow);
+}
+@-webkit-keyframes Drawpath {
+  from {
+    stroke-dasharray: 0, 600;
+  }
+  to {
+    stroke-dasharray: 600, 600;
+  }
+}
+@keyframes Drawpath {
+  from {
+    stroke-dasharray: 0, 600;
+  }
+  to {
+    stroke-dasharray: 600, 600;
+  }
 }
 
-.formContainer {
-  margin-top:215px;
-  margin-left:30px;
-  margin-right: 50px;
-}
-
-.dataContainer {
-  margin-top:215px;
-  margin-right: 300px;
-  margin-left: 800px;
-}
-
-.container {
-  width:100%;
-}
-
-.dataAccContainer{
-  margin-left: 500px;
+/* To change the color scheme of active tabs */
+.ui-tabs .ui-tabs-active {
+    background-color: green;
 }

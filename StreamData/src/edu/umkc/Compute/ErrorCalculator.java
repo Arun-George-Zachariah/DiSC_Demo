@@ -1,4 +1,4 @@
-package edu.umkc.ErrorCalc;
+package edu.umkc.Compute;
 
 import java.util.Iterator;
 import java.util.LinkedList;

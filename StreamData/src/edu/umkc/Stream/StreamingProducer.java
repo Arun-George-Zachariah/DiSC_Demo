@@ -41,7 +41,7 @@ public class StreamingProducer extends TailerListenerAdapter {
 
 	@OnOpen
 	public void streamData(Session session) {
-		logger.debug("StreamingProvider :: streamData ::  Start2 ");
+		logger.debug("StreamingProducer :: streamData ::  Start");
 		allSessions = session.getOpenSessions();
 		init();
 		if (allSessions != null && allSessions.size() != 0) {
@@ -55,6 +55,7 @@ public class StreamingProducer extends TailerListenerAdapter {
 					}
 				}
 			} catch(Exception e) {
+				logger.error("StreamingProducer :: streamData ::  Exception :: " + e);
 				e.printStackTrace();
 			}
 		}
