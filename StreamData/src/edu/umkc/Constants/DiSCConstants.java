@@ -81,5 +81,12 @@ public class DiSCConstants {
 	public static final String GSP_FAM_14 = "Node_14-0_gspfams";
 	public static final String GSP_FAM_15 = "Node_15-0_gspfams";
 	public static final String GSP_FAM_16 = "Node_16-0_gspfams";
+	
+	public static final String NUM_OF_SLAVES = "NUM_OF_SLAVES";
+	public static final String INPUT_DATA_DIR = "/users/arung/DiSC_SRC/scripts/output/input-data";
+	public static final String FILE_SEPERATOR = "/";
+	public static final String EXP_NAME = "EXP_NAME";
+	public static final String R_VAL = "r";
+	public static final String K_VAL = "K";
 
 }
