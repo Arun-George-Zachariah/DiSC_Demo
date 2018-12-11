@@ -15,7 +15,8 @@ def enterConfig(request) :
 
 
 		if request.method == 'POST' :
-			form = ConfigForm(request.POST)
+			form = ConfigForm(request.POST, request.FILES)
+			print("form.is_valid() :: ", form.is_valid())
 			if form.is_valid() :
 				n = form.cleaned_data['n']
 				l = form.cleaned_data['l']
@@ -24,12 +25,11 @@ def enterConfig(request) :
 				#dataset = form.cleaned_data['dataset']
 				dataset = request.POST.get("select1", "")
 				reqFam = request.POST.get("select2", "")
-				print("Old :: " + reqFam)
 				family = reqFam.replace("|",",")
-				print("Dataset :: ", dataset)
-				print("Family :: ", family)
+				print("Handling Uploaded File")
+				handleUploadedFile(request.FILES['familiesFile'])
 
-				nodeRes = str(subprocess.getstatusoutput("ssh arung@hp166.utah.cloudlab.us	 'python /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/getNodeResp.py " + family + "'")).replace('(','').replace(')','').split(',')[1].replace('\'','')
+				nodeRes = str(subprocess.getstatusoutput("ssh arung@hp187.utah.cloudlab.us	 'python /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/getNodeResp.py " + family + "'")).replace('(','').replace(')','').split(',')[1].replace('\'','')
 				print('Node Resp :: raw data ::' + nodeRes + "::")
 
 				node = -1
@@ -75,18 +75,21 @@ def enterConfig(request) :
 				if dataset == 'Higgs' :
 					logFile = "/users/arung/higgs.r" + str(r) + ".k" + str(k) + ".txt"
 					#Stopping an existing gossip process
-					subprocess.call(shlex.split("ssh arung@hp166.utah.cloudlab.us	 'bash /users/arung/stopHiggsGossip.sh " + str(n-1) + "'"))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us 'bash /users/arung/stopHiggsGossip.sh " + str(n-1) + "'"))
+					#Transfer the families file to the nodes
+					subprocess.call(shlex.split("scp families.txt arung@hp187.utah.cloudlab.us:/dev/data/HIGGS-families.txt"))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/transferFamilies.sh HIGGS-families.txt 15'"))
 					#Initializing the Streaming process.
-					subprocess.call(shlex.split("ssh arung@hp166.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts'"))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts " + str(r) + " " + str(k) + "'"))
 					#Starting the gossip process
-					_thread.start_new_thread(executeShell , ("ssh arung@hp166.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
+					_thread.start_new_thread(executeShell , ("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
 				elif dataset == 'Synthetic_Dataset' :
 					_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.syn.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 				elif dataset == 'Twitter' :
 					logFile = "/users/arung/higgs.r" + str(r) + ".k" + str(k) + ".txt"
-					subprocess.call(shlex.split("ssh arung@hp166.utah.cloudlab.us	 'bash stopHiggsGossip.sh " + str(n-1) + "'"))
-					subprocess.call(shlex.split("ssh arung@hp166.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts.txt'"))
-					_thread.start_new_thread(executeShell , ("ssh arung@hp166.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash runDemo.twtr.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'bash stopHiggsGossip.sh " + str(n-1) + "'"))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts.txt'"))
+					_thread.start_new_thread(executeShell , ("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash runDemo.twtr.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 
 				f = open("form.json", "w")
 				f.write("{\"N\":"+str(n)+",\"L\":"+str(l)+",\"K\":"+str(k)+",\"R\":"+str(r)+",\"Dataset\":\""+dataset+"\",\"Family\":\""+reqFam+"\"}")
@@ -111,7 +114,7 @@ def viewPlots(request) :
 		return render(request, '../templates/plots.html', {'N':data["N"],'L':data["L"],'K':data["K"],'R':data["R"],'Dataset':data["Dataset"],'Family':data["Family"]})
 
 	try:
-		output = subprocess.check_output(shlex.split("ssh arung@hp166.utah.cloudlab.us	 'jps | grep jar'"))
+		output = subprocess.check_output(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'jps | grep jar'"))
 		print(output)
 		if not (output is None):
 			print("Gossip is in progress")
@@ -122,8 +125,14 @@ def viewPlots(request) :
 		f = open("form.json", "r")
 		data = json.load(f)
 		print(data["N"])
-		subprocess.check_output(shlex.split("ssh arung@hp166.utah.cloudlab.us	 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/startService.sh " + str(data["N"] - 1) + "'"))
+		subprocess.check_output(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/startService.sh " + str(data["N"] - 1) + "'"))
 		#retData = {'inProgress': 'false'}
 		#return JsonResponse(retData)
 		print("Return render")
 		return render(request, '../templates/plots.html', {'N':data["N"],'L':data["L"],'K':data["K"],'R':data["R"],'Dataset':data["Dataset"],'Family':data["Family"]})
+
+def handleUploadedFile(f) :
+	print("Entering handleUploadedFile")
+	with open('families.txt', 'wb+') as dest :
+		for chunk in f.chunks() :
+			dest.write(chunk)

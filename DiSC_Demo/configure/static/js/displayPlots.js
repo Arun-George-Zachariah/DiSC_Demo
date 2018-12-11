@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var ip = "128.110.154.247"
+  var ip = "128.110.155.16";
 
   //Display the score calculated.
   var req = ajax("http://" + ip + ":8080/StreamData/CalcScore",'GET');
@@ -30,16 +30,19 @@ $(document).ready(function() {
   req.onreadystatechange = function() {
     if (req.readyState == 4 && req.status == 200) {
       output = JSON.parse(req.responseText);
+      console.log(output)
       Object.keys(output).forEach(function(key) {
-        if(key == "\"Node 1\"") {
+        if(key == "Node 1") {
           val = output[key];
+          console.log(val);
+
           Object.keys(val).forEach(function(inKey) {
             dataPoints1.push({
               label: Number(inKey),
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 2\"") {
+        } else if(key == "Node 2") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints2.push({
@@ -47,7 +50,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 3\"") {
+        } else if(key == "Node 3") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints3.push({
@@ -55,7 +58,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 4\"") {
+        } else if(key == "Node 4") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints4.push({
@@ -63,7 +66,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 5\"") {
+        } else if(key == "Node 5") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints5.push({
@@ -71,7 +74,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 6\"") {
+        } else if(key == "Node 6") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints6.push({
@@ -79,7 +82,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 7\"") {
+        } else if(key == "Node 7") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints7.push({
@@ -87,7 +90,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 8\"") {
+        } else if(key == "Node 8") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints8.push({
@@ -95,7 +98,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 9\"") {
+        } else if(key == "Node 9") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints9.push({
@@ -103,7 +106,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 10\"") {
+        } else if(key == "Node 10") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints10.push({
@@ -111,7 +114,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 11\"") {
+        } else if(key == "Node 11") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints11.push({
@@ -119,7 +122,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 12\"") {
+        } else if(key == "Node 12") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints12.push({
@@ -127,7 +130,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 13\"") {
+        } else if(key == "Node 13") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints13.push({
@@ -135,7 +138,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 14\"") {
+        } else if(key == "Node 14") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints14.push({
@@ -143,7 +146,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 15\"") {
+        } else if(key == "Node 15") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints15.push({
@@ -151,7 +154,7 @@ $(document).ready(function() {
               y: Number(val[inKey])
             });
           });
-        } else if(key == "\"Node 16\"") {
+        } else if(key == "Node 16") {
           val = output[key];
           Object.keys(val).forEach(function(inKey) {
             dataPoints16.push({

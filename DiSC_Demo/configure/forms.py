@@ -12,3 +12,4 @@ class ConfigForm(forms.Form):
 	k = forms.IntegerField(label='K (LSH Parameter)', widget=forms.TextInput(attrs={'class': 'form-control'}))
 	r = forms.IntegerField(label='r (Accuracy Tuning Parameter)', widget=forms.TextInput(attrs={'class': 'form-control'}))
 	scoringFunc = forms.CharField(widget=forms.Select(choices=EXP_CHOICES, attrs={'class': 'form-control'}), label = "Scoring Function :")
+	familiesFile = forms.FileField(label='Families File')

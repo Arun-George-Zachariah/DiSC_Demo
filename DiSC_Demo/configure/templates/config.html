@@ -89,7 +89,7 @@ $(document).ready(function() {
 
 <!-- Note: This needs to be aligned in the center -->
 <div class="list-group list-group-flush">
-  <form method="post" class="form">
+  <form method="post" enctype="multipart/form-data" class="form">
     {% csrf_token %}
     {% for field in form  %}
     <div class="form-group">
