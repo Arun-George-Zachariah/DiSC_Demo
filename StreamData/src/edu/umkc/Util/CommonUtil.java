@@ -184,5 +184,10 @@ public class CommonUtil {
 		}
 		return retArr;
 	}
-		
+	
+	public static String getTimeInSeconds(String inp) {
+		String[] arr = inp.split(":");
+		Integer out = Integer.parseInt(arr[0]) * 60 + Integer.parseInt(arr[1]);
+		return out.toString();
+	}
 }
