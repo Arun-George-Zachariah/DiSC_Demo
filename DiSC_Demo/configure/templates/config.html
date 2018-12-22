@@ -16,6 +16,24 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="../static/js/blockUI.js"></script>
   <script src="../static/js/ConfigureScripts.js"></script>
+  <style>
+  /* To change the color scheme of active tabs */
+  .ui-tabs .ui-tabs-active {
+    background-color: #38ACEC;
+  }
+
+  .tempFont {
+    font-size:22px
+  }
+
+  .tempFont2 {
+    font-size:22px
+  }
+
+  .tempFont3 {
+    font-size:20px
+  }
+  </style>
 </head>
 <script>
 $(document).ready(function() {
@@ -40,7 +58,7 @@ $(document).ready(function() {
         <!-- Brand -->
         <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/"
         target="_blank">
-        <strong class="blue-text">DiSC</strong>
+        <strong class="blue-text">DiS</strong>
       </a>
 
       <!-- Links -->
@@ -48,19 +66,27 @@ $(document).ready(function() {
 
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <!-- <li class="nav-item active">
             <a class="nav-link waves-effect" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/"
-            target="_blank">About DiSC</a>
+            target="_blank">Live!</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Spark Execution</a>
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Update</a>
           </li>
-
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Summary</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="http://128.110.155.16:8080/families/FamilyScores" download>Download</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">About</a>
+          </li>
         </ul>
 
         <!-- Right -->
@@ -89,26 +115,28 @@ $(document).ready(function() {
 
 <!-- Note: This needs to be aligned in the center -->
 <div class="list-group list-group-flush">
+  <br>
   <form method="post" enctype="multipart/form-data" class="form">
     {% csrf_token %}
     {% for field in form  %}
     <div class="form-group">
-      <label>{{ field.label_tag }}</label>
+      <label class = "font-weight-bold tempFont">{{ field.label_tag }}</label><label>&nbsp;{{field.help_text}}</label>
       {{ field }}
     </div>
     {% endfor %}
-    <div class="form-group">
-      Dataset:<br><br>
+    <div class="form-group font-weight-bold tempFont">
+      Dataset:<br>
       <select class="form-control" name="select1" id="select1">
         <option value="Higgs">Higgs</option>
         <option value="Twitter">Twitter</option>
-        <option value="Synthetic">Synthetic</option>
+        <option value="Synthetic">Syn Set 1</option>
+        <option value="Synthetic">Syn Set 2</option>
+        <option value="Synthetic">Syn Set 3</option>
       </select><br>
 
       Family To Visualize:<br><br>
-
+      <!-- To Do : Families should be selected from the families file -->
       <select class="form-control" name="select2" id="select2">
-        <option id = "Higgs" value="jet_2_pt|missing_energy_magnitude">jet_2_pt|missing_energy_magnitude</option>
         <option id = "Higgs" value="jet_1_eta|lepton_phi,m_lv">jet_1_eta|lepton_phi,m_lv</option>
         <option id = "Higgs" value="m_jj|jet_2_b-tag">m_jj|jet_2_b-tag</option>
         <option id = "Higgs" value="lepton_pT|lepton_eta">m_jj|jet_1_eta</option>
@@ -118,6 +146,7 @@ $(document).ready(function() {
         <option id = "Higgs" value="jet_2_b-tag|jet_3_phi,jet_4_phi">jet_2_b-tag|jet_3_phi,jet_4_phi</option>
         <option id = "Higgs" value="jet_2_eta|jet_1_pt,missing_energy_phi">jet_2_eta|jet_1_pt,missing_energy_phi</option>
         <option id = "Higgs" value="lepton_eta|jet_2_b-tag,jet_4_b-tag">lepton_eta|jet_2_b-tag,jet_4_b-tag</option>
+        <option id = "Higgs" value=""></option>
 
         <option id = "Twitter" value="jet_2_pt,missing_energy_magnitude">jet_2_pt,missing_energy_magnitude</option>
         <option id = "Twitter" value="jet_1_eta,lepton_phi,m_lv">jet_1_eta,lepton_phi,m_lv</option>

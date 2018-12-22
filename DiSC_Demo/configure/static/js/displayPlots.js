@@ -8,6 +8,15 @@ $(document).ready(function() {
      $( "#score" ).append("<p class='tempFont2 font-weight-bold'>Estimated score:</br>"+ output.EstScore + "</p><br><p class='tempFont2 font-weight-bold'>Actual score:</br>"+ output.ActScore + "</p>" );
   }
 
+  //Display Bandwidth consumption and other stats.
+  req = ajax("http://" + ip + ":8080/StreamData/OverallStat",'GET');
+  if (req.readyState == 4 && req.status == 200) {
+    output = JSON.parse(req.responseText)
+     Object.keys(output).forEach(function(key) {
+       $("#statContainer").append("<br><p><label class = 'font-weight-bold tempFont2'>" + key + " </label><label class = 'tempFont3'>   " + output[key] + "</label></p>");
+     });
+  }
+
   //Displaying the Average Time Convergance plots.
   var dataPoints1 = [];
   var dataPoints2 = [];

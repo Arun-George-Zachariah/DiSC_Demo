@@ -86,10 +86,13 @@ def enterConfig(request) :
 				elif dataset == 'Synthetic_Dataset' :
 					_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.syn.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
 				elif dataset == 'Twitter' :
-					logFile = "/users/arung/higgs.r" + str(r) + ".k" + str(k) + ".txt"
-					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'bash stopHiggsGossip.sh " + str(n-1) + "'"))
-					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts.txt'"))
-					_thread.start_new_thread(executeShell , ("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash runDemo.twtr.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
+					logFile = "/users/arung/twtr.r" + str(r) + ".k" + str(k) + ".txt"
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr/stopTwtrGossip.sh " + str(n-1) + "'"))
+					subprocess.call(shlex.split("scp families.txt arung@hp187.utah.cloudlab.us:/dev/data/twtr-families.txt"))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/transferFamilies.sh twtr-families.txt 15'"))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/twtrTrueCounts.txt " + str(r) + " " + str(k) + "'"))
+					family = "af,en,en-CA,tl"
+					_thread.start_new_thread(executeShell , ("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash runDemo.twtr.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
 
 				f = open("form.json", "w")
 				f.write("{\"N\":"+str(n)+",\"L\":"+str(l)+",\"K\":"+str(k)+",\"R\":"+str(r)+",\"Dataset\":\""+dataset+"\",\"Family\":\""+reqFam+"\"}")
