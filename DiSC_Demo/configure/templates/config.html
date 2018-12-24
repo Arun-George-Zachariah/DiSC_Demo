@@ -17,6 +17,18 @@
   <script src="../static/js/blockUI.js"></script>
   <script src="../static/js/ConfigureScripts.js"></script>
   <style>
+  .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.c1 {
+  width: 82%;
+}
+
+.c2 {
+  width: 100%;
+}
   /* To change the color scheme of active tabs */
   .ui-tabs .ui-tabs-active {
     background-color: #38ACEC;
@@ -48,60 +60,60 @@ $(document).ready(function() {
 </script>
 
 <body>
-<body class="grey lighten-3">
-  <!--Main Navigation-->
-  <header>
-    <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-      <div class="container-fluid">
+  <body class="grey lighten-3">
+    <!--Main Navigation-->
+    <header>
+      <!-- Navbar -->
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+        <div class="container-fluid">
 
-        <!-- Brand -->
-        <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/"
-        target="_blank">
-        <strong class="blue-text">DiS</strong>
-      </a>
+          <!-- Brand -->
+          <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/"
+          target="_blank">
+          <strong class="blue-text">DiS</strong>
+        </a>
 
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-          <!-- <li class="nav-item active">
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item active">
             <a class="nav-link waves-effect" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/"
-            target="_blank">Live!</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Update</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Summary</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="http://128.110.155.16:8080/families/FamilyScores" download>Download</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">About</a>
-          </li>
-        </ul>
-
-        <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons">
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
-            target="_blank">
-            <i class="fa fa-github mr-2"></i>GitHub
+            <span class="sr-only">(current)</span>
           </a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/"
+          target="_blank">Live!</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Update</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Summary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="http://128.110.155.16:8080/families/FamilyScores" download>Download</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">About</a>
         </li>
       </ul>
 
-    </div>
+      <!-- Right -->
+      <ul class="navbar-nav nav-flex-icons">
+        <li class="nav-item">
+          <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
+          target="_blank">
+          <i class="fa fa-github mr-2"></i>GitHub
+        </a>
+      </li>
+    </ul>
 
   </div>
+
+</div>
 </nav>
 <!-- Navbar -->
 
@@ -148,16 +160,16 @@ $(document).ready(function() {
         <option id = "Higgs" value="lepton_eta|jet_2_b-tag,jet_4_b-tag">lepton_eta|jet_2_b-tag,jet_4_b-tag</option>
         <option id = "Higgs" value=""></option>
 
-        <option id = "Twitter" value="jet_2_pt,missing_energy_magnitude">jet_2_pt,missing_energy_magnitude</option>
-        <option id = "Twitter" value="jet_1_eta,lepton_phi,m_lv">jet_1_eta,lepton_phi,m_lv</option>
-        <option id = "Twitter" value="m_jj,jet_2_b-tag">m_jj,jet_2_b-tag</option>
-        <option id = "Twitter" value="lepton_pT,lepton_eta">m_jj,jet_1_eta</option>
-        <option id = "Twitter" value="m_jj,jet_1_eta">lepton_pT,lepton_eta</option>
-        <option id = "Twitter" value="lepton_pT,lepton_eta,missing_energy_magnitude">lepton_pT,lepton_eta,missing_energy_magnitude</option>
-        <option id = "Twitter" value="jet_2_b-tag,lepton_phi,m_wwbb">jet_2_b-tag,lepton_phi,m_wwbb</option>
-        <option id = "Twitter" value="jet_2_b-tag,jet_3_phi,jet_4_phi">jet_2_b-tag,jet_3_phi,jet_4_phi</option>
-        <option id = "Twitter" value="jet_2_eta	jet_1_pt,missing_energy_phi">jet_2_eta	jet_1_pt,missing_energy_phi</option>
-        <option id = "Twitter" value="lepton_eta,jet_2_b-tag,jet_4_b-tag">lepton_eta,jet_2_b-tag,jet_4_b-tag</option>
+        <option id = "Twitter" value="ae,TR,my,zh-HK">ae,TR,my,zh-HK</option>
+        <option id = "Twitter" value="am,az-Cyrl,de-CH">am,az-Cyrl,de-CH</option>
+        <option id = "Twitter" value="az-Cyrl,he,te,zh-HK">az-Cyrl,he,te,zh-HK</option>
+        <option id = "Twitter" value="be,am,he,xx-lc">be,am,he,xx-lc</option>
+        <option id = "Twitter" value="de-AT,ca,en-gb,ms-Arab">de-AT,ca,en-gb,ms-Arab</option>
+        <option id = "Twitter" value="en-GB,TR,az-Cyrl,ht">en-GB,TR,az-Cyrl,ht</option>
+        <option id = "Twitter" value="en-IN,ae,mn,nl-BE">en-IN,ae,mn,nl-BE</option>
+        <option id = "Twitter" value="mr,de-AT,en-gb,hr">mr,de-AT,en-gb,hr</option>
+        <option id = "Twitter" value="pa,ckb,fi,fr">pa,ckb,fi,fr</option>
+        <option id = "Twitter" value=""></option>
 
       </select>
     </div>
@@ -172,41 +184,49 @@ $(document).ready(function() {
 <!--Main Navigation-->
 <main class="pt-5 mx-lg-5"><br><br><br><br><br><br><br><br>
   <div class="container-fluid mt-5">
-
-    <!--Grid row-->
     <div class="row wow fadeIn">
-
-      <!--Grid column-->
-      <div class="col-md-12 mb-4">
-      </div>
+      <div class="col-md-12 mb-4"></div>
     </div>
-
-
     <!--Grid row-->
     <div class="row wow fadeIn">
 
       <!--Grid column-->
-      <div class="col-md-12 mb-4">
+      <div class="col-md-6 mb-4">
         <!--Card-->
         <div class="card">
-          <div class="card-header text-center">
-            Distributed Score Computation
+          <div class="card-header text-center tempFont3">
+            <h2 class = "font-weight-bold">Bayesian network on coronary dataset.</h2>
           </div>
           <!--Card content-->
           <div class="card-body">
-
-            <p>In this paper, we focus on the problem of learning a Bayesian network over distributed data stored in acommodity cluster. Specifically, we address the challenge of computing the scoring function over distributeddata in an efficient and scalable manner, which is a fundamental task during learning. While exact scorecomputation can be done using the MapReduce-style computation, our goal is to compute approximate scoresmuch faster with probabilistic error bounds and in a scalable manner. We propose a novel approach which isdesigned to achieve: (a) decentralized score computation using the principle of gossiping; (b) lower resourceconsumption via a probabilistic approach for maintaining scores using the properties of a Markov chain; and(c) effective distribution of tasks during score computation (on large datasets) by synergistically combiningwell-known hashing techniques. We conduct theoretical analysis of our approach in terms of convergencespeed, and memory and network bandwidth consumption. We also discuss how our approach is capable ofefficiently recomputing scores when new data are available. We conducted a comprehensive evaluation of ourapproach and compared with the MapReduce-style computation using datasets of different characteristicson a 16-node cluster. When the MapReduce-style computation provided exact sufficient statistics of families,it was nearly 10 times slower thanDiSC. Although it ran faster on randomly sampled datasets than on theentire datasets, it performed worse thanDiSCin terms of accuracy.DiSCachieved high accuracy (below 6%average relative error) on all the tested datasets. Thus,DiSCprovides a feasible tradeoff between computationtime and accuracy for fast approximate score computation on large-scale distributed data</p>
+            <img src="../static/images/fig-coronary.png" class="center c1"></img>
           </div>
-          <!--/.Card-->
         </div>
-        <!--Grid column-->
-
-
-
+        <!--/.Card-->
       </div>
-      <!--Grid row-->
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <!--Card-->
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header text-center tempFont2">
+            <h2 class = "font-weight-bold">Bayesian network on alarm dataset.</h2>
+          </div>
+          <!--Card content-->
+          <div class="card-body">
+            <img src="../static/images/fig-alarm-network.png" class="center c2"></img>
+          </div>
+        </div>
+      </div>
+      <!--/.Card-->
     </div>
-  </main>
+    <!--Grid column-->
+  </div>
+  <!--Grid row-->
+</div>
+</main>
 
 </body>
 
