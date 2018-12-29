@@ -3,7 +3,6 @@ from django import forms
 EXP_CHOICES=[
 ('BDeu','BDeu'),
 ('K2', 'K2'),
-('BD', 'BD'),
 ]
 
 class ConfigForm(forms.Form):
