@@ -88,5 +88,7 @@ public class DiSCConstants {
 	public static final String EXP_NAME = "EXP_NAME";
 	public static final String R_VAL = "r";
 	public static final String K_VAL = "K";
+	public static final String OUTPUT_DATA_DIR = "/users/arung/DiSC_SRC/scripts/run/";
+	public static final String OUTPUT_FILE = "output.txt";
 
 }
