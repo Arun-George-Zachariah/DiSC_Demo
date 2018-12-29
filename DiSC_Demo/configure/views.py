@@ -9,10 +9,7 @@ import shlex
 import sys
 import json
 
-# Create your views here.
 def enterConfig(request) :
-		#Check for any existing gossip process running.
-
 
 		if request.method == 'POST' :
 			form = ConfigForm(request.POST, request.FILES)
@@ -22,11 +19,10 @@ def enterConfig(request) :
 				l = form.cleaned_data['l']
 				k = form.cleaned_data['k']
 				r = form.cleaned_data['r']
-				#dataset = form.cleaned_data['dataset']
+				delayConst = form.cleaned_data['delayConst']
 				dataset = request.POST.get("select1", "")
 				reqFam = request.POST.get("select2", "")
 				family = reqFam.replace("|",",")
-				print("Handling Uploaded File")
 				handleUploadedFile(request.FILES['familiesFile'])
 
 				nodeRes = str(subprocess.getstatusoutput("ssh arung@hp187.utah.cloudlab.us	 'python /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/getNodeResp.py " + family + "'")).replace('(','').replace(')','').split(',')[1].replace('\'','')
@@ -67,11 +63,6 @@ def enterConfig(request) :
 				elif nodeRes == ' Node_16-0_gspfams' :
 					node = 16
 
-				print("The node responsible for the family :: ", node)
-
-				#Hardcoded family. Needs to be in a dropdown
-				#family = "jet_4_eta,jet_2_b-tag,jet_2_phi"
-
 				if dataset == 'Higgs' :
 					logFile = "/users/arung/higgs.r" + str(r) + ".k" + str(k) + ".txt"
 					#Stopping an existing gossip process
@@ -90,13 +81,13 @@ def enterConfig(request) :
 					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr/stopTwtrGossip.sh " + str(n-1) + "'"))
 					subprocess.call(shlex.split("scp families.txt arung@hp187.utah.cloudlab.us:/dev/data/twtr-families.txt"))
 					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/transferFamilies.sh twtr-families.txt 15'"))
-					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/twtrTrueCounts.txt " + str(r) + " " + str(k) + "'"))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/twtrTrueCounts " + str(r) + " " + str(k) + "'"))
 					family = "af,en,en-CA,tl"
 					_thread.start_new_thread(executeShell , ("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash runDemo.twtr.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
 
 				f = open("form.json", "w")
-				f.write("{\"N\":"+str(n)+",\"L\":"+str(l)+",\"K\":"+str(k)+",\"R\":"+str(r)+",\"Dataset\":\""+dataset+"\",\"Family\":\""+reqFam+"\"}")
-				return render(request, '../templates/data.html', {'N':n,'L':l,'K':k,'R':r,'Dataset':dataset,'Family':reqFam,'NodeResp':node})
+				f.write("{\"n\":" + str(n) + ",\"l\":" + str(l) + ",\"k\":" + str(k) + ",\"r\":" + str(r) + ",\"dataset\":\"" + dataset + "\",\"family\":\"" + reqFam + "\",\"nodeResp\":\"" + str(node) + "\",\"delayConst\":\"" + str(delayConst) + "\",\"familyFile\":\"" + str(request.FILES['familiesFile']) +"\"}")
+				return render(request, '../templates/data.html', {'n': n,'l': l,'k': k,'r': r,'dataset': dataset,'family': reqFam,'nodeResp': node, 'delayConst': delayConst,'familyFile': request.FILES['familiesFile']})
 
 		form = ConfigForm()
 		messages.success(request, 'Form submission successful')
@@ -106,15 +97,13 @@ def executeShell(command) :
 	print("Excecuting shell")
 	subprocess.call(shlex.split(command))
 
-# Create your views here.
 def viewPlots(request) :
 	print("Entering the request to print plots.")
-
 	if request.GET["redirect"] == 'true' :
 		print("Redirecting to the Summary Tab")
 		f = open("form.json", "r")
 		data = json.load(f)
-		return render(request, '../templates/plots.html', {'N':data["N"],'L':data["L"],'K':data["K"],'R':data["R"],'Dataset':data["Dataset"],'Family':data["Family"]})
+		return render(request, '../templates/plots.html', {'n':data["n"],'l':data["l"],'k':data["k"],'r':data["r"],'dataset':data["dataset"],'family':data["family"], 'nodeResp':data["nodeResp"], 'delayConst':data["delayConst"], 'familyFile':data["familyFile"]})
 
 	try:
 		output = subprocess.check_output(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'jps | grep jar'"))
@@ -127,12 +116,10 @@ def viewPlots(request) :
 		print("No Existing Gossip Process Found", sys.exc_info()[0])
 		f = open("form.json", "r")
 		data = json.load(f)
-		print(data["N"])
-		subprocess.check_output(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/startService.sh " + str(data["N"] - 1) + "'"))
-		#retData = {'inProgress': 'false'}
-		#return JsonResponse(retData)
+		print(data["n"])
+		subprocess.check_output(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/startService.sh " + str(data["n"] - 1) + "'"))
 		print("Return render")
-		return render(request, '../templates/plots.html', {'N':data["N"],'L':data["L"],'K':data["K"],'R':data["R"],'Dataset':data["Dataset"],'Family':data["Family"]})
+		return render(request, '../templates/plots.html', {'n':data["n"],'l':data["l"],'k':data["k"],'r':data["r"],'dataset':data["dataset"],'family':data["family"], 'nodeResp':data["nodeResp"], 'delayConst':data["delayConst"], 'familyFile':data["familyFile"]})
 
 def handleUploadedFile(f) :
 	print("Entering handleUploadedFile")
