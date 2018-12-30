@@ -74,15 +74,33 @@ def enterConfig(request) :
 					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/higgsTrueCounts " + str(r) + " " + str(k) + "'"))
 					#Starting the gossip process
 					_thread.start_new_thread(executeShell , ("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/higgs && bash runDemo.higgs.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
-				elif dataset == 'Synthetic_Dataset' :
-					_thread.start_new_thread(executeShell , ("ssh arung@ms1040.utah.cloudlab.us 'cd /users/arung/DiSC_SRC/scripts/general/ && bash runDemo.syn.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + "'",))
+				elif dataset == 'Syn1' :
+					logFile = "/users/arung/syn1.r" + str(r) + ".k" + str(k) + ".txt"
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/syn1/stopSyn1Gossip.sh " + str(n-1) + "'"))
+					subprocess.call(shlex.split("scp families.txt arung@hp187.utah.cloudlab.us:/dev/data/syn-families.txt"))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/transferFamilies.sh syn-families.txt 15'"))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/syn1 && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/syn1TrueCounts " + str(r) + " " + str(k) + "'"))
+					_thread.start_new_thread(executeShell , ("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/syn1 && bash runDemo.syn1.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
+				elif dataset == 'Syn2' :
+					logFile = "/users/arung/syn2.r" + str(r) + ".k" + str(k) + ".txt"
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/syn2/stopSyn2Gossip.sh " + str(n-1) + "'"))
+					subprocess.call(shlex.split("scp families.txt arung@hp187.utah.cloudlab.us:/dev/data/syn-families.txt"))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/transferFamilies.sh syn-families.txt 15'"))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/syn2 && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/syn2TrueCounts " + str(r) + " " + str(k) + "'"))
+					_thread.start_new_thread(executeShell , ("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/syn2 && bash runDemo.syn2.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
+				elif dataset == 'Syn3' :
+					logFile = "/users/arung/syn3.r" + str(r) + ".k" + str(k) + ".txt"
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/syn3/stopSyn3Gossip.sh " + str(n-1) + "'"))
+					subprocess.call(shlex.split("scp families.txt arung@hp187.utah.cloudlab.us:/dev/data/syn-families.txt"))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/transferFamilies.sh syn-families.txt 15'"))
+					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/syn3 && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/syn3TrueCounts " + str(r) + " " + str(k) + "'"))
+					_thread.start_new_thread(executeShell , ("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/syn3 && bash runDemo.syn3.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
 				elif dataset == 'Twitter' :
 					logFile = "/users/arung/twtr.r" + str(r) + ".k" + str(k) + ".txt"
 					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr/stopTwtrGossip.sh " + str(n-1) + "'"))
 					subprocess.call(shlex.split("scp families.txt arung@hp187.utah.cloudlab.us:/dev/data/twtr-families.txt"))
 					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us 'bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/transferFamilies.sh twtr-families.txt 15'"))
 					subprocess.call(shlex.split("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash startStreaming.sh " + str(n-1) + " " + family + " " + logFile + " /users/arung/twtrTrueCounts " + str(r) + " " + str(k) + "'"))
-					family = "af,en,en-CA,tl"
 					_thread.start_new_thread(executeShell , ("ssh arung@hp187.utah.cloudlab.us	 'cd /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/twtr && bash runDemo.twtr.sh " + str(n) + " " + str(k) + " " + str(l) + " " + str(r) + " " + family +"'",))
 
 				f = open("form.json", "w")
