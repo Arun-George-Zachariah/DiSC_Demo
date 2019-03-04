@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var ip = "128.110.152.165";
+  var ip = "128.110.152.64";
 
   //Display the score calculated.
   var req = ajax("http://" + ip + ":8080/StreamData/CalcScore",'GET');

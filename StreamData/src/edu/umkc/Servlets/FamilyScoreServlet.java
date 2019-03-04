@@ -34,7 +34,7 @@ public class FamilyScoreServlet extends HttpServlet {
 		logger.debug("ScoreServlet :: doWork :: Start");
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		PrintWriter out = response.getWriter();
-		String json = ScoreCalculator.getActAndEstScores(request.getParameter("family"));
+		String json = ScoreCalculator.getActAndEstScores(request.getParameter("family"), request.getParameter("function"), request.getParameter("ess"));
 		logger.debug("ScoreServlet :: doWork :: Return JSON :: " + json);
 		out.println(json);
 	}

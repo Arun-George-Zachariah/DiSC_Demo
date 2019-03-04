@@ -16,7 +16,7 @@ $(document).ready(function() {
           //Killing the worker as the gossip process is completed.
           w.terminate();
           alert("The Score has been generated. Redirecting to the Summary tab.")
-          window.location.replace("http://localhost:8008/disc/plots?redirect=true");
+          window.location.replace("http://localhost:8000/disc/plots?redirect=true");
         }
       };
     } else {

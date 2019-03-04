@@ -12,4 +12,5 @@ class ConfigForm(forms.Form):
 	r = forms.IntegerField(label='r', help_text='(Accuracy Tuning Parameter)', widget=forms.TextInput(attrs={'class': 'form-control'}))
 	delayConst = forms.IntegerField(label='Delay Constant', widget=forms.TextInput(attrs={'class': 'form-control'}))
 	scoringFunc = forms.CharField(widget=forms.Select(choices=EXP_CHOICES, attrs={'class': 'form-control'}), label = "Scoring Function :")
+	ess = forms.IntegerField(label='ESS', help_text='(Equivalent Sample Size)', widget=forms.TextInput(attrs={'class': 'form-control'}))
 	familiesFile = forms.FileField(label='List of Families')
