@@ -11,23 +11,25 @@ public class DiSCConstants {
 	public static final String EST_C_FILE = "Est_Counts.txt";
 	public static final String CONFIG_FILE = "/users/arung/target/configuration/config.txt";
 	public static final String CONFIG_GSP_FAMILY_SEARCH_STRING="gspfams";
+	public static final String EST_C_SUM_FILE = "Est_Counts_Summary.txt";
+	public static final String FAMILY_FILE="";
 
-	public static final String IP_1 = "128.110.152.141";
-	public static final String IP_2 = "128.110.152.142";
-	public static final String IP_3 = "128.110.152.149";
-	public static final String IP_4 = "128.110.152.164";
-	public static final String IP_5 = "128.110.152.175";
-	public static final String IP_6 = "128.110.152.170";
-	public static final String IP_7 = "128.110.152.165";
-	public static final String IP_8 = "128.110.152.168";
-	public static final String IP_9 = "128.110.152.137";
-	public static final String IP_10 = "128.110.152.180";
-	public static final String IP_11 = "128.110.152.156";
-	public static final String IP_12 = "128.110.152.150";
-	public static final String IP_13 = "128.110.152.154";
-	public static final String IP_14 = "128.110.152.145";
-	public static final String IP_15 = "128.110.152.138";
-	public static final String IP_16 = "128.110.152.155";
+	public static final String IP_1 = "128.110.152.165";
+	public static final String IP_2 = "128.110.152.173";
+	public static final String IP_3 = "128.110.152.180";
+	public static final String IP_4 = "128.110.152.146";
+	public static final String IP_5 = "128.110.152.149";
+	public static final String IP_6 = "128.110.152.166";
+	public static final String IP_7 = "128.110.152.168";
+	public static final String IP_8 = "128.110.152.159";
+	public static final String IP_9 = "128.110.152.153";
+	public static final String IP_10 = "128.110.152.178";
+	public static final String IP_11 = "128.110.152.174";
+	public static final String IP_12 = "128.110.152.157";
+	public static final String IP_13 = "128.110.152.145";
+	public static final String IP_14 = "128.110.152.160";
+	public static final String IP_15 = "128.110.152.176";
+	public static final String IP_16 = "128.110.152.175";
 
 	public static final String NODE_1 = "udp://" + IP_1 + ":20000";
 	public static final String NODE_2 = "udp://" + IP_2 + ":20000";
@@ -79,9 +81,14 @@ public class DiSCConstants {
 	public static final String GSP_FAM_14 = "Node_14-0_gspfams";
 	public static final String GSP_FAM_15 = "Node_15-0_gspfams";
 	public static final String GSP_FAM_16 = "Node_16-0_gspfams";
-
-
 	
-	
+	public static final String NUM_OF_SLAVES = "NUM_OF_SLAVES";
+	public static final String INPUT_DATA_DIR = "/users/arung/DiSC_SRC/scripts/output/input-data";
+	public static final String FILE_SEPERATOR = "/";
+	public static final String EXP_NAME = "EXP_NAME";
+	public static final String R_VAL = "r";
+	public static final String K_VAL = "K";
+	public static final String OUTPUT_DATA_DIR = "/users/arung/DiSC_SRC/scripts/run/";
+	public static final String OUTPUT_FILE = "output.txt";
 
 }

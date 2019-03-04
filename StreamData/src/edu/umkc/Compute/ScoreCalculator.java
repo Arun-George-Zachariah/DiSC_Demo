@@ -3,6 +3,7 @@ package edu.umkc.Compute;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.text.DecimalFormat;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -17,7 +18,7 @@ import edu.umkc.Util.PropertyReader;
 public class ScoreCalculator {
 	private static final Logger logger = LogManager.getLogger(ScoreCalculator.class.getName());
 		
-	private static Double getScore(Double[][] inp) {
+	private static String getScore(Double[][] inp) {
 		//Assuming prior as a matrix with the values as 1.
 		Double[][] prior = new Double[inp.length][inp[0].length];
 		
@@ -43,12 +44,13 @@ public class ScoreCalculator {
 			}
 		}
 		
-		return score;
+		DecimalFormat df = new DecimalFormat("#.##");
+		return df.format(score);
 	}
 	
 	public static String getActAndEstScores(String family) {
-		Double estScore = null;
-		Double actScore = null;
+		String estScore = null;
+		String actScore = null;
 		logger.debug("ScoreCalculator :: getActAndEstScores :: Start");
 		try (BufferedReader br = new BufferedReader(new FileReader(new File(DiSCConstants.EST_C_FILE)))) {
 			Map<String, LinkedList<LinkedList<Double>>> estimatedCounts = CommonUtil.convertJsonToMap(br.readLine());
