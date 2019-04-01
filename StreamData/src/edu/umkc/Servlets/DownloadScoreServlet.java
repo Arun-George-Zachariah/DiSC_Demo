@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.umkc.Util.PropertyReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,11 +27,11 @@ import edu.umkc.Util.CommonUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-@WebServlet("/DownloadBDeUScores")
-public class DownloadBDeUScoreServlet extends HttpServlet {
+@WebServlet("/DownloadScores")
+public class DownloadScoreServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LogManager.getLogger(DownloadBDeUScoreServlet.class.getName());
+	private static final Logger logger = LogManager.getLogger(DownloadScoreServlet.class.getName());
 	private static Map<String, String> familyMap = new HashMap<String, String>();
 	
 	public void init() {
@@ -45,7 +46,7 @@ public class DownloadBDeUScoreServlet extends HttpServlet {
 					}
 				}
 			}
-			logger.debug("DownloadBDeUScoreServlet :: init :: familyMap :: " + familyMap);
+			logger.debug("DownloadScoreServlet :: init :: familyMap :: " + familyMap);
 		} catch(Exception e) {
 			logger.error("ScoreServlet :: Exception encountered while reading the config file :: " + e);
 			e.printStackTrace();
@@ -67,12 +68,15 @@ public class DownloadBDeUScoreServlet extends HttpServlet {
 		logger.debug("ScoreServlet :: doWork :: Start");
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		init();
+
+		String scoringFunction = PropertyReader.getInstance().getProperty(DiSCConstants.SCORING_FUNCTION);
+		String ess = PropertyReader.getInstance().getProperty(DiSCConstants.ESS);
 		
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter(new File("/users/arung/jetty-distribution-9.4.14.v20181114/webapps/families/FamilyScores.txt")))) {
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(new File("/users/arung/jetty/webapps/families/FamilyScores.txt")))) {
 			//Iterate over each and every family.
 			for(String family : familyMap.keySet()) {
 				String nodeIp = CommonUtil.getNodeIp(familyMap.get(family));
-				URLConnection connection = new URL("http://" + nodeIp + ":8080/StreamData/FamilyScore?family=" + family)
+				URLConnection connection = new URL("http://" + nodeIp + ":8080/StreamData/FamilyScore?family=" + family + "&function=" + scoringFunction + "&ess=" + ess)
 						.openConnection();
 				connection.setRequestProperty("Accept-Charset", "UTF-8");
 				try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
@@ -88,7 +92,7 @@ public class DownloadBDeUScoreServlet extends HttpServlet {
 				}
 			}
 		} catch(Exception e) {
-			logger.error("DownloadBDeUScoreServlet :: doWork :: Exception encountered while writing to the file");
+			logger.error("DownloadScoreServlet :: doWork :: Exception encountered while writing to the file");
 			e.printStackTrace();
 		}
 	}

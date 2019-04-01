@@ -5,7 +5,7 @@ $(document).ready(function() {
   var req = ajax("http://" + ip + ":8080/StreamData/CalcScore",'GET');
   if (req.readyState == 4 && req.status == 200) {
      output = JSON.parse(req.responseText)
-     $( "#score" ).append("<p class='tempFont2 font-weight-bold'>Estimated score:</br>"+ output.EstScore + "</p><br><p class='tempFont2 font-weight-bold'>Actual score:</br>"+ output.ActScore + "</p>" );
+     $( "#score" ).append("<p class='tempFont2 font-weight-bold'>Estimated score:</br>"+ output.EstScore + "</p><p class='tempFont2 font-weight-bold'>Actual score:</br>"+ output.ActScore + "</p>" );
   }
 
   //Display Bandwidth consumption and other stats.
@@ -418,7 +418,7 @@ function toggleDataSeries(e) {
   } else {
     e.dataSeries.visible = true;
   }
-  chart1.render();
+  chart1.render(score);
   chart2.render();
   chart3.render();
   chart4.render();
@@ -432,3 +432,20 @@ var ajaxReq = function(url, type) {
   req.send("");
   return req;
 };
+
+function execClick(event) {
+  event.preventDefault();
+  alert("Please restart the experiment.");
+}
+
+function execSummClick(event) {
+  event.preventDefault();
+}
+
+function execDownloadClick(event) {
+  event.preventDefault();
+  $.post("http://128.110.152.64:8080/StreamData/DownloadScores", function(data, status){
+    alert("Score calculation complete");
+    window.location.replace("http://128.110.152.64:8080/families/FamilyScores.txt");
+  });
+}

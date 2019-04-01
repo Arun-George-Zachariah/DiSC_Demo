@@ -15,7 +15,6 @@ import edu.umkc.Constants.DiSCConstants;
 import edu.umkc.Util.CommonUtil;
 import edu.umkc.Util.PropertyReader;
 
-// Can be removed after adding K2 score calculation.
 public class ScoreCalculator {
 	private static final Logger logger = LogManager.getLogger(ScoreCalculator.class.getName());
 

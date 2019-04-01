@@ -30,16 +30,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link waves-effect" href="" target="_blank">Live!</a>
+              <a class="nav-link waves-effect" onclick= "execClick(event)" href="" target="_blank">Live!</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link waves-effect" href="" target="_blank">Update</a>
+              <a class="nav-link waves-effect" onclick= "execClick(event)" href="" target="_blank">Update</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link waves-effect" href="" target="_blank">Summary</a>
+              <a class="nav-link waves-effect" onclick= "execClick(event)" href="" target="_blank">Summary</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link waves-effect" href="" download>Download</a>
+              <a class="nav-link waves-effect" onclick= "execClick(event)" href="" download>Download</a>
             </li>
             <li class="nav-item">
               <a class="nav-link waves-effect" href="" target="_blank">About</a>
@@ -79,6 +79,7 @@
               <option value="Syn1">Syn Set 1</option>
               <option value="Syn2">Syn Set 2</option>
               <option value="Syn3">Syn Set 3</option>
+              <option value="Upload">Data Upload</option>
             </select><br>
 
             Family To Visualize:<br><br>
@@ -93,7 +94,7 @@
               <option id = "Higgs" value="jet_2_eta|jet_1_pt,missing_energy_phi">jet_2_eta|jet_1_pt,missing_energy_phi</option>
               <option id = "Higgs" value="lepton_eta|jet_2_b-tag,jet_4_b-tag">lepton_eta|jet_2_b-tag,jet_4_b-tag</option>
 
-              <option id = "Twitter" value="ae|TR,my,zh-HK">ae|TR,my,zh-HK</option>
+              <option id = "Twitter" value="zh|az-Cyrl,gu,sr-Latn">zh|az-Cyrl,gu,sr-Latn</option>
               <option id = "Twitter" value="am|az-Cyrl,de-CH">am|az-Cyrl,de-CH</option>
               <option id = "Twitter" value="az-Cyrl|he,te,zh-HK">az-Cyrl|he,te,zh-HK</option>
               <option id = "Twitter" value="be|am,he,xx-lc">be|am,he,xx-lc</option>
@@ -133,6 +134,15 @@
               <option id = "Syn3" value="abcDrBchat|Assange,acoustics,amwriting">abcDrBchat|Assange,acoustics,amwriting</option>
               <option id = "Syn3" value="authors|Adventure,ArgueWithAVet,anklemonitor4HRC">authors|Adventure,ArgueWithAVet,anklemonitor4HRC</option>
 
+              <option id = "Upload" value="zh|az-Cyrl,gu,sr-Latn">zh|az-Cyrl,gu,sr-Latn</option>
+              <option id = "Upload" value="am|az-Cyrl,de-CH">am|az-Cyrl,de-CH</option>
+              <option id = "Upload" value="az-Cyrl|he,te,zh-HK">az-Cyrl|he,te,zh-HK</option>
+              <option id = "Upload" value="be|am,he,xx-lc">be|am,he,xx-lc</option>
+              <option id = "Upload" value="de-AT|ca,en-gb,ms-Arab">de-AT|ca,en-gb,ms-Arab</option>
+              <option id = "Upload" value="en-GB|TR,az-Cyrl,ht">en-GB|TR,az-Cyrl,ht</option>
+              <option id = "Upload" value="en-IN|ae,mn,nl-BE">en-IN|ae,mn,nl-BE</option>
+              <option id = "Upload" value="mr|de-AT,en-gb,hr">mr|de-AT,en-gb,hr</option>
+              <option id = "Upload" value="pa|ckb,fi,fr">pa|ckb,fi,fr</option>
             </select>
           </div>
         </div>

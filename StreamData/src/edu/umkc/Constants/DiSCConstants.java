@@ -94,4 +94,5 @@ public class DiSCConstants {
 	public static final String BDeu = "BDeu";
 	public static final String K2 = "K2";
 
+	public static final String UPLOAD_CMD = "bash /users/arung/DiSC_SRC/scripts/general/DemoExecScripts/startUpload.sh";
 }

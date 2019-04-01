@@ -39,7 +39,7 @@ $(document).ready(function() {
       fontSize:24,
       fontFamily:"Helvetica"
     },
-    width:1360,
+    width:1760,
     axisX:{
       interval: 1
     },
@@ -1063,4 +1063,27 @@ function initDataPoints(size) {
   }
   console.log(dps)
   return dps;
+}
+
+function execUpdate(event) {
+  event.preventDefault();
+  alert("New dataset has been uploaded.");
+  $.ajax({
+    type: "POST",
+    url: "http://128.110.152.64:8080/StreamData/TriggerUpload",
+  }).done(function() {
+    alert("Complete uploading the new dataset.");
+  });
+
+}
+
+
+function execClick(event) {
+  event.preventDefault();
+  alert("Please wait for the experiement to complete");
+}
+
+function execLiveClick(event) {
+  event.preventDefault();
+  alert("Live gossip is in progress.");
 }
