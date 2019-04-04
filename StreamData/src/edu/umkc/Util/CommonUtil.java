@@ -40,12 +40,10 @@ public class CommonUtil {
 	}
 
 	public static String getTrueCount() {
-		if (trueCount == null) {
-			try (BufferedReader br = new BufferedReader(new FileReader(new File(PropertyReader.getInstance().getProperty(DiSCConstants.TRUE_COUNTS_FILE))))) {
-				trueCount = br.readLine();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		try (BufferedReader br = new BufferedReader(new FileReader(new File(PropertyReader.getInstance().getProperty(DiSCConstants.TRUE_COUNTS_FILE))))) {
+			trueCount = br.readLine();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return trueCount;
 	}
