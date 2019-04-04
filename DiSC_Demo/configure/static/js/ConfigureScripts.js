@@ -11,3 +11,8 @@ $(document).ready(function() {
     $select2.html( $options.filter('[id="' + this.value + '"]'));
   }).trigger('change');
 })
+
+function execClick(event) {
+  event.preventDefault();
+  alert("Please start the experiement.");
+}

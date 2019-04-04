@@ -34,19 +34,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link waves-effect" href="" target="_blank">Live!</a>
+              <a class="nav-link waves-effect" onclick= "execClick(event)" href="" target="_blank">Live!</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link waves-effect" href="" target="_blank">Update</a>
+              <a id="upadate" class="nav-link waves-effect" onclick= "execClick(event)" href="" target="_blank">Update</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link waves-effect" href="" target="_blank">Summary</a>
+              <a class="nav-link waves-effect" onclick="execSummClick(event)" href="" target="_blank">Summary</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link waves-effect" href="" download>Download</a>
+              <a class="nav-link waves-effect" onclick="execDownloadClick(event)">Download</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link waves-effect" href="" target="_blank">About</a>
+              <a class="nav-link waves-effect" href="http://localhost:8000/disc" target="_blank">About</a>
             </li>
           </ul>
 
@@ -89,6 +89,10 @@
             <input type="text" class="form-control tempFont2" value={{delayConst}} readonly>
           </div>
           <div class="form-group">
+            <label class = "font-weight-bold tempFont">ESS: (Equivalent Sample Size)</label>
+            <input type="text" class="form-control tempFont2" value={{ess}} readonly>
+          </div>
+          <div class="form-group">
             <label class = "font-weight-bold tempFont">Dataset:</label>
             <input type="text" class="form-control tempFont2" value="{{dataset}}" readonly>
           </div>
@@ -102,113 +106,69 @@
           </div>
           <div class="form-group">
             <label class = "font-weight-bold tempFont">Scoring Function:</label>
-            <input type="text" class="form-control tempFont2" value="BDeu" readonly>
+            <input type="text" class="form-control tempFont2" value={{scoringFunc}} readonly>
           </div>
-          <br><br>
+          <br>
           <div id="score"></div>
         </form>
       </div>
     </div>
-    <!-- Sidebar -->
 
   </header>
-  <!--Main Navigation-->
-
   <br><br>
-  <!--Main layout-->
+
   <main class="pt-5 mx-lg-5">
     <div class="container-fluid mt-5">
-      <!--Grid row-->
       <div class="row wow fadeIn">
 
-        <!--Grid column-->
         <div class="col-md-6 mb-4">
-          <!--Card-->
           <div class="card">
-
-            <!--Card content-->
             <div class="card-body">
               <div id="chartContainer1" style="height: 400px; width: 100%;"></div>
             </div>
           </div>
-          <!--/.Card-->
         </div>
-        <!--Grid column-->
 
-        <!--Grid column-->
         <div class="col-md-6 mb-4">
-          <!--Card-->
           <div class="card">
-            <!-- Card header -->
-
-            <!--Card content-->
             <div class="card-body">
               <div id="chartContainer2" style="height: 400px; width: 100%;"></div>
             </div>
           </div>
-          <!--/.Card-->
         </div>
-        <!--Grid column-->
       </div>
-      <!--Grid row-->
       <br><br>
-      <!--Grid row-->
-      <div class="row wow fadeIn">
-        <!--Grid column-->
-        <div class="col-md-6 mb-4">
-          <!--Card-->
-          <div class="card">
 
-            <!--Card content-->
+      <div class="row wow fadeIn">
+        <div class="col-md-6 mb-4">
+          <div class="card">
             <div class="card-body">
               <div id="chartContainer3" style="height: 400px; width: 100%;"></div>
             </div>
           </div>
-          <!--/.Card-->
         </div>
-        <!--Grid column-->
 
-        <!--Grid column-->
         <div class="col-md-6 mb-4">
-          <!--Card-->
           <div class="card">
-            <!-- Card header -->
-
-            <!--Card content-->
             <div class="card-body">
               <div id="chartContainer4" style="height: 400px; width: 100%;"></div>
             </div>
           </div>
-          <!--/.Card-->
         </div>
-        <!--Grid column-->
-
       </div>
-      <!--Grid row-->
       <br><br>
-      <!--Grid row-->
+
       <div class="row wow fadeIn">
-
-
-        <!--Grid column-->
         <div class="col-md-6 mb-4">
-          <!--Card-->
           <div class="card">
-            <!-- Card header -->
-
-            <!--Card content-->
             <div class="card-body">
               <div id="statContainer" style="height: 400px; width: 100%;"></div>
             </div>
           </div>
-          <!--/.Card-->
         </div>
-        <!--Grid column-->
-
       </div>
-      <!--Grid row-->
     </div>
+
   </main>
 </body>
-
 </html>
